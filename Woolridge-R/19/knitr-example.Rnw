@@ -1,0 +1,48 @@
+\documentclass[fontsize=12pt,DIV=30]{scrartcl}
+\begin{document}
+
+\title{A Demonstration of Using \LaTeX\ with R}
+\author{Florian Heiss}
+\date{March 30, 2017}
+\maketitle
+\thispagestyle{empty}
+
+<<prepare, echo=FALSE, results="hide", warning=FALSE, message=FALSE>>=
+# Code chunk: Preparations. No code, output, warnings, or messages.
+library(stargazer);library(xtable);library(knitr)
+gpa1 <- rio::import("~/data/wooldridge/gpa1.dta")
+gender <- factor(gpa1$male,labels=c("female","male"))
+@
+
+Our data set has \Sexpr{nrow(gpa1)} observations. 
+The distribution of gender is the following:
+<<gendertab, echo=FALSE, results="asis">>=
+# Code chunk: Table using xtable. 
+# No code, output "asis" since xtable generates LaTeX code.
+xtable( table(gender) )
+@
+
+Table \ref{t:reg} shows the regression results. 
+<<regtab , echo=FALSE, results="asis">>=
+# Code chunk: Regression table with stargazer. 
+# Table using xtable. No code, output "asis" since xtable generates LaTeX code.
+res1 <- lm(colGPA ~ hsGPA      , data=gpa1)
+res2 <- lm(colGPA ~         ACT, data=gpa1)
+res3 <- lm(colGPA ~ hsGPA + ACT, data=gpa1)
+stargazer(res1,res2,res3, keep.stat=c("n","rsq"), header=FALSE,
+              type="latex",title="Regression Results",label="t:reg")
+@
+
+In model (1), $\hat\beta_1=\Sexpr{round(coef(res1)[2],3)}$. 
+Finally, here is our regression graph:
+
+\centering
+<<regfig, echo=FALSE, fig.width=3, fig.height=2>>=
+# Code chunk: Plot. 
+# No code, figure dimensions given in inch.
+par(mar=c(2,2,1,1))
+plot(gpa1$hsGPA, gpa1$colGPA)
+abline(res1)
+@
+
+\end{document}

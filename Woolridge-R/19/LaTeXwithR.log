@@ -1,0 +1,137 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (MiKTeX 2.9) (preloaded format=pdflatex 2015.8.17)  25 JAN 2016 14:03
+entering extended mode
+**LaTeXwithR.tex
+(LaTeXwithR.tex
+LaTeX2e <2015/01/01> patch level 2
+Babel <3.9m> and hyphenation patterns for 69 languages loaded.
+("C:\Users\Florian Heiss\AppData\Roaming\MiKTeX\2.9\tex\latex\koma-script\scrartcl.cls"
+Document Class: scrartcl 2012/07/29 v3.11b KOMA-Script document class (article)
+("C:\Users\Florian Heiss\AppData\Roaming\MiKTeX\2.9\tex\latex\koma-script\scrkbase.sty"
+Package: scrkbase 2012/07/29 v3.11b KOMA-Script package (KOMA-Script-dependent basics and keyval usage)
+
+("C:\Users\Florian Heiss\AppData\Roaming\MiKTeX\2.9\tex\latex\koma-script\scrbase.sty"
+Package: scrbase 2012/07/29 v3.11b KOMA-Script package (KOMA-Script-independent basics and keyval usage)
+
+("C:\Program Files (x86)\MiKTeX 2.9\tex\latex\graphics\keyval.sty"
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks14
+)
+("C:\Users\Florian Heiss\AppData\Roaming\MiKTeX\2.9\tex\latex\koma-script\scrlfile.sty"
+Package: scrlfile 2012/06/15 v3.12 KOMA-Script package (loading files)
+
+Package scrlfile, 2012/06/15 v3.12 KOMA-Script package (loading files)
+                  Copyright (C) Markus Kohm
+
+))) ("C:\Users\Florian Heiss\AppData\Roaming\MiKTeX\2.9\tex\latex\koma-script\tocbasic.sty"
+Package: tocbasic 2012/04/04 v3.10b KOMA-Script package (handling toc-files)
+)
+Package tocbasic Info: omitting babel extension for `toc'
+(tocbasic)             because of feature `nobabel' available
+(tocbasic)             for `toc' on input line 115.
+Package tocbasic Info: omitting babel extension for `lof'
+(tocbasic)             because of feature `nobabel' available
+(tocbasic)             for `lof' on input line 116.
+Package tocbasic Info: omitting babel extension for `lot'
+(tocbasic)             because of feature `nobabel' available
+(tocbasic)             for `lot' on input line 117.
+Class scrartcl Info: File `scrsize12pt.clo' used to setup font sizes on input line 1267.
+
+("C:\Users\Florian Heiss\AppData\Roaming\MiKTeX\2.9\tex\latex\koma-script\scrsize12pt.clo"
+File: scrsize12pt.clo 2012/07/29 v3.11b KOMA-Script font size class option (12pt)
+)
+("C:\Users\Florian Heiss\AppData\Roaming\MiKTeX\2.9\tex\latex\koma-script\typearea.sty"
+Package: typearea 2012/07/29 v3.11b KOMA-Script package (type area)
+
+Package typearea, 2012/07/29 v3.11b KOMA-Script package (type area)
+                  Copyright (C) Frank Neukam, 1992-1994
+                  Copyright (C) Markus Kohm, 1994-
+
+\ta@bcor=\skip41
+\ta@div=\count79
+\ta@hblk=\skip42
+\ta@vblk=\skip43
+\ta@temp=\skip44
+
+Package typearea Warning: Bad type area settings!
+(typearea)                The detected line width is about 28%
+(typearea)                larger than the heuristically detected line width.
+(typearea)                You should e.g. decrease DIV, increase fontsize
+(typearea)                or change papersize.
+
+Package typearea Info: These are the values describing the layout:
+(typearea)             DIV  = 30
+(typearea)             BCOR = 0.0pt
+(typearea)             \paperwidth      = 597.50793pt
+(typearea)              \textwidth      = 537.75714pt
+(typearea)              DIV departure   = -28%
+(typearea)              \evensidemargin = -42.39459pt
+(typearea)              \oddsidemargin  = -42.39459pt
+(typearea)             \paperheight     = 845.04694pt
+(typearea)              \textheight     = 766.0pt
+(typearea)              \topmargin      = -83.97676pt
+(typearea)              \headheight     = 18.125pt
+(typearea)              \headsep        = 21.75pt
+(typearea)              \topskip        = 12.0pt
+(typearea)              \footskip       = 50.75pt
+(typearea)              \baselineskip   = 14.5pt
+(typearea)              on input line 1213.
+)
+\c@part=\count80
+\c@section=\count81
+\c@subsection=\count82
+\c@subsubsection=\count83
+\c@paragraph=\count84
+\c@subparagraph=\count85
+LaTeX Info: Redefining \textsubscript on input line 2233.
+\abovecaptionskip=\skip45
+\belowcaptionskip=\skip46
+\c@pti@nb@sid@b@x=\box26
+\c@figure=\count86
+\c@table=\count87
+\bibindent=\dimen102
+) (LaTeXwithR.aux)
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 2.
+LaTeX Font Info:    ... okay on input line 2.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 2.
+LaTeX Font Info:    ... okay on input line 2.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 2.
+LaTeX Font Info:    ... okay on input line 2.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 2.
+LaTeX Font Info:    ... okay on input line 2.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 2.
+LaTeX Font Info:    ... okay on input line 2.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 2.
+LaTeX Font Info:    ... okay on input line 2.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <24.88> on input line 8.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <20.74> on input line 8.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <17.28> on input line 8.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 8.
+
+
+! LaTeX Error: File `numb-n.tex' not found.
+
+Type X to quit or <RETURN> to proceed,
+or enter new name. (Default extension: tex)
+
+Enter file name: 
+! Emergency stop.
+<read *> 
+         
+l.10 Our data set has \input{numb-n.tex}
+                                         observations.
+*** (cannot \read from terminal in nonstop modes)
+
+ 
+Here is how much of TeX's memory you used:
+ 1226 strings out of 493673
+ 19264 string characters out of 3141504
+ 96001 words of memory out of 3000000
+ 4637 multiletter control sequences out of 15000+200000
+ 8484 words of font info for 30 fonts, out of 3000000 for 9000
+ 1025 hyphenation exceptions out of 8191
+ 35i,6n,35p,240b,203s stack positions out of 5000i,500n,10000p,200000b,50000s
+!  ==> Fatal error occurred, no output PDF file produced!

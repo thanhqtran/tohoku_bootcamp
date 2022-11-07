@@ -1,0 +1,23 @@
+\documentclass[fontsize=12pt,DIV=30]{scrartcl}
+\usepackage{graphicx}
+\begin{document}
+
+\title{A Demonstration of Using \LaTeX\ with R}
+\author{Florian Heiss}
+\date{March 30, 2017}
+\maketitle
+\thispagestyle{empty}
+
+Our data set has \input{numb-n.txt} observations. 
+The distribution of gender is the following:
+\input{tab-gender.txt}
+
+Table \ref{t:reg} shows the regression results.
+\input{tab-regr.txt}
+
+In model (1), $\hat\beta_1=\input{numb-b1.txt}$. 
+Finally, here is our regression graph:
+
+\centering\includegraphics{regr-graph.pdf}
+
+\end{document}

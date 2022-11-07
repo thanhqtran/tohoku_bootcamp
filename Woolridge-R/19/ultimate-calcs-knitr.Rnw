@@ -1,0 +1,16 @@
+\documentclass{article}
+\begin{document}
+
+\title{Ultimate Question}
+\author{Florian Heiss}
+\date{March 30, 2017}
+\maketitle
+
+The main calculation using the method ``square root''\\
+(\texttt{http://mathworld.wolfram.com/SquareRoot.html}):
+
+<<>>=
+sqrt(1764)
+@
+
+\end{document}

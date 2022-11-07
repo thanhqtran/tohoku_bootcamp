@@ -1,0 +1,1 @@
+summary(lm(log(salary) ~ years+gamesyr+bavg+hrunsyr+rbisyr, data=mlb1))

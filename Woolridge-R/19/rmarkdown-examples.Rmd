@@ -1,0 +1,34 @@
+---
+title: "Different R Markdown Features"
+author: "F. Heiss"
+---
+
+# Header 1: Hiding Input and/or Output
+
+We can run *R* code but **hide** 
+
+* the  *input* with `echo=FALSE` and/or
+* the  *results* with `include=FALSE`
+
+```{r,echo=FALSE,include=FALSE}
+library(stargazer)
+gpa1 <- rio::import("http://fmwww.bc.edu/ec-p/data/wooldridge/gpa1.dta")
+```
+
+## Header 2: Usual R Output
+
+By *default*, both input commands and *R* output are displayed:
+```{r}
+table(gpa1$age)
+olsres <- lm(colGPA ~ hsGPA, data=gpa1)
+stargazer(olsres,type="text")
+```
+
+### Header 3: Formulas and inline R results
+
+We can also include formulas using LaTeX syntax if 
+we have LaTeX installed.
+$$\overline x = \sum_{i=1}^n x_i$$
+
+And we can use *R* results inside of the text like in 
+$\hat\beta_1=$ `r coef(olsres)[2]`.
