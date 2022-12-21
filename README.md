@@ -1,2 +1,2 @@
 # Tohoku Spring 2023
-Math and Computation Camp for Spring 2023 at Tohoku University
+Computation, Math, and Qualitative (Thematic Analysis) Camp for Spring 2023 at Tohoku University.
