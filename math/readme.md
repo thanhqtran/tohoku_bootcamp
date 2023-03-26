@@ -27,4 +27,4 @@ Theory is presented in the Afternoon. Students are expected to solve homework pr
 
 # Instructors
 
-Quang-Thanh, Tran (Tedd) & Zhang, Ye (Tony).
+Quang-Thanh Tran (Tedd) & Ye Zhang (Tony).

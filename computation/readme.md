@@ -2,7 +2,7 @@
 
 Room 401, C-14 Building, Tohoku University, Kawauchi Campus.
 
-First class is on February 16, 2023.
+The course lasts from Feb 16 -- March 2, 2023.
 
 # Course Outline
 
@@ -15,4 +15,4 @@ First class is on February 16, 2023.
 
 # Instructor
 
-Yikai, Zhao.
+Yikai Zhao.
