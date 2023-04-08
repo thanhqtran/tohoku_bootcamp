@@ -16,7 +16,7 @@ This is the official repository of INSEIKAI Tohoku BootCamp.
 [Spring 2023](https://github.com/thanhqtran/tohoku_bootcamp/tree/main/spring2023)
 
 ## Upcoming Camps
-[Summer 2023]
+[Summer 2023](https://github.com/thanhqtran/tohoku_bootcamp/tree/main/summer2023)
 # Instructors
 
 Ph.D. students of the Graduate School of Economics and Management.
