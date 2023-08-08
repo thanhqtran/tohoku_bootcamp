@@ -17,19 +17,19 @@
 
 * 9/18 (A):
   - [Stata]: OLS regression, descriptive statistics, use ShareLatex
-  - [R]:
+  - [R]: Introduction: Rstudio and basic commands
 * 9/19 (A):
   - [Stata]: OLS regression, output the results and interpret them
-  - [R]:
+  - [R]: Time series analysis commands and data processing
 * 9/20 (A):
   - [Stata]: Panel data analysis
-  - [R]:
+  - [R]: Time series decomposing with moving average
 * 9/21 (A):
   - [Stata]: Panel data analysis, Make tables and figures
-  - [R]: 
+  - [R]: Time series exponential smoothing
 * 9/22 (A):
   - [Stata]: GMM 2SLS IV
-  - [R]: 
+  - [R]: Time series forecasting: ARIMA, ACF and PACF plots.
 
 (Week 2)
 
