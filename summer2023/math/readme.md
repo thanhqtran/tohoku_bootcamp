@@ -4,31 +4,6 @@
 * A: C14 (文科系総合研究科棟) 4F Room 401
 * B: C17（経済学部）2F Seminar Room 15
 
-## Qualitative II
-
-**Class time**
-
-* Morning: [method] 10:00 -- 12:00
-* Afternoon: [discussion] 13:30 -- 15:00
-
-**Content**
-
-(Week 1)
-
-* 8/14 (A): 
-* 8/15 (A):
-* 8/16 (A):
-* 8/17 (A):
-* 8/18 (A):
-
-(Week 2)
-
-* 8/21 (A): 
-* 8/22 (A):
-* 8/23 (A):
-* 8/24 (A):
-* 8/25 (A):
-
 ## Mathematics II
 
 **Class time**
@@ -61,28 +36,3 @@
 * 9/13 (A):
 * 9/14 (A):
 * 9/15 (A):
-
-## Econometrics
-
-**Class time**
-
-* Morning: [Stata] 10:00 -- 12:00
-* Afternoon: [R] 13:30 -- 15:00
-
-**Content**
-
-(Week 1)
-
-* 9/18 (A): 
-* 9/19 (A):
-* 9/20 (A):
-* 9/21 (A):
-* 9/22 (A):
-
-(Week 2)
-
-* 9/25 (A): 
-* 9/26 (A):
-* 9/27 (A):
-* 9/28 (A):
-* 9/29 (A):
