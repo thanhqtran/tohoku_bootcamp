@@ -15,16 +15,36 @@
 
 (Week 1)
 
-* 9/18 (A): 
+* 9/18 (A):
+  - [Stata]: OLS regression, descriptive statistics, use ShareLatex
+  - [R]:
 * 9/19 (A):
+  - [Stata]: OLS regression, output the results and interpret them
+  - [R]:
 * 9/20 (A):
+  - [Stata]: Panel data analysis
+  - [R]:
 * 9/21 (A):
+  - [Stata]: Panel data analysis, Make tables and figures
+  - [R]: 
 * 9/22 (A):
+  - [Stata]: GMM 2SLS IV
+  - [R]: 
 
 (Week 2)
 
-* 9/25 (A): 
+* 9/25 (A):
+  - [Stata]: GMM 2SLS IV, output results and interpret
+  - [R]: 
 * 9/26 (A):
+  - [Stata]: Probit, Logit
+  - [R]:
 * 9/27 (A):
+  - [Stata]: Probit, Logit, tables and figures
+  - [R]: 
 * 9/28 (A):
+  - [Stata]: DID method, mediating effects, moderating effects
+  - [R]:
 * 9/29 (A):
+* - [Stata]: Write an empirical analysis
+  - [R]:
