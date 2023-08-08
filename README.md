@@ -1,4 +1,6 @@
-![](https://github.com/thanhqtran/tohoku_bootcamp/blob/91d20cb3aaed0189c845804a4980c4acd277d9a3/logo.png)
+<p align="center">
+  <img width="150" height="150" src="https://github.com/thanhqtran/tohoku_bootcamp/blob/91d20cb3aaed0189c845804a4980c4acd277d9a3/logo.png">
+</p>
 
 # Tohoku BootCamp for Economists 
 
