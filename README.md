@@ -3,6 +3,7 @@
 This is the official repository of INSEIKAI Tohoku BootCamp.
 
 ## Camp contents
+
 ### Spring Camp
 - [Computation]
 - [Mathematics I]
@@ -12,6 +13,7 @@ This is the official repository of INSEIKAI Tohoku BootCamp.
 - [Qualitative II]
 - [Mathematics II]
 - [Econometrics]
+
 ## Past Camps
 [Spring 2023](https://github.com/thanhqtran/tohoku_bootcamp/tree/main/spring2023)
 
