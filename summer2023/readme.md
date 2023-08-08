@@ -16,7 +16,7 @@
 (Week 1)
 
 * 8/14 (A): The big scary theory
-* 8/15 (A): Research Desgin: The five approaches 
+* 8/15 (A): Research Design: The five approaches 
 * 8/16 (A): Doing interviews : Writing your interview guide
 * 8/17 (A): Doing interviews : Interviewing
 * 8/18 (A): Transcription & maybe Latex (if needed)
@@ -40,7 +40,9 @@
 
 (Week 1)
 
-* 8/28 (B): Unconstraint Optimization
+* 8/28 (B): (morning) **[Guide to LaTeX](https://github.com/thanhqtran/tohoku_bootcamp/blob/99f02a905fdee7090783298334c6b79391f4d1b1/tex_guide/guide.pdf)**
+
+* 8/28 (B): (afternoon) Unconstraint Optimization
 * 8/29 (B): Constraint Optimization
 * 8/30 (B): Inequality Optimization
 * 8/31 (A): Applications in Models
