@@ -1,9 +1,3 @@
-<h1> <img src="https://github.com/thanhqtran/tohoku_bootcamp/blob/41f7a9c2bef8f28ad0284c081854b700125a69a2/Tohoku%20Inseikai.png"
-  width="128"
-  height="128"
-  alt="icon"
-  style="float:left;">
-
 # Tohoku BootCamp for Economists 
 
 [Homepage](https://thanhqtran.github.io/tohoku_bootcamp/) | [Github](https://github.com/thanhqtran/tohoku_bootcamp)
