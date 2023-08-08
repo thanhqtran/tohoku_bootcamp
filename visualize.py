@@ -19,20 +19,15 @@ df2 = df.groupby('year').sum()
 df2['season'] = np.where(df2.index.month == 3, 'Spring', 'Summer')
 df2['season_year'] = df2['season'] + ' ' + df2.index.year.astype(str)
 
-# use latex font
-plt.rc('text', usetex=True)
-plt.rc('font', family='serif')
-# use font size 18
-plt.rcParams.update({'font.size': 13})
+
 # plot bar chart
 df2.plot.bar()
-
-# legend above the plot horizontal
-plt.legend(bbox_to_anchor=(0., 1.02, 1., .102), loc='lower left', ncol=3)
 
 # label x-ticks with season_year
 plt.xticks(np.arange(len(df2.index)), df2['season_year'], rotation=0)
 plt.ylabel('Number of students')
+plt.title('Number of campers in each season')
+plt.legend(loc='upper left')
 
 # save png
 plt.savefig('no_of_stu.png', dpi=300, bbox_inches='tight', pad_inches=0.1)
