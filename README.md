@@ -89,4 +89,4 @@ The Camp is organized by [Inseikai Tohoku](inseikaitohoku.org) and is grateful f
 
 Number of students.
 
-![](https://github.com/thanhqtran/tohoku_bootcamp/blob/8e9bd4a2783f7c8a8387f592eaf00102f736c280/no_of_stu.png)
+![](no_of_stu.png)
