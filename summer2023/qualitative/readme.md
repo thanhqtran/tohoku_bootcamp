@@ -15,16 +15,16 @@
 
 (Week 1)
 
-* 8/14 (A): 
-* 8/15 (A):
-* 8/16 (A):
-* 8/17 (A):
-* 8/18 (A):
+* 8/14 (A): The big scary theory
+* 8/15 (A): Research Design: The five approaches 
+* 8/16 (A): Doing interviews : Writing your interview guide
+* 8/17 (A): Doing interviews : Interviewing
+* 8/18 (A): Transcription & maybe Latex (if needed)
 
 (Week 2)
 
-* 8/21 (A): 
-* 8/22 (A):
-* 8/23 (A):
-* 8/24 (A):
-* 8/25 (A):
+* 8/21 (A): Thematic Analysis: Dataset familiarization  
+* 8/22 (A): Thematic Analysis: Data coding
+* 8/23 (A): Thematic Analysis: Initial theme generation // Theme development and review 
+* 8/24 (A): Thematic Analysis: Theme refining and naming // Writing your thematic Analysis report
+* 8/25 (A): Sharing your experience - presentations
