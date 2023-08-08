@@ -76,6 +76,13 @@ The Camp is organized by [Inseikai Tohoku](inseikaitohoku.org) and is grateful f
             <br />
             <sub><b>Null</b></sub>
         </a>
+    </td>
+    <td align="center">
+        <a href="https://github.com/helensontheway0404">
+            <img src="https://avatars.githubusercontent.com/u/141707243?v=4" width="100;" alt="helensontheway0404"/>
+            <br />
+            <sub><b>Helensontheway</b></sub>
+        </a>
     </td></tr>
 </table>
 <!-- readme: collaborators,contributors -end -->
