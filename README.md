@@ -40,49 +40,4 @@ The Camp is organized by [Inseikai Tohoku](inseikaitohoku.org) and is grateful f
 ## Contributors
 
 <!-- readme: collaborators,contributors -start -->
-<table>
-<tr>
-    <td align="center">
-        <a href="https://github.com/wulizyk">
-            <img src="https://avatars.githubusercontent.com/u/65752272?v=4" width="100;" alt="wulizyk"/>
-            <br />
-            <sub><b>Wulizyk</b></sub>
-        </a>
-    </td>
-    <td align="center">
-        <a href="https://github.com/thanhqtran">
-            <img src="https://avatars.githubusercontent.com/u/66583019?v=4" width="100;" alt="thanhqtran"/>
-            <br />
-            <sub><b>Thanhqtran</b></sub>
-        </a>
-    </td>
-    <td align="center">
-        <a href="https://github.com/gtxy1979">
-            <img src="https://avatars.githubusercontent.com/u/128568543?v=4" width="100;" alt="gtxy1979"/>
-            <br />
-            <sub><b>Gtxy1979</b></sub>
-        </a>
-    </td>
-    <td align="center">
-        <a href="https://github.com/FengYouxin">
-            <img src="https://avatars.githubusercontent.com/u/130349225?v=4" width="100;" alt="FengYouxin"/>
-            <br />
-            <sub><b>FengYouxin</b></sub>
-        </a>
-    </td>
-    <td align="center">
-        <a href="https://github.com/Dynamicalpotato">
-            <img src="https://avatars.githubusercontent.com/u/130369924?v=4" width="100;" alt="Dynamicalpotato"/>
-            <br />
-            <sub><b>Dynamicalpotato</b></sub>
-        </a>
-    </td>
-    <td align="center">
-        <a href="https://github.com/helensontheway0404">
-            <img src="https://avatars.githubusercontent.com/u/141707243?v=4" width="100;" alt="helensontheway0404"/>
-            <br />
-            <sub><b>Helensontheway0404</b></sub>
-        </a>
-    </td></tr>
-</table>
 <!-- readme: collaborators,contributors -end -->
