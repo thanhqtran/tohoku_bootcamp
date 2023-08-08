@@ -1,6 +1,6 @@
 # Tohoku BootCamp for Economists 
 
-Link to Camp site: [https://thanhqtran.github.io/tohoku_bootcamp/](https://thanhqtran.github.io/tohoku_bootcamp/)
+[Homepage](https://thanhqtran.github.io/tohoku_bootcamp/) | [Github](https://github.com/thanhqtran/tohoku_bootcamp)
 
 This is the official repository of INSEIKAI Tohoku BootCamp. Every year, The Graduate Student Association at Tohoku University (hereby referred to as Inseikai) hosts 2 bootcamps for new graduate students enrolled to either the Master's program or the Ph.D. program. To match the enrollment timing, the Spring Camp is organized around February to March, and the Summer Camp is organized around August to September, each lasting from 6 to 9 weeks. The Bootcamp is a series of training courses designed to equip new students with mathematic, econometric, and qualitative tools that are necessary for their coursework and research. 
 
