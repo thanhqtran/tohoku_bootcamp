@@ -46,21 +46,21 @@ The Camp is organized by [Inseikai Tohoku](inseikaitohoku.org) and is grateful f
         <a href="https://github.com/wulizyk">
             <img src="https://avatars.githubusercontent.com/u/65752272?v=4" width="100;" alt="wulizyk"/>
             <br />
-            <sub><b>wulizyk</b></sub>
+            <sub><b>Wulizyk</b></sub>
         </a>
     </td>
     <td align="center">
         <a href="https://github.com/thanhqtran">
             <img src="https://avatars.githubusercontent.com/u/66583019?v=4" width="100;" alt="thanhqtran"/>
             <br />
-            <sub><b>thanhqtran</b></sub>
+            <sub><b>Thanhqtran</b></sub>
         </a>
     </td>
     <td align="center">
         <a href="https://github.com/gtxy1979">
             <img src="https://avatars.githubusercontent.com/u/128568543?v=4" width="100;" alt="gtxy1979"/>
             <br />
-            <sub><b>gtxy1979</b></sub>
+            <sub><b>Gtxy1979</b></sub>
         </a>
     </td>
     <td align="center">
@@ -81,7 +81,7 @@ The Camp is organized by [Inseikai Tohoku](inseikaitohoku.org) and is grateful f
         <a href="https://github.com/helensontheway0404">
             <img src="https://avatars.githubusercontent.com/u/141707243?v=4" width="100;" alt="helensontheway0404"/>
             <br />
-            <sub><b>helensontheway0404</b></sub>
+            <sub><b>Helensontheway0404</b></sub>
         </a>
     </td></tr>
 </table>
