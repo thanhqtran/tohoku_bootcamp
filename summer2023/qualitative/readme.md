@@ -8,8 +8,8 @@
 
 **Class time**
 
-* Morning: [practice] 10:00 -- 12:00
-* Afternoon: [theory] 13:30 -- 15:00
+* Morning: [methods] 10:30 -- 12:00
+* Afternoon: [discussion] 13:30 -- 15:00
 
 **Content**
 
