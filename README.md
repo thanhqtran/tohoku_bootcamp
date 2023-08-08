@@ -1,5 +1,4 @@
-<img align="left" width="100" src="https://github.com/thanhqtran/tohoku_bootcamp/blob/e663cdb5d73511182129f78496a9a3529b31a56e/Tohoku%20Inseikai.png" />
-
+![](https://github.com/thanhqtran/tohoku_bootcamp/blob/91d20cb3aaed0189c845804a4980c4acd277d9a3/logo.png)
 
 # Tohoku BootCamp for Economists 
 
