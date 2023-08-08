@@ -1,3 +1,6 @@
+<img align="left" width="100" src="https://github.com/thanhqtran/tohoku_bootcamp/blob/e663cdb5d73511182129f78496a9a3529b31a56e/Tohoku%20Inseikai.png" />
+
+
 # Tohoku BootCamp for Economists 
 
 [Homepage](https://thanhqtran.github.io/tohoku_bootcamp/) | [Github](https://github.com/thanhqtran/tohoku_bootcamp)
