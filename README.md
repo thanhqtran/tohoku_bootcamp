@@ -36,3 +36,8 @@ All courses are hosted **on-site** at the [Kawauchi Minami campus](https://goo.g
 Ph.D. students at the Graduate School of Economics and Management, Tohoku University.
 
 The Camp is organized by [Inseikai Tohoku](inseikaitohoku.org) and is grateful for support from the [Research Center for Policy Design](https://www2.econ.tohoku.ac.jp/~PDesign/en.html) and the Graduate School of Economics and Management, Tohoku University.
+
+## Contributors
+
+<!-- readme: collaborators,contributors -start -->
+<!-- readme: collaborators,contributors -end -->
