@@ -11,7 +11,6 @@ data['year'] = pd.to_datetime(data['year'], format='%Y/%m/%d')
 df = pd.DataFrame(data)
 seasons = ['Spring','Summer']
 
-
 # group data by year
 df2 = df.groupby('year').sum()
 
@@ -30,4 +29,4 @@ plt.title('Number of campers in each season')
 plt.legend(loc='upper left')
 
 # save png
-plt.savefig('no_of_stu.png', dpi=300, bbox_inches='tight', pad_inches=0.1)
+plt.savefig('no_of_stu.png', dpi=80, bbox_inches='tight', pad_inches=0.1)
