@@ -3,6 +3,7 @@
   height="128"
   alt="icon"
   style="float:left;">
+
 # Tohoku BootCamp for Economists 
 
 [Homepage](https://thanhqtran.github.io/tohoku_bootcamp/) | [Github](https://github.com/thanhqtran/tohoku_bootcamp)
