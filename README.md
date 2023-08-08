@@ -1,4 +1,4 @@
-<img align="left" width="80" height="80" src="https://raw.githubusercontent.com/thanhqtran/tohoku_bootcamp/main/logo.svg" alt="Resume application project app icon">
+<img align="left" width="80" height="80" src="https://github.com/thanhqtran/tohoku_bootcamp/blob/41f7a9c2bef8f28ad0284c081854b700125a69a2/Tohoku%20Inseikai.png" alt="Resume application project app icon">
 
 # Tohoku BootCamp for Economists 
 
