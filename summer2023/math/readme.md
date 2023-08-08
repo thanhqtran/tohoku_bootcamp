@@ -31,8 +31,8 @@
 
 (Week 3)
 
-* 9/11 (A):
-* 9/12 (A):
-* 9/13 (A):
-* 9/14 (A):
-* 9/15 (A):
+* 9/11 (A): Brownian motion & Martingales
+* 9/12 (A): Stochastic calculus
+* 9/13 (A): Derivative securities
+* 9/14 (A): Binomial model
+* 9/15 (A): Black-Scholes pricing model
