@@ -41,12 +41,11 @@
 (Week 1)
 
 * 8/28 (B): (morning) **[Guide to LaTeX](https://github.com/thanhqtran/tohoku_bootcamp/blob/99f02a905fdee7090783298334c6b79391f4d1b1/tex_guide/guide.pdf)**
-
-* 8/28 (B): (afternoon) Unconstraint Optimization
-* 8/29 (B): Constraint Optimization
-* 8/30 (B): Inequality Optimization
-* 8/31 (A): Applications in Models
-* 9/01 (A): Programming
+* 8/28 (B): (afternoon) Difference Equations
+* 8/29 (B): Unconstraint Optimization
+* 8/30 (B): Constraint Optimization
+* 8/31 (A): Inequality Optimization
+* 9/01 (A): Applications in Models
 
 (Week 2)
 
