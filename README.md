@@ -37,6 +37,13 @@ Ph.D. students at the Graduate School of Economics and Management, Tohoku Univer
 
 The Camp is organized by [Inseikai Tohoku](inseikaitohoku.org) and is grateful for support from the [Research Center for Policy Design](https://www2.econ.tohoku.ac.jp/~PDesign/en.html) and the Graduate School of Economics and Management, Tohoku University.
 
+## Application Link
+
+[https://forms.gle/kLUdVMuyKm6Uf44W8](https://forms.gle/kLUdVMuyKm6Uf44W8)
+
+**Deadline:** August 11, 2023 (Friday) -- 17:00 JST
+We recommend you use a Tohoku email account to register.
+
 ## Contributors
 
 <!-- readme: collaborators,contributors -start -->
