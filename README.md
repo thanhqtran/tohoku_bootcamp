@@ -27,9 +27,9 @@ All courses are hosted **on-site** at the [Kawauchi Minami campus](https://goo.g
 
 ### [Summer Camp 2023](https://github.com/thanhqtran/tohoku_bootcamp/tree/main/summer2023)
 
-- [Qualitative II](https://github.com/thanhqtran/tohoku_bootcamp/tree/main/summer2023/qualitative)
-- [Mathematics II](https://github.com/thanhqtran/tohoku_bootcamp/tree/main/summer2023/math)
 - [Econometrics](https://github.com/thanhqtran/tohoku_bootcamp/tree/main/summer2023/econometrics)
+- [Mathematics II](https://github.com/thanhqtran/tohoku_bootcamp/tree/main/summer2023/math)
+- [Qualitative II](https://github.com/thanhqtran/tohoku_bootcamp/tree/main/summer2023/qualitative)
 
 ## Instructors
 
