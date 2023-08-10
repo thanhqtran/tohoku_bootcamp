@@ -42,6 +42,7 @@ The Camp is organized by [Inseikai Tohoku](inseikaitohoku.org) and is grateful f
 [https://forms.gle/kLUdVMuyKm6Uf44W8](https://forms.gle/kLUdVMuyKm6Uf44W8)
 
 **Deadline:** August 11, 2023 (Friday) -- 17:00 JST
+
 We recommend you use a Tohoku email account to register.
 
 
