@@ -189,6 +189,7 @@ format=plain]{caption}
 \def\z{\mathbf z}
 \def\Z{\mathbb Z}
 \def\X{\mathbf X}
+\def\V{\mathbf V}
 
 % appendix appears in toc
 \usepackage[titletoc]{appendix}
@@ -200,8 +201,13 @@ format=plain]{caption}
 % [label=(\alph*)] 
 % [label=(\Alph*)]
 %[label=(\roman*)]
+%[label=(\arabic*)]
 
-%AUTHOR FOOTNOTE
+%enable footnotes' brackets
+\renewcommand*{\thefootnote}{(\arabic{footnote})}
+\renewcommand*{\theendnote}{(\arabic{endnote})}
+%enable to collect footnotes as endnote
+%\let\footnote = \endnote
 
 
 
@@ -209,16 +215,21 @@ format=plain]{caption}
 %										 FRONT MATTER 
 %=================================================%
 
-
 \author{%
-	TRAN Quang-Thanh (Tedd) \thanks{tran.quang.thanh.p1@dc.tohoku.ac.jp}
-	
-	\and ZHANG Ye (Tony)  \thanks{zhang.ye.q8@dc.tohoku.ac.jp} 
-		}
+	Quang-Thanh Tran \thanks{tran.quang.thanh.p1@dc.tohoku.ac.jp (``Tedd")}
+	\and Ye Zhang  \thanks{zhang.ye.q8@dc.tohoku.ac.jp (``Tony") } \footnote{ This material is prepared for the Summer Bootcamp 2023. To access other materials, visit: \\
+		Spring: \url{https://github.com/thanhqtran/tohoku_bootcamp/tree/main/spring2023/math} \\
+		Summer: \url{https://github.com/thanhqtran/tohoku_bootcamp/tree/main/summer2023/math} \\
+		Camp homepage: \url{https://thanhqtran.github.io/tohoku_bootcamp/} \\ 
+		Github: \url{https://github.com/thanhqtran/tohoku_bootcamp/tree/main}
+	}
+}
 
-\title{INSEIKAI Tohoku Summer Camp 2023 \\ \textbf{Mathematics II: Dynamic Optimization, Financial Mathematics and Economic Modeling}}
+\title{INSEIKAI Tohoku BootCamp for Economists \\ \textbf{Mathematics II \\ \Large Differential Equations, Dynamic Optimization and Financial Mathematics}}
 
-\date{Graduate School of Economics and Management \\Tohoku University \\[\baselineskip] \today}
+\date{Graduate School of Economics and Management \\Tohoku University \\[\baselineskip] \today \\[\baselineskip] 
+	%Revised: \today 
+	}
 
 
 %=================================================%
@@ -236,18 +247,65 @@ format=plain]{caption}
 	}
 	
 	\setcounter{footnote}{0}
-	\setcounter{tocdepth}{3}
+	\setcounter{tocdepth}{2}
 	\tableofcontents
 	
-	\chapter{Difference Equations}
-	In economic growth theory, in studies of the extraction of natural resources, in many models in environmental economics, and in several other areas of economics that have one key variable moves based on its past values, you will have to deal with dynamics. If we talk about dynamics, we talk about difference (in discrete time), or differential (in continuous time) equations. For the scope of this course, we are only concerned about the first-order difference equation, that is, tomorrow's value only depends on today, not including yesterday. All the materials presented here are from \citet{sydsaeter2008essential, sydsaeter2008further} and \citet[p.616]{chiang1984fundamental}. For differential equations, read \citet[Chapter 5, 6]{sydsaeter2008further}, \citet[Chapter 23,24,25]{simon1994mathematics}
+	\chapter*{Preface}
+	\addcontentsline{toc}{chapter}{Preface}
+	
+		Continuing from the Spring camp, this Summer Camp provides a more advanced background on the mathematical tools used in many economic models. We first briefly study difference equations and stability analysis, then review and expand the static optimization exercises. After that, we learn a different branch of literature dealing with dynamic optimization. Here, both discrete and continuous dynamic optimization methods are introduced. Finally, we study the mathematics often used in finance, such as Brownian motions in financial markets, derivative securities, and asset pricing.
+		
+		\textbf{Please read these notes WITH A GRAIN OF SALT as it potentially contains many errors and typos.}
+	
+	
+	\textbf{Syllabus}	
+	\begin{table}[ht]
+		\centering
+		\begin{tabular}{ l  l}
+			\hline 
+			(1) Difference Equations                     & (2) Unconstraint Optimization                 \\
+			(3) Constraint Optimization    & (4) Inequality Optimization   \\
+			(5) Economic Applications              & (6) Differential Equations    \\
+			(7) Dynamic Programming & (8) Optimal Control             \\
+			(9) RCK Model & (10) RBC Model          \\
+			(11) Continuous OLG or DSGE  & (12) Brownian motion \& Martingales \\
+			(13) Stochastic calculus   & (14) Derivative securities \\
+			(15)  Binomial model  & (16) Black-Scholes pricing model\\
+			\hline
+		\end{tabular}
+		%\caption{Syllabus of the course}
+	\end{table}
+	
+	\textbf{Textbooks}: These are all excellent textbooks and materials. They are self-contained and extremely valuable to your research life.
+	
+	\begin{enumerate}
+		\item \citet{sydsaeter2008essential, sydsaeter2008further} [accessible math]
+		\item \citet{chiang1984fundamental, chiang1992element} [old but gold]
+		\item \citet{simon1994mathematics} [the bible in math and economic theory]
+		\item \citet{shone2002economic} [concise, lucid in dynamical economics]
+		\item \citet{de2002theory} [foundations in OLG and growth]
+		\item \citet{chu2021advanced} [a lot of good exercises on optimal control]
+		\item \citet{mccandless2008abcs} [foundations in business cycle]
+		\item \citet{heer2009dynamic} [foundations in DSGE]
+		\item \citet{campante2021advanced} [easy to read on macroeconomic theories]
+		\item \citet{acemoglu2008introduction} [rigor]
+		\item \citet{michaillat2023} [concise, practical with a lot of exercises]
+	\end{enumerate}
+	
+	
+	
+	\chapter{First-Order Difference Equations}
+	In economic growth theory, in studies of the extraction of natural resources, in many models in environmental economics, and in several other areas of economics that have one key variable moves based on its past values, you will have to deal with dynamics. If we talk about dynamics, we talk about difference (in discrete time), or differential (in continuous time) equations. For the scope of this course, we are only concerned about the first-order difference equation, that is, tomorrow's value only depends on today, not including yesterday. 
+	
+	In preparation of the materials presented here, we reference  \citet{sydsaeter2008essential, sydsaeter2008further} and \citet[p.616]{chiang1984fundamental}. For differential equations, read \citet[Chapter 5, 6]{sydsaeter2008further}, \citet[Chapter 23,24,25]{simon1994mathematics}
 	
 	%=================================================%
 	%										 CHAP 1
 	%=================================================%
 	
 	%\section{Difference Equations}
-	\section{One Variable: Linear case}
+	\section{One Variable Difference Equations}
+	\subsection{Linear case}
 	A simple example of a linear first-order difference equation is
 	\begin{align*}
 		x_{t+1} = a x_t
@@ -266,7 +324,7 @@ format=plain]{caption}
 		\begin{align}
 			x_{t+1} = a x_t + b \label{diff1}
 	\end{align}
-	which gives us
+	which gives us the SOLUTION as follows.
 	\begin{align*}
 		x_t = a^t \left(x_0 - \frac{b}{1-a} \right) + \frac{b}{1-a} && (a \neq 1 )
 	\end{align*}
@@ -295,7 +353,7 @@ format=plain]{caption}
 	Let us now discuss \textbf{stability} by the following illustration.
 	\begin{figure}[H]
 		\centering
-		\includegraphics[scale=0.35]{figs/page393.png}
+		\includegraphics[scale=0.4]{figs/page393.png}
 		\caption{Dynamics of stable and unstable equations \citep[p.393]{sydsaeter2008further} } 
 		\label{fig:stablity}
 	\end{figure}
@@ -309,16 +367,26 @@ format=plain]{caption}
 	\end{enumerate}
 	Thus, the condition that $|a| < 1$ is necessary to guarantee that the dynamics of $x_t$ converge to the steady state $x^*$.
 	
-	\section{One Variable: Nonlinear case}
+	\subsection{Nonlinear case} \label{sec:nonlin_stab_dyn}
 	So far, we only consider linear difference equations. Although this case is easy, we almost never encounter them in economics because most dynamics in economics are nonlinear. Let us consider an autonomous first-order difference equation of one variable
 	\begin{align}
-		x_{t+1} = f(x_t) \label{nonlin}
+		x_{t} = f(x_{t-1}) \label{nonlin}
 	\end{align}
-	The procedure to find the stationary point is still the same. We still need to solve for $\bar{x}$ such that
+	The procedure to find the stationary point is still the same. We still need to solve for $x^*$ such that
 	\begin{align*}
-		\bar{x} = f(\bar{x})
+		x^* = f(x^*)
 	\end{align*}
 	The solution to this is called a fixed point. How can we determine the stability of this fixed point? 
+	
+	It turns out, the idea behind the stability conditions stems from linear approximation. The Taylor expansion shows how the function behaves about one specific point. The behavior of $x_t$ about this point is
+	\begin{align*}
+		f(x_{t-1}) = f(x^*) + f'(x^*)(x_{t-1} - x^*) + R_2(x_{t-1}, x^*)
+	\end{align*}
+	$R$ is the remainder. If at the initial point, $x_0$ is sufficiently close to $x^*$, then $R \approx 0$. Since we are estimating the point close to $x^*$, we can ignore $R$. The point $x_t$ about $x^*$ can be now expressed as
+	\begin{align*}
+		x_t = f(x^*) + f'(x^*)(x_{t-1} - x^*).
+	\end{align*}
+	This is just similar to \eqref{diff1}, so we just apply their conditions to ours, and we arrive at the following conclusion.
 	
 	\begin{figure}[ht]
 		\centering
@@ -341,18 +409,18 @@ format=plain]{caption}
 		\begin{enumerate}
 			\item If $|f'(x^*)| < 1$, then $x^*$ is \textbf{locally asymptotically stable}
 			\item If $|f'(x^*)| > 1$, then $x^*$ is \textbf{unstable}
+			\item If $|f'(x^*)| = 1$, the situation is inconclusive (you will need to analyze the higher orders) -- see \citet[p. 89]{shone2002economic}
 		\end{enumerate}
 	\end{ftheorem}
-	For the proof, see \citet[p.419]{sydsaeter2008further}
+	For formal proof, see \citet[p.419]{sydsaeter2008further}
 	
 	Again, let us examine the stability illustrated in Fig.\ref{fig:diff2}. 
 	\begin{enumerate}
 		\item Here, $0< f'(x^*) < 1$ (derivative is positive) so the sequence monotonically converges to $x^*$.
-		\item In this case, $-1 < f'(x^*) < 0$ (derivative is negative) so $x_t$ alternates between values above and below the equilibrium state $x^*$. Eventually, it will converge to $x^*$.
+		\item In this case, $-1 < f'(x^*) < 0$ (derivative is negative) so $x_t$ alternates between values above and below the equilibrium state $x^*$. Eventually, it converges to $x^*$.
 		\item This is the first case of unstable dynamics. Since $f'(x^*) > 1$, $x$ is getting farther away from the equilibrium point.
 		\item This is a special case where solutions exhibit cyclic behavior (in this case, a cycle of period 2).
 	\end{enumerate}
-	
 	Let us explore the last case in more detail. A cycle of period 2 has the following property
 	\begin{align*}
 			\text{first cycle} && x_0 &= x_2 = x_4 = \dots, \\
@@ -385,7 +453,47 @@ format=plain]{caption}
 		\end{enumerate}
 	\end{theorem}
 	
-	\section{System of 2 Difference Equations}
+	\subsection{Economic Applications}
+	\begin{ex}
+		Find the fixed point and determine their stability \citep[p.97]{shone2002economic}
+		\begin{enumerate}
+			\item $y_{t+1} = 2 y_t - y_t^2$, 
+			\item $y_{t+1} = 3.2 y_t - 0.8 y_t^2$
+		\end{enumerate}
+	\end{ex}
+	
+	\begin{ex}[Harrod-Domar growth]
+		Consider the following model
+		\begin{align*}
+			S_t &= sY_t, \\
+			I_t &= \nu (Y_t - Y_{t-1}), \\
+			S_t &= I_t
+		\end{align*}
+		\begin{enumerate}
+			\item Write the fundamental difference equation relating $Y_t = F(Y_{t-1})$.
+			\item When does the economy grow without bounds?
+		\end{enumerate}
+	\end{ex}
+	
+	\begin{ex}[Solow Growth]
+		Consider the economy where
+		\begin{align*}
+			S_t &= sY_t, \\
+			I_t &= K_t - (1 - \delta) K_{t-1}, \\
+			S_t &= I_t, \\
+			Y_t &= A K_t^\alpha L_t^{1-\alpha}, \\
+			L_t &= (1+n) L_{t-1}
+		\end{align*}
+		\begin{enumerate}
+			\item Define $k_t = K_t/L_t$, write the fundamental equation.
+			\item Derive the steady state $k^*$.
+			\item Let $A = 5, \alpha = 0.25, s = 0.1, n = 0.02, \delta = 0.05, k_0 =20$, derive numerically.
+			\item Use linear approximation to investigate its stability.
+		\end{enumerate}
+	\end{ex}
+	
+	
+	\section{System of 2 Difference Equations} \label{sec:sys}
 	Things get more complicated when there are 2 variables revolving around each other. Consider the following case system
 	\begin{align}
 		\begin{matrix}
@@ -393,9 +501,9 @@ format=plain]{caption}
 			y_{t+1} = g (x_t, y_t)
 		\end{matrix} \label{sys_nonlin}
 	\end{align}
-	Functions $\phi, \psi$ can be linear or nonlinear, just like the case with one variable. Before diving into things, let us take a detour and do some exercises on finding the eigenvalues of a matrix.
+	Functions $\phi, \psi$ can be linear or nonlinear, just like the case with one variable. Before diving into things, let us take a detour and do some exercises on finding the eigenvalues and eigenvectors of a matrix.
 	
-	\subsection{Eigenvalues}
+	\subsection{Eigenvalues and Eigenvectors}
 	\textbf{Definition:}
 	Given a square matrix $\A$, an eigenvalue of $\A$ is a scalar $\lambda$ for which there exists a non-zero vector $v$ such that the following equation holds:
 	\[ \A v = \lambda v \]
@@ -440,7 +548,7 @@ format=plain]{caption}
 				a - \lambda & b \\ c & d-\lambda 
 			\end{vmatrix} = 0
 		\end{align*}
-		And the eigenvalues $\lambda$ are the solutions of
+		And the eigenvalues $\lambda$ are the solutions of the following \textbf{Characteristic Equation}:
 		\begin{align}
 			(a-\lambda)(d-\lambda) - bc = 0 \nonumber \\
 			\Leftrightarrow \lambda^2 - \underbrace{(a+d)}_{\beta} \lambda + \underbrace{(ad-bc)}_{\alpha} = 0 \label{eigen}
@@ -461,25 +569,95 @@ format=plain]{caption}
 			\lambda_1 + \lambda_2 = - \beta \equiv a + d = tr(\A), \\
 			\lambda_1 \lambda_2 = \alpha \equiv (ad - bc) = \det(\A)
 		\end{align*}
+		For each eigenvalue \(\lambda\), find the corresponding eigenvector by solving the system of equations \((A - \lambda I)\mathbf{v} = \mathbf{0}\):
+\[(A - \lambda \I)\mathbf{v} = \begin{pmatrix}
+a - \lambda & b \\
+c & d - \lambda
+\end{pmatrix} \begin{pmatrix}
+v_1 \\
+v_2
+\end{pmatrix} = \begin{pmatrix}
+0 \\
+0
+\end{pmatrix}\]
+	
+	For \(\lambda_1\):
+\[
+\begin{pmatrix}
+a - \lambda_1 & b \\
+c & d - \lambda_1
+\end{pmatrix}
+\begin{pmatrix}
+v_{1,1} \\
+v_{1,2}
+\end{pmatrix}
+=
+\begin{pmatrix}
+0 \\
+0
+\end{pmatrix}\]	
+	
+	For \(\lambda_1\):
+\[
+\begin{pmatrix}
+a - \lambda_2 & b \\
+c & d - \lambda_2
+\end{pmatrix}
+\begin{pmatrix}
+v_{2,1} \\
+v_{2,2}
+\end{pmatrix}
+=
+\begin{pmatrix}
+0 \\
+0
+\end{pmatrix}\]	
+		
 	\end{proof}
 	
 	\begin{example}	
-		Find the eigenvalues of 
+		Find the eigenvalues and eigenvectors of 
 		\begin{align*}
 			\begin{pmatrix}
 				2 & 3 \\ 5 & 4
 			\end{pmatrix}
 		\end{align*}
-		We need to solve
+		
+		\textbf{Solution:}
+		\begin{enumerate}
+		\item (eigenvalues) We need to solve
 		\begin{align*}
 			\begin{vmatrix}
 				2 - \lambda & 3 \\ 5 & 4-\lambda
 			\end{vmatrix} = 0
 		\end{align*}
-		which yields $\lambda = 7$ or -1. These are the eigenvalues. We can do a quick verification.
+		which yields $\lambda_1 = 7$ and $\lambda_2 = -1$. 
+		These are the eigenvalues. We can do a quick verification.
 		\begin{enumerate}
 			\item (trace) $\lambda_1 + \lambda_2 = 6$ = 2 + 4 (diagonal of $\A$)
 			\item (determinants) $\lambda_1 \times \lambda_2 = -7$ = $\det \A (=2\times 4 - 5\times 3)$.
+		\end{enumerate}
+		\item (eigenvector) Let the eigenvectors be $\v = (v_1, v_2), \u = (u_1, u_2)$ 
+		
+		Now, for $\lambda_1 = 7$, one need to solve
+		\begin{align*}
+			\begin{pmatrix}
+				2-7 & 3 \\ 5 & 4- 7
+			\end{pmatrix}
+			\begin{pmatrix}
+				v_1 \\ v_2
+			\end{pmatrix} = \begin{pmatrix}
+				0\\ 0
+			\end{pmatrix}
+		\end{align*}
+		$v_1$ and $v_2$ are the solutions of
+		\begin{align*}
+			-5 v_1 + 3 v_2 = 0 \\
+			5 v_1 - 3 v_2 = 0
+		\end{align*}
+		which gives the eigenvector $\v = \left( \dfrac{3}{5}, 1 \right)$ for theeigenvalue $\lambda_1 = 7$.
+		
+		Similarly, we can find the other eigenvector $\u = (-1,1)$ for the eigenvalue $\lambda_2 = -1$.
 		\end{enumerate}
 	\end{example}
 	
@@ -566,15 +744,9 @@ format=plain]{caption}
 	\begin{align*}
 		\bar{x} = 0.
 	\end{align*}
-	Thus, the only equilibrium point is $(\bar{x}, \bar{y}) = 0$.
-	\begin{figure}[H]
-		\centering
-		\includegraphics[scale=0.5]{figs/lin_sys.pdf}
-		\caption{Dynamics of $x,y$ for the system \eqref{sys_lin_num}}
-	\end{figure}
-	
-	
-	 In studying the stability around the steady state, the eigenvalues of a Jacobian matrix provide valuable insights into the behavior of a dynamical system near its equilibrium points. They indicate how nearby trajectories behave over time. If the real parts of the eigenvalues are negative (i.e., the absolute value of the eigenvalues are less than 1), trajectories that start near the equilibrium point will converge towards it, indicating \textbf{stability}. If the real parts are positive, trajectories will diverge, leading to instability. 
+	Thus, the only equilibrium point is $(\bar{x}, \bar{y}) = (0,0)$.
+
+	In studying the stability around the steady state, the eigenvalues of a Jacobian matrix provide valuable insights into the behavior of a dynamical system near its equilibrium points. They indicate how nearby trajectories behave over time. If the real parts of the eigenvalues are negative (i.e., the absolute value of the eigenvalues are less than 1), trajectories that start near the equilibrium point will converge towards it, indicating \textbf{stability}. If the real parts are positive, trajectories will diverge, leading to instability. 
 	 
 	\begin{ftheorem}
 		Let the eigenvalues of the Jacobian matrix be $\lambda_1 \neq \lambda_2 \in \R$, then:
@@ -731,7 +903,7 @@ format=plain]{caption}
 		\end{pmatrix}}_{\J}
 		\begin{pmatrix}
 			x_{t} - \bar{x} \\ y_{t} - \bar{y}
-		\end{pmatrix}
+		\end{pmatrix} \label{lin_dyn}
 	\end{align}
 	where, as well all know by now, $\J$ is the Jacobian matrix. The system has been ``linearized" and can be analyzed similarly to the linear case.
 	
@@ -763,19 +935,22 @@ format=plain]{caption}
 		\end{enumerate}
 	\end{ftheorem} 
 	
-	\section{Problem Sets}
+	This is an important and neat result. After the linearization around the steady state, the LHS of \eqref{lin_dyn} becomes the ``amount of change" between 2 periods. Naturally, if the change converges toward zero and stays there as stability is guaranteed, it means that the steady-state sustains forever.
+	
+	\section{Economic Applications}
 	The following exercises are from \citet[p.395--399]{sydsaeter2008further}.
 	\begin{ex}
-		Find the solution and equilibrium point
+		Find the solution and equilibrium point. The last is from \citet[p.139]{shone2002economic}
 		\begin{align*}
 			(a)\ & x_{t+1} = 2 x_t + 4, \ x_0 = 1, \\
 			(b)\ & 3 x_{t+1} = x_t +2, \ x_0 = 2, \\
 			(c)\ & 2 x_{t+1} + 3 x_t + 2 = 0, \ x_0 = -1, \\
-			(d)\ & x_{t+1} - x_t + 3 = 0, \ x_0 = 3
+			(d)\ & x_{t+1} - x_t + 3 = 0, \ x_0 = 3, \\
+			(e)\ & x_{t+1} = 3.84 x_t (1-x_t), \ x_0 = 0.1 \ \text{(3 cycles, use Python or Excel)}
 		\end{align*}
 	\end{ex}
 	
-	\begin{ex}[Cobweb Model]
+	\begin{ex}[Cobweb Model \citep{kaldor1934classificatory} \footnote{There is no guy named ``cobweb". Kaldor was the first to analyze the model and coined such a term because it looks like a web.}]
 		Assume the total cost of raising $q$ pigs is
 		\begin{align*}
 			C(q) = \alpha q + \beta q^2
@@ -784,20 +959,64 @@ format=plain]{caption}
 		\begin{align*}
 			D(p) = \gamma - \delta p
 		\end{align*}
-		where $p$ is the price, $\alpha,\beta,\gamma,\delta$ are positive constants. Each farmer behaves competitively and taking price as given to maximize their profit according to
+		where $p$ is the price, $\alpha,\beta,\gamma,\delta$ are positive constants. Each farmer behaves competitively and takes price as given to maximize their profit according to
 		\begin{align*}
 			\pi(q) = pq - C(q)
 		\end{align*}
 		\begin{enumerate}
 			\item Find the quantity $q^*$ that maximizes profit.
 			\item Find the Aggregate Supply $S(p)$.
-			\item Now, suppose it takes 1 period to raise each pig. When choosing the number of pigs to raise for sale at time $t+1$, each farmer remembers the price $p_t$ and expect $p_{t+1}$ to be the same as $p_t$. Thus, aggregate supply at time $t+1$ is $S(p_t)$. Find the equilibrium price satisfying
+			\item Now, suppose it takes 1 period to raise each pig. When choosing the number of pigs to raise for sale at time $t+1$, each farmer remembers the price $p_t$ and expects $p_{t+1}$ to be the same as $p_t$. Thus, aggregate supply at time $t+1$ is $S(p_t)$. Find the equilibrium price satisfying
 			\begin{align*}
 				S(p_t) = D(p_{t+1})
 			\end{align*}
 			\item Write solution of $p_t$ in terms of $p_0$ and a time path.
 			\item Find the equilibrium. Analyze its stability. When is it stable? When is it not?
 		\end{enumerate}
+		\begin{figure}[ht]
+			\centering
+			\begin{subfigure}[b]{0.4\linewidth}
+				\includegraphics[width=\linewidth]{figs/cobweb_dyn.png}
+				\caption{Stable cobweb \citep{sydsaeter2008further}}
+			\end{subfigure}
+			\begin{subfigure}[b]{0.4\linewidth}
+				\includegraphics[width=\linewidth]{figs/price_fluc.png}
+				\caption{Inflation expectation}
+			\end{subfigure}
+			\caption{The cobweb dynamics}
+		\end{figure}
+%		\begin{figure}[ht]
+%			\centering
+%			\includegraphics[scale=0.3]{figs/cobweb_dyn.png}
+%			\caption{Cobweb dynamics -- stable case \citep{sydsaeter2008further} }
+%		\end{figure}
+	\end{ex}	
+	
+	Below are some variations of the cobweb model \citep{evans2001learning}. For numerical methods and simulation, you can visit \url{https://python.quantecon.org/re_with_feedback.html}.
+	\begin{ex}[\citet{lucas1973some}'s model ]
+		Aggregate output
+		$$
+			q_t = \bar{q} + \pi (p_t - p^e_t) + \zeta_t
+		$$
+		where $\pi > 0$, $p^e_t$ is the price expectation. Aggregate demand is
+		$$
+			m_t + v_t = p_t + q_t
+		$$
+		Money supply is random around a constant mean
+		$$
+			m_t = \bar{m} + u_t
+		$$
+		where all variables are in log form and $u_t, v_t, \zeta_t$ are white noise shocks. Can you achieve a reduced form of $p_t = F(p^e_t)$ \footnote{Ans: $p_t = (1+\pi)^{-1} (\bar{m} - \bar{q}) + \pi (1+\pi)^{-1} p^e_t + (1-\pi)^{-1} (u_t + v_t - \zeta_t) $}.
+	\end{ex}
+	
+	\begin{ex}[\citet{cagan1956monetary}'s model of hyperinflation]
+		Demand for money depends linearly on expected inflation (the change in prices on the RHS).
+		$$
+			m_t - p_t = -\psi (p^e_{t+1} - p_t), \ \ \psi > 0
+		$$
+		$m_t, p_t, p^e_{t+1}$ are logs of money supply, price level and expectation of next-period price formed at time $t$. $m_t$, again, is i.i.d. around a constant mean $\bar{m}$. 
+		
+		Solve for $p_t$ as a function of price expectation $F(p^e_{t+1})$. \footnote{Ans: $p_t  = \alpha p^e_{t+1} + \beta m_t$ where $\alpha = \psi (1+\psi)^{-1}, \beta = (1+\psi)^{-1}$.}
 	\end{ex}	
 		
 	\chapter{Static Optimization and Economic Modeling}
@@ -974,7 +1193,7 @@ format=plain]{caption}
 		\end{enumerate}
 	\end{example}
 	
-	\subsection{Problem Sets}
+	\subsection{Economic Applications}
 	
 	\begin{ex}
 		Find the optimal solution for
@@ -1060,6 +1279,37 @@ format=plain]{caption}
 			\item Solve the Agent's problem to obtain $a$
 			\item For the Principal's problem, first, extract $\delta$ as a function of $\gamma,a$. Then, replace it back to the objective function, use the results from 1. and solve for $a$.
 			\item Assume $c(a) = 0.5 a^2$. Derive the explicit solution.
+		\end{enumerate}
+	\end{ex}
+	
+	\begin{ex}[Maximum Likelihood Estimation (MLE)]
+		Application in Statistical Inference.
+		\begin{enumerate}
+		\item (1 parameter) Suppose a sample $x_1, \dots, x_n$ is modeled by a \textbf{Poisson} distribution with parameter denoted by $\lambda$, so that
+		\begin{align*}
+			f_X(x | \lambda) = \frac{\lambda^x}{x!} e^{-\lambda}
+		\end{align*}
+		for some $\lambda > 0$. Estimate $\lambda$ by MLE.
+		\item The \textbf{Gaussian} probability density function of a normally distributed i.i.d $N(\mu, \sigma^2)$
+		$$
+		f(x) = \frac{1}{\sigma \sqrt{2\pi}} \exp\left[{-\left( \frac{x-\mu}{\sigma\sqrt{2}} \right)^2}\right]
+		$$
+		In this problem, the probability density function is characterized by 2 parameters $\sigma$ and $\mu$. Use MLE to find them.
+		\end{enumerate}
+		\textbf{Hint}: steps to estimate parameters $\theta$ using MLE.
+		\begin{enumerate}
+			\item Write the likelihood function 
+			$$
+			L_n (\theta) = \prod^n_{i=1} f(X_i|\theta)
+			$$
+			\item Take logs to obtain log-likelihood function
+			$$
+			\ell_n (\theta) = \log L_n(\theta) = \log(f(X_1|\theta)) + \dots + \log(f(X_n|\theta))  = \sum^n_{i=1} \log f(X_i|\theta)
+			$$
+			\item Find the estimator that maximizes this function
+			$$
+			\hat{\theta} = \arg \max \ell_n(\theta) 
+			$$
 		\end{enumerate}
 	\end{ex}
 	
@@ -1360,7 +1610,7 @@ format=plain]{caption}
 		We have $n=3, k=2$ so we have to check the $n-k=1$ last leading principal minors, a.k.a, $H$ itself. Calculation shows that $\det H = 16 > 0$ has the same sign with $(-1)^k = (-1)^2 > 0$ so our critical point is a MIN. 
 	\end{example}
 	
-	\subsection{Problem Sets}
+	\subsection{Economic Applications}
 	
 	\begin{ex}
 		Find the extremum, then verify it is either max or min.
@@ -1716,7 +1966,7 @@ format=plain]{caption}
 		In the 2 extreme cases (1) and (3), it is optimal to spend everything on only the cheaper good -- $x$ in case (1) and $y$ in case (3).
 	\end{example}
 	
-	\subsection{Problem Sets}
+	\subsection{Economic Applications}
 	\begin{ex}
 		Solve the problem
 		\begin{align*}
@@ -1856,8 +2106,8 @@ format=plain]{caption}
 		\end{align*}
 		\begin{enumerate}
 			\item Write the law of motion of capital $k_{t+1} \equiv K_{t+1}/L_{t+1}$ in terms of $k_t$. Denote this equation as $k_{t+1} = \phi(k_t)$.
-			\item \textbf{[Existence of Equilibria]} Write the difference equation $\triangle k_t \equiv k_{t+1} - g(k_t)$. Show that $\lim_{k_t\to\infty} \triangle k_t$ and $\lim_{k_t\to 0} \triangle k_t$ have opposite signs. In that case, since $\triangle k_t$ is continuous, it must take a value of 0 somewhere, by the Intermediate Value Theorem \citep{de2002theory} (Proposition 1.2, p.20)
-			\item \textbf{[Existence of a Steady State]} Show that
+			\item \textbf{[Existence of a Steady State]} Write the difference equation $\triangle k_t \equiv k_{t+1} - g(k_t)$. Show that $\lim_{k_t\to\infty} \triangle k_t$ and $\lim_{k_t\to 0} \triangle k_t$ have opposite signs. In that case, since $\triangle k_t$ is continuous, it must take a value of 0 somewhere, by the Intermediate Value Theorem \citep{de2002theory} (Proposition 1.2, p.20)
+			\item \textbf{[The Steady State is Interior]} Also say ``Existence of a nontrivial steady state" (trivial means zero). To show this, prove that
 			\begin{align*}
 				& \text{ (saving is large enough)} \lim_{k\to 0} \frac{k_{t+1}}{k_t} > 1 \text{ or } \lim_{k\to 0} \frac{s_t}{k_t} > 1 + n, \\
 				& \text{ (capital is bounded)} \lim_{k\to \infty} f'(k_t) = 0
@@ -1869,8 +2119,8 @@ format=plain]{caption}
 			\end{align*}
 			\citet{de2002theory} (Proposition 1.3, p.24) requires only the first condition (necessary) while \citet{galor1989existence} demands the second condition for sufficiency. Why unique? [Hint: monotone]
 			
-			\item Find the steady state $k^*$ by setting $k_{t+1} = k_t = k^*$
-			\item \textbf{[Local Stability]} The steady state is locally stable if
+			\item \textbf{[Find the Steady State]} Solve for $k^*$ by setting $k_{t+1} = k_t = k^*$
+			\item \textbf{[Local Stability]} Related to section \ref{sec:nonlin_stab_dyn}. The steady state is locally stable if
 			\begin{align*}
 				\left| \phi'(k^*) \right| < 1
 			\end{align*}
@@ -1882,7 +2132,7 @@ format=plain]{caption}
 			\begin{enumerate}
 				\item The SOC check in the Household problem would be unnecessary if the constraints are linear in the choice variables \citep{de2012fertility} (p.26).
 				\item Normally, if you assume a Cobb-Douglas production function and a log utility function, the existence and uniqueness, and stability of a non-trivial steady state are (mostly) guaranteed.
-				\item In the ``Existence of a Steady State", these conditions are known as strengthened Inada condition \citep{galor1989existence}. The original Inada conditions are stated in the Solow model where
+				\item In the ``Existence of a nontrivial Steady State", these conditions are known as strengthened Inada condition \citep{galor1989existence}. The original Inada conditions are stated in the Solow model where
 				\begin{align*}
 					\lim_{k\to 0} f'(k_t) = \infty, && \lim_{k\to\infty} f'(k_t) = 0.
 				\end{align*}
@@ -1893,7 +2143,7 @@ format=plain]{caption}
 	\end{ex}
 	
 
-	\subsection{Endogenous education OLG (Beckerian)}
+	\subsection{Endogenous human capital OLG}
 	\begin{ex}
 		We modify Exercise \ref{ex:ferti} and use some assumptions from \citet{hirazawa2017labor}. In particular, we bring the model into a general equilibrium framework.
 		
@@ -1921,7 +2171,7 @@ format=plain]{caption}
 	\end{enumerate}
 	
 	\begin{remark}
-		At this point, an usual procedure is to analyze the stability of this steady state. However, since there are 2 dynamic variables $k_{t+1}$ and $h_{t+1}$, stability analysis can be difficult. The idea is still the same, we want to show that the ``derivatives" of the future variable wrt the current variable be smaller than 1. However, for a system of 2 dynamic equations of 2 variables, we need to rely on the Jacobian. The idea is implemented in the following exercise \ref{ex:dynamic}.
+		At this point, an usual procedure is to analyze the stability of this steady state. However, since there are 2 dynamic variables $k_{t+1}$ and $h_{t+1}$, stability analysis can be difficult. The idea is still the same, we want to show that the ``derivatives" of the future variable wrt the current variable be smaller than 1. Check section \ref{sec:sys} and Appendix \ref{sec:appendix_dyn} for an introduction to dynamic stability analysis. The idea is implemented in the following exercise \ref{ex:dynamic}.
 	\end{remark}
 	\end{ex}
 	
@@ -1939,13 +2189,805 @@ format=plain]{caption}
 			\item Find the solution for the saving function.
 			\item Assume that the production function is Cobb-Douglas where $f(k_t) = A k_t^\alpha$. Find the competitive wage and interest rate.
 			\item Assume $k_{t+1} = s_t$. Write the system of 2 dynamic equations $k_{t+1} = \phi (k_t, a_t)$ and $a_{t+1} = \psi (k_t, a_t)$. Find their steady states $\bar{k}, \bar{a}$.
-			\item Under what conditions the steady states are locally stable?
+			\item Under what conditions are the steady states locally stable?
 		\end{enumerate}
 	\end{ex}
+	
+	%===================== Dyn Opt ====================%
+	\chapter{First-Order Differential Equations}
+	\section{Definition}
+	Take China's GDP growth since 2000 for example. 
+	\begin{figure}[ht]
+		\centering
+		\includegraphics[scale=0.5]{figs/china_gdp.png}
+		\caption{China's GDP in billions USD (Data source: World Bank). }
+	\end{figure}
+	The trend is almost linear, so we can write the change in each year as
+	\begin{align*}
+		y(t+1) = (1 + r) y(t)	
+	\end{align*} 
+	The growth rate can be calculated as
+	\begin{align*}
+		\frac{y(t+1)-y(t)}{y(t)} = r
+	\end{align*}
+	If the time interval is smaller, say a smaller fraction $\triangle t$ of $t$, the total change is divided into smaller portions of time. For example, if the annual growth rate is $r$, then the quarterly growth rate is approximately $r/4$. The equation is then slightly changed to
+	\begin{align*}
+		\frac{y(t+\triangle t) - y(t)}{y(t) \triangle t }  = r
+	\end{align*}
+	Cross multiplying yields
+	\begin{align*}
+		\frac{y(t+\triangle t) - y(t)}{ \triangle t }  = r \cdot y(t)
+	\end{align*}
+	Note that $\triangle t$ can get extremely small. Daily growth rate is $r/365$, hourly is $r/(365\times 24)$. By letting $\triangle t \to 0$, by definition of derivatives, the LHS becomes
+	\begin{align*}
+		\lim_{t\to 0} \frac{y(t+\triangle t) - y(t)}{ \triangle t } = \frac{dy}{dt}(t).
+	\end{align*}
+	we denote its derivative with respect to time by a ``dot":
+	\begin{align*}
+		\dot{y}(t) = \frac{dy}{dt}
+	\end{align*}
+	to arrive at the differential equation
+	\begin{align*}
+		\dot{y}(t) = r y(t).
+	\end{align*}
+	In general, this equation can be
+	\begin{align*}
+		\dot{y}(t) = f(t)
+	\end{align*}
+	Then, its solution is \textbf{THE FUNCTION} $y(t)$ such that it satisfies the above equation. It can be worked out by integrating $\dot{x}(t)$ for the whole time line
+	\begin{align*}
+		y(t) = \int f(t) dt + k
+	\end{align*}
+	given $y(0)$. This chapter lays out the framework on how to find it. For more exposure to differential equations and solution methods, check \citet[Ch 8.6]{springcamp}.
+	
+	\section{One-variable: Linear case}
+	\subsection{Autonomous}
+	\subsubsection{Constant Growth}
+	This is the simplest case. Like the above example, consider the function
+	\begin{align}
+		\dot{x}(t) = \lambda x(t) \label{auto1}
+	\end{align}
+	\begin{theorem}
+		The solution to $\dot{x}(t) = \lambda x(t)$ is $x(t) = x(0) e^{\lambda t} \equiv x(0) \exp(\lambda t)$.
+	\end{theorem}
+	\begin{proof}
+		We use the technique called separation. If the differential equation has the form
+		\begin{align*}
+			\dot{x}(t) = \frac{dx}{dt} =  f(t) g(x)
+		\end{align*}
+		\begin{enumerate}
+			\item Separate the variables ($x$ to the left, not $x$ to the right)
+			\begin{align*}
+				\frac{1}{g(x)} dx = f(t) dt
+			\end{align*}
+			\item Integrate both sides
+			\begin{align*}
+				\int \frac{1}{g(x)} dx = \int f(t) dt
+			\end{align*}
+			\item Isolate $x(t)$ for solution.
+		\end{enumerate}
+		Let us apply this to our case. 
+		\begin{enumerate}
+			\item Separate 
+			\begin{align*}
+				\frac{\dot{x}(t)}{x(t)} = \frac{1}{x(t)}\frac{dx}{dt} = \lambda 
+			\end{align*}
+			\item Integrate both sides (wrt to $t$)
+			\begin{align*}
+				\int \frac{1}{x(t)}\frac{dx}{dt} dt = \int \lambda  dt
+			\end{align*}
+			\item Isolate $x(t)$ for solution.
+			\begin{align*}
+				\text{LHS} &= \int \frac{1}{x(t)} dx = \ln(x(t)) + C_1, \\
+				\text{RHS} &= \lambda t + C_2
+			\end{align*}
+			\item Grouping constants yields
+			\begin{align*}
+				\ln(x(t)) = \lambda t + \xi 
+			\end{align*}
+			Then take exponential of both sides (remmeber: $e^{\ln(x)} = x$) so that
+			\begin{align*}
+				x(t) = e^{\lambda t + \xi} = e^{\lambda t} e^{\xi} = k e^{\lambda t} \ \text{ where $k \equiv e^\xi$ }
+			\end{align*}
+			At time $t=0$, we have
+			\begin{align*}
+				x(0) = e^{0} k = k
+			\end{align*}
+			Plugging back, we obtain
+			\begin{align*}
+				x(t) = x(0) e^{\lambda t} \equiv x(0) \exp(\lambda t).
+			\end{align*}
+		\end{enumerate}
+	\end{proof}
+	What is the steady state in this case? Alternatively, that steady state should the the solution to $\dot{x}(t) = 0$? Based on this form, so long as $\lambda \neq 0$, the only solution is $x^* = 0$. 
+	
+	\subsubsection{Constant Growth plus a Constant}
+	
+	In a more general framework, we also interested in finding the solution for
+	\begin{align}
+		\dot{x}(t) = \lambda x(t) + b \label{auto2}
+	\end{align}
+	where $b$ is some nonzero constant. 
+	\begin{theorem}
+		The solution to $\dot{x}(t) = \lambda x(t) + b$ is $x(t) = \dfrac{-b}{\lambda} + k e^{\lambda t}$ where $k$ contains $x(0)$. 
+	\end{theorem}
+	\begin{proof}
+		Just plug the solution candidate into the equation and see if it works.
+		\begin{align*}
+			(LHS): & \ \dot{x}(t) = \frac{d}{dt} \left( \dfrac{-b}{\lambda} + k e^{\lambda t} \right) = \lambda k e^{\lambda t}, \\
+			(RHS): & \ \lambda x(t) = \lambda \left[ \dfrac{-b}{\lambda} + k e^{\lambda t} \right] + b = \lambda k e^{\lambda t} = \dot{x}(t)
+		\end{align*}
+		But how did one come up with such an ingenius solution? Well, they multiply both sides by an integrating factor. In this case, it is $e^{-\lambda t}$. By doing so \eqref{auto2} becomes
+		\begin{align*}
+			\dot{x}(t) e^{-\lambda t} - \lambda x(t) e^{-\lambda t} = b e^{-\lambda t}
+		\end{align*}
+		Notice that the LHS is actually the derivative of $x(t) e^{-\lambda t}$ wrt $t$, thus
+		\begin{align*}
+			\frac{d}{dt} \left( x(t) e^{-\lambda t} \right) = b e^{-\lambda t}
+		\end{align*}
+		Take integrals of both sides
+		\begin{align*}
+			x(t) e^{-\lambda t} = \int b e^{-\lambda t} dt = -\frac{b}{\lambda} e^{-\lambda t} + k. \ \text{($k$ is a constant)}
+		\end{align*}
+		Multiplying both sides with $e^{\lambda t}$ yields
+		\begin{align*}
+			x(t) = \frac{-b}{\lambda} + k e^{\lambda t}
+		\end{align*}
+		Let $t=0$, then $x(0) = - b/\lambda + k$ so that $k = x(0) + b/\lambda$.
+	\end{proof}
+	Note that when $k=0$, the differential equation becomes
+	\begin{align*}
+		x(t) = -\frac{b}{\lambda} = x^*
+	\end{align*}
+	implying that this $x^*$ is the steady state. Another method is to let $\dot{x}=0$ in \eqref{auto2}:
+	\begin{align*}
+		0 = \lambda x^* + b
+	\end{align*}
+	
+	\subsection{Stability}
+	
+	Differential equations of these form \eqref{auto1} and \eqref{auto2} are called \textit{autonomous} because they do not depend on time, but depend on the previous value of the variable. Their steady states are the solutions that $\dot{x}(t) = 0$
+	\begin{align*}
+		\dot{x}(t) &= \lambda x(t) && \Rightarrow x^* = 0, \\
+		\dot{x}(t) &= \lambda x(t) + b && \Rightarrow x^* = -\frac{b}{\lambda}
+	\end{align*}
+	The graphical solution of the steady state can be expressed as follows.
+	
+	\begin{figure}[ht]
+\centering
+\begin{subfigure}[b]{0.45\linewidth}
+\includegraphics[width=\linewidth]{figs/ode.png}
+\caption{$\dot{x}(t)= \lambda x(t)$}
+\end{subfigure}
+\begin{subfigure}[b]{0.45\linewidth}
+\includegraphics[width=\linewidth]{figs/ode2.png}
+\caption{$\dot{x}(t)= \lambda x(t) + b$}
+\end{subfigure}
+\caption{Stability of the steady state}
+\end{figure}
+	
+	We conclude the condition for stability as follows
+	\begin{ftheorem}
+		For a first-order linear ordinary differential equation of the form
+		\begin{align*}
+			\dot{x}(t) = \lambda x(t) + b
+		\end{align*}
+		The stability condition for a one-variable linear differential equation is as follows:
+		\begin{enumerate}
+			\item If $\lambda$ is negative, then the solution $x(t)$ will decay to 0 as $t\to\infty$. This is called asymptotic stability.
+			\item If $\lambda$ is positive, then the solution $x(t)$ will grow without bound as $t\to\infty$. This is called instability.
+		\end{enumerate}
+	\end{ftheorem}
+	
+	\subsection{Nonautonomous}
+	We move on to the nonautonomous cases where the RHS is also variable with time.
+	\subsubsection{Constant Growth plus a variable Coefficient}
+	Now, $b$ can also depend on time, such as
+	\begin{align*}
+		\dot{x}(t) = \lambda x(t) + b(t).
+	\end{align*}
+	\begin{theorem}
+		The solution to $\dot{x}(t) = \lambda x(t) + b(t)$ is $x(t) = e^{\lambda t} \left( k + \int e^{-\lambda t} b(t) dt \right)$.
+	\end{theorem}
+	\begin{proof}
+		Multiplying by the integrating factor $e^{-\lambda t}$, we obtain
+		\begin{align*}
+			\dot{x}(t) e^{-\lambda t} - \lambda x(t) e^{-\lambda t} = b(t) e^{-\lambda t},
+		\end{align*}
+		which is equivalent to
+		\begin{align*}
+			\frac{d}{dt} \left( x(t) e^{-\lambda t} \right) =  e^{-\lambda t} b(t)
+		\end{align*}
+		so that
+		\begin{align*}
+			x(t) e^{-\lambda t} = \int  e^{-\lambda t} b(t) dt + k, \ \text{($k$ is a constant)}
+		\end{align*}
+		Multiplying both sides by $e^{\lambda t}$ yields
+		\begin{align*}
+			x(t) = e^{\lambda t} \left( k + \int e^{-\lambda t} b(t) dt \right)
+		\end{align*}
+	\end{proof}
+	
+	\subsubsection{General case}
+	Finally, we move to the most general case
+	\begin{align*}
+		\dot{x}(t) = \lambda (t) x(t) + b(t)
+	\end{align*}
+	so that even the growth rate varies with time. We still employ the same trick, multiplying both sides by a suitably chosen integrating factor $e^{- A(t)}$ to obtain
+	\begin{align}
+		\dot{x}(t) e^{- A(t)} - \lambda (t) x (t) e^{-A(t)} = b(t) e^{-A(t)} \label{nonauto2}
+	\end{align}
+	Now, we need to find $A(t)$ such that the LHS equals the derivative of $x(t) e^{-A(t)}$. Notice that the derivative of $x(t) e^{-A(t)}$ is
+	\begin{align*}
+		\frac{d}{dt} (x(t) e^{-A(t)}) = \dot{x}(t) e^{-A(t)} - \dot{A}(t)x(t)  e^{-A(t)}
+	\end{align*}
+	We, therefore, need to make sure that
+	\begin{align*}
+		 \dot{A}(t) = \lambda (t)
+	\end{align*}
+	This is done by choosing
+	\begin{align} 
+		A(t) = \int \lambda (s) ds. \label{nonauto3}
+	\end{align}
+	The time of $A(t)$ itself can be different from the time path $t$ of $x(t)$. Imagine they have 2 different clocks of their own so it's better to use a different notation. 
+	Now, \eqref{nonauto2} becomes
+	\begin{align*}
+		\frac{d}{dt} x(t) e^{-A(t)} = b(t) e^{-A(t)}.
+	\end{align*}
+	Integrating both sides 
+	\begin{align*}
+		x(t) e^{-A(t)} = \int b(t) e^{-A(t)} dt + k, \ \ \text{ where $k$ is a constant}
+	\end{align*}
+	Multiplying both sides by $e^{A(t)}$ yields
+	\begin{align*}
+		x(t) = e^{A(t)} \left[ k + \int b(t) e^{-A(t)} dt \right]
+	\end{align*}
+	or if we want to expand it using \eqref{nonauto3}
+	\begin{align*}
+		x(t) = e^{\int \lambda (s) ds} \left[ k + \int e^{-\int \lambda (s) ds} b(t) dt \right]
+	\end{align*}
+	See \citet[p. 204]{sydsaeter2008further} for the initial value solution.
+	
+	\begin{ex}
+		Solve the following differential equations, and determine the stability of the equilibrium points.
+		\begin{enumerate}
+			\item $\dot{x}(t) = -2 x(t) + 4$
+			\item $\dot{x}(t) = x(t) (3-x(t)) $
+			\item $\dot{x}(t) = x(t) \cdot (2-x(t)) \cdot (x(t)-1)$
+			\item $\dot{N}(t) = rN(t)(1 - N(t)/K)$ where $r$ is the growth rate, $K$ is the carrying capacity.
+			\item $\dot{x}(t) = e^{2t}/x^2$
+		\end{enumerate}
+	\end{ex}
+	
+	\section{System of 2 Differential Equations}
+	Similar to the difference equations, differential equations can also involve a linear or nonlinear system of 2 or more variables. For example, the solution to the consumption-saving problem with CRRA utility is characterized by two first-order linear differential equations:
+	\begin{align*}
+		\text{(asset accumulation):} &\ \dot{a}(t) = r a(t) - c(t), \\
+		\text{(optimal consumption):} &\ \dot{c}(t) = \frac{r-\rho}{\gamma} c(t).
+	\end{align*}
+	The general form would be
+	\begin{align*}
+		\dot{x}(t) = f(x, y, t) \\
+		\dot{y}(t) = g(x, y ,t)
+	\end{align*}
+	This section presents a method to solve such linear systems of differential
+ equations.
+	
+	\subsection{Linear Homogeneous System}
+	Consider the following \textit{homogeneous} system, that is, a system of the form
+	\begin{align*}
+		\dot{x}_1(t) = f(x_1(t), x_2(t)) \\
+		\dot{x}_2(t) = g(x_1(t), x_2(t))
+	\end{align*}
+	
+	\subsubsection{Solution:}
+	
+	For brevity, we omit the $(t)$ notation. Since the growth rates are constants, we can write the system as
+	\begin{align*}
+		\dot{x}_1 = a x_1 + b x_2, \\
+		\dot{x}_2 = c x_1 + d x_2
+	\end{align*}
+	We can write it in matrix form as
+	\begin{align*}
+		\underbrace{\begin{pmatrix}
+			\dot{x}_1 \\ \dot{x}_2
+		\end{pmatrix}}_{\dot{\x}}
+		= 
+		\underbrace{\begin{pmatrix}
+			a & b \\ c & d
+		\end{pmatrix}}_{\A}
+		\underbrace{\begin{pmatrix}
+			x_1 \\ x_2
+		\end{pmatrix}}_{\x}
+	\end{align*}
+	Assume that $|\A| \neq 0$. We have transformed the system to
+	\begin{align}
+		\dot{\x} = \A \x. \label{sys01}
+	\end{align}
+	If $\A$ is diagonalizable, there exists a matrix $\V^{2\times 2}$ such that
+	\begin{align*}
+		\A = \V \Lambda \V^{-1}
+	\end{align*}
+	where 
+	\begin{align*}
+		\V = \begin{pmatrix}
+			\v_1 & \v_2
+		\end{pmatrix}
+	\end{align*}
+	be the $1\times 2$ matrix whose columns are the \textbf{eigenvector} of $\A$ and
+	\begin{align*}
+		\Lambda = \begin{pmatrix}
+			\lambda_1 & 0 \\
+			0 & \lambda_2
+		\end{pmatrix}
+	\end{align*}
+	be a square matrix $2\times 2$ with $\lambda_1, \lambda_2$ be the \textbf{eigenvalues} of $\A$. We transform \eqref{sys01} to
+	\begin{align*}
+		\dot{\x} = \V \Lambda \V^{-1} \x 
+	\end{align*} 
+	Multiply both sides with $\V^{-1}$ yields
+	\begin{align*}
+		\V^{-1} \dot{\x} = \Lambda \V^{-1} \x.
+	\end{align*}
+	Define
+	\begin{align*}
+		\V^{-1} \x = \y 
+	\end{align*}
+	then the system becomes
+	\begin{align}
+		\dot{\y} = \Lambda \y  \label{keysys}
+	\end{align}
+	We have transformed it to something similar to the very simpliest case at \eqref{auto1}\footnote{$\dot{x}(t) = \lambda x(t)$}
+	
+	The system \eqref{keysys} implies 2 independent differential equations
+	\begin{align*}
+		\begin{pmatrix}
+			\dot{y}_1(t) \\ \dot{y}_2(t)
+		\end{pmatrix} 
+		= 
+		\begin{pmatrix}
+			\lambda_1 & 0 \\
+			0 & \lambda_2
+		\end{pmatrix}
+		\begin{pmatrix}
+			y_1 \\ y_2
+		\end{pmatrix} 
+		= 
+		\begin{pmatrix}
+			\lambda_1 y_1(t) \\ \lambda_2 y_2(t)
+		\end{pmatrix}
+	\end{align*}
+	Each $y_i(t)$ is growing at a constant rate $\lambda_i$. Previous analyses give us the solution to each differential equation as
+	\begin{align*}
+		y_i (t) = k_i e^{\lambda_i t} \ \text{ for $i=1,2$} 
+	\end{align*}
+	Finally, solutions for $\x$ is given by
+	\begin{align*}
+		\x = \V \y 
+	\end{align*}
+	Writing explicitly
+	\begin{align*}
+		\begin{pmatrix}
+			x_1 \\ x_2  
+		\end{pmatrix}
+		&= 
+		\begin{pmatrix}
+			\v_1 & \v_2
+		\end{pmatrix}
+		\begin{pmatrix}
+			y_1 \\ y_2
+		\end{pmatrix} \\
+		&= 
+		\v_1 y_1 + \v_2 y_2		\\
+		&= \begin{pmatrix}
+			v_1 \\ v_2
+		\end{pmatrix} y_1 + \begin{pmatrix}
+			u_1 \\ u_2
+		\end{pmatrix} y_2 \\
+		&= k_1 e^{\lambda_1 t} \begin{pmatrix}
+			v_1 \\ v_2
+		\end{pmatrix} + k_2 e^{\lambda_2 t} \begin{pmatrix}
+			u_1 \\ u_2 \end{pmatrix}
+	\end{align*}
+	where the 2 eigenvectors are
+	\begin{align*}
+		\v_1 = \begin{pmatrix}
+			v_1 \\ v_2
+		\end{pmatrix}, && \v_2 = \begin{pmatrix}
+			u_1 \\ u_2
+		\end{pmatrix}
+	\end{align*}
+	
+	\subsubsection{Stability}
+	The stability conditions are very similar to the linear case, we just need to generalize the Jacobian matrix. For the proof, you can see \citet[Ch 22]{simon1994mathematics} and \citet[Ch 6.8, p.251]{sydsaeter2008further}
+	We summarize the stability analysis as follows
+	\begin{ftheorem}[Stability Conditions]
+		For a two-variable homogeneous system of differential equations, the steady state is $(0,0)$. Let $\lambda_1, \lambda_2$ be the eigenvalues of the Jacobian matrix, then
+		\begin{enumerate}
+			\item If $\lambda_1 < 0$ AND $\lambda_2 < 0$, $|\A| > 0$, the system is a sink, and the steady state is stable.
+			\item If $\lambda_1 > 0$ AND $\lambda_2 > 0$, $|\A| > 0$, the system is a source, and the steady state is unstable.
+			\item If $\lambda_1$ AND $\lambda_2$ have opposite signs, $|\A| < 0$, one part of the solution is stable (it converges to $0$ as $t\to 0$), and the other is unstable (it converges to $\infty$ as $t\to 0$), the system is a saddle.
+		\end{enumerate}
+	\end{ftheorem}
+	Similar to the case of the difference equation, it is often more practical to use the trace and determinants of the Jacobian.
+	
+	\begin{enumerate}
+		\item (stable) $tr(\A) < 0$ and $\det(\A) > 0$.
+		\item (unstable) $tr(\A) > 0$ and $\det(\A) > 0$.
+		\item (saddle) $\det(\A) < 0$.
+	\end{enumerate}
+	
+	\subsection{Nonlinear Homogeneous Systems}
+	The system is generalized as
+	\begin{align*}
+		\dot{x} = f(x,y), \\
+		\dot{y} = g(x,y)
+	\end{align*}
+	Both equations must be \textbf{differentiable}. Denote the steady state as $(\bar{x}, \bar{y})$. We write the system in matrix notation as follows
+	\begin{align*}
+		\dot{\x} = \A \x 
+	\end{align*}
+	where, of course, the Jacobian matrix is 
+	\begin{align*}
+		\A = \begin{pmatrix}
+			 f'_x & f'_y \\ g'_x & g'_y
+		\end{pmatrix}
+	\end{align*}
+	then its stability can be stated as follows.
+	\begin{ftheorem}[Lyapunov]
+		Suppose that $f$ and $g$ are $C^1$ functions.
 		
+		Let $(\bar{x}, \bar{y})$ be the steady (equilibrium) state for the system
+		\begin{align*}
+		\dot{x} = f(x,y), \\
+		\dot{y} = g(x,y)
+	\end{align*}
+		Let $\A$ be the Jacobian matrix 
+	\begin{align*}
+		\A = \begin{pmatrix}
+			 f'_x & f'_y \\ g'_x & g'_y
+		\end{pmatrix}
+	\end{align*}
+	with the trace as
+	\begin{align*}
+		tr(\A) = f'_x (\bar{x}, \bar{y}) + f'_y (\bar{x}, \bar{y}),
+	\end{align*}
+	and the determinant as
+	\begin{align*}
+		|\A| = f'_x (\bar{x}, \bar{y}) g'_y (\bar{x}, \bar{y}) - f'_y (\bar{x}, \bar{y}) g'_x (\bar{x}, \bar{y}) > 0
+	\end{align*}
+	Then:
+	\begin{enumerate}
+		\item If $tr(\A) < 0$ and $|\A| > 0$, both eigenvalues of $\A$ have \textbf{negative} real parts, then $(\bar{x}, \bar{y})$ is locally asymptotically stable.
+		\item If $tr(\A) > 0$ and $|\A| > 0$, both eigenvalues of $\A$ have \textbf{positive} real parts, then $(\bar{x}, \bar{y})$ is unstable.
+		\item If $|\A| < 0$, the eigenvalues are nonzero real numbers of OPPOSITE signs, so $(\bar{x}, \bar{y})$ is a saddle.
+	\end{enumerate}
+	\end{ftheorem}
+	
+	Last but not least, since the solutions to the systems (either 1 variable or multivariate) sometimes cannot be attained explicitly, we need to show that such an equilibrium point exists. Fortunately, the theorem is pretty straightforward.
+	\begin{ftheorem}[Existence and Uniqueness]
+		Consider the first-order differential equations
+		\begin{align}
+			\begin{matrix}
+				\dot{x} = f(x, y, t), \\
+				\dot{y} = g(x, y, t) \label{sys_theo}
+			\end{matrix}
+		\end{align}
+		\begin{enumerate}
+			\item If $f$ and $g$ are continuous functions in a neighborhood of $(x_0, y_0, t_0)$, then there exist functions $x^*(t)$ and $y^*(t)$ about that point such that they satisfy the system \eqref{sys_theo} and $x(t_0) = x_0$, $y(t_0) = y_0$.
+			\item If $f$ and $g$ are differentiable ($C^1$) at the point $(x_0, y_0, t_0)$, then the solution $x(t), y(t)$ are unique.
+		\end{enumerate}
+	\end{ftheorem}
+	
+	\begin{ex}
+		Determine the local stability of the following \citep[p.254]{sydsaeter2008further}
+		\begin{enumerate}[label=(\alph*)]
+			\item $\dot{x} = - x + 0.5 y^2, \ \dot{y} = 2x - 2y$ at $(0,0)$
+			\item $\dot{x} = x - 3y + 2x^2 + y^2 - xy, \ \dot{y} = 2x - y - e^{x-y}$ at $(1,1)$
+			\item $\dot{x} = -x^3 - y, \ \dot{y} = x - y^3$ at $(0,0)$
+			\item $\dot{x} = y - x, \ \dot{y} = -x^2 + 8x - 2y$ at $(6,6)$
+			\item $\dot{x} = -3x - 2y + 8x^2 + y^3, \ \dot{y} = 3x + y - 3 x^2 y^2 + y^4$ at $(0,0)$
+		\end{enumerate}	
+	\end{ex}
+	
+	\begin{ex}[Pollution]
+		Suppose the economy is described by the system
+		\begin{align*}
+			\text{(capital)} & \ \dot{K} = K (s K^{\alpha-1} - \delta) \\
+			\text{(pollution)} & \ \dot{P} = K^\beta - \gamma P
+		\end{align*}
+		where $s\in (0,1), \alpha \in (0,1), \delta > 0, \gamma > 0, \beta > 1$.
+		\begin{enumerate}
+			\item Find the equilibrium point $(K^*, P^*)$. Check its stability.
+			\item Find an explicit expression for $K(t)$ given $K(0) = K_0 \geq 0$. Examine its limit as $t\to\infty$.
+		\end{enumerate}
+	\end{ex}
+	
+	\section{Phase Diagrams}
+	Phase diagrams are particularly useful to visualize the solutions and predict their stability without explicitly solving them. We are only interested in autonomous functions.
+	 
+	\subsection{Single Variable Differential Equations}
+	Consider the following \footnote{You should watch this \url{https://youtu.be/swt-let4pCI} and this \url{https://youtu.be/cC2w2z_i2DA} }.
+	\begin{align*}
+		\dot{x} = x (1-x)
+	\end{align*}
+	It is easy to see that there are 2 fixed points 0 and 1. 
+	\begin{figure}[ht]
+		\centering
+		\includegraphics[scale=0.4]{figs/phase_1ode2.png}
+	\end{figure}
+	How is the stability at each point? Without using the eigenvalues, we can use phase diagrams to investigate their stability. 
+	\begin{figure}[ht]
+\centering
+\begin{subfigure}[b]{0.6\linewidth}
+\includegraphics[width=\linewidth]{figs/phase_1ode.png}
+%\caption{Coffee.}
+\end{subfigure}
+\begin{subfigure}[b]{0.2\linewidth}
+	\begin{tikzpicture}[scale=2]
+		% Vertical line
+\draw[thick, blue] (0, -1.25) -- (0, 2);
+
+% Equilibrium points
+\fill[red] (0,0) circle (0.05) node[above right] {0};
+\fill[red] (0,1) circle (0.05) node[above right] {1};
+
+% Directional arrows
+\draw[thick, ->, black, >=latex] (0, -0.1) -- (0, -0.3);
+\draw[thick, ->, black, >=latex] (0, -0.3) -- node[right] {$\frac{dx}{dt}<0$} (0, -0.6);
+\draw[thick, ->, black, >=latex] (0, -0.6) -- (0, -0.9);
+
+\draw[thick, ->, black, >=latex] (0, 0.3) -- (0, 0.3);
+\draw[thick, ->, black, >=latex] (0, 0.3) -- node[right] {$\frac{dx}{dt}>0$} (0, 0.6);
+\draw[thick, ->, black, >=latex] (0, 0.3) -- (0, 0.9);
+
+\draw[thick, ->, black, >=latex] (0, 1.3) -- (0, 1.1);
+\draw[thick, ->, black, >=latex] (0, 1.9) -- node[right] {$\frac{dx}{dt}<0$} (0, 1.3);
+\draw[thick, ->, black, >=latex] (0, 1.9) -- (0, 1.6);
+
+	\end{tikzpicture}
+\end{subfigure}
+%\caption{The same cup of coffee. Two times.}
+\end{figure}
+
+	
+	How to construct it?
+	\begin{enumerate}
+		\item (Nullclines) First, we need to draw the red lines, which represent the fixed points that solve $\dot{x} = 0$. 
+		\item (Directional Arrows). To construct the directional arrows (that is, to determine how the points below and above $x(t)$ behave around $x^*$. This process involves differentiation. Just try a number and see the sign of $\dot{x}$.
+	\end{enumerate}
+	
+	\subsection{System of 2 Linear Differential Equations} 
+	Next, we move on to a system of 2 linear equations. Construction-wise, it is similar to the case of 1 variable, but we are now concerned with 2 variables instead of 1.
+	
+	Let us consider the system
+	\begin{align}
+		\begin{matrix}
+			\dot{x} = a x + b y + \kappa_1, \\
+		\dot{y} = c x + d y + \kappa_2. 
+		\end{matrix} \label{phase_sys}
+	\end{align}
+	where $a < 0, b < 0, c < 0, d > 0, \kappa_1 > 0, \kappa_2 > 0$. You can see that
+	\begin{align*}
+		ad - bc < 0
+	\end{align*}
+	so the eigenvalues of the Jacobian of this system have OPPOSITE signs. The dynamical system is a ``saddle". Check Fig.~\ref{fig:exmaple_phase} while reading the following.
+	\begin{enumerate}
+		\item (A. Nullclines) We need to plot the nullclines, which are the loci $\dot{x}=0$ and $\dot{y}=0$. The first locus $\dot{x}=0$ is given by
+		\begin{align*}
+			y = - \frac{a}{b} x - \frac{\kappa_1}{b}
+		\end{align*}
+		since $a<0,b<0$, the locus is a straight line with a negative slope in the $(x,y)$ plane. The second locus $\dot{y} = 0$ is given by
+		\begin{align*}
+			y = - \frac{c}{d} x - \frac{\kappa_2}{d}
+		\end{align*}
+		since $c<0, d>0$, the locus is a straight line with a positive slope.
+		\item (B. Steady State) The steady state is given by the intersection of the two nullclines. Let's call it $(x^*, y^*)$. Together with the nullclines, it divides the $(x,y)$ plane into 4 areas.
+		\item (C. Directional Arrows) These arrows determine the direction of the system’s trajectories over time anywhere on the phase. Look at the system \eqref{phase_sys}.
+		\begin{itemize}
+			\item From the $\dot{x}$ function, we see that
+			\begin{align*}
+				\frac{d \dot{x}}{dx} = a < 0 && \frac{d \dot{x}}{dy} = b < 0  
+			\end{align*}
+			so $\dot{x}$ is decreasing in $x$ (and decreasing in $y$). Any point above the $\dot{x} = 0$ line must have $\dot{x} < 0$ and any point below $\dot{x}=0$ must have $\dot{x} > 0$. 
+			\item From the $\dot{y}$ function, we see that
+			\begin{align*}
+				\frac{d \dot{y}}{dy} = d > 0 && \frac{d\dot{y}}{dx} = c < 0
+			\end{align*}
+			so $\dot{y}$ is increasing in $y$ (and decreasing in $x$). Any point above the $\dot{y} = 0$ line must have $\dot{x} > 0$ and any point below $\dot{x}=0$ must have $\dot{x} < 0$. 
+			\item (D. Trajectories) Using the information above, we can draw trajectories that satisfy the system. These are solutions to the system.  To select a specific solution among all possible solutions, we will need to specify either an initial condition or a final condition. Among all the trajectories, we highlight the saddle path for the system. We know that such a saddle path exist because the eigenvalues of the system have opposite sign. The saddle path is the straight line that goes through the steady state.
+		\end{itemize}
+	\end{enumerate}
+	
+	\begin{figure}[ht]
+		\centering
+		\includegraphics[scale=0.4]{figs/phasediag.png}
+		\caption{Phase diagram of the dynamical system \eqref{phase_sys} \citep{michaillat2023} .}
+		\label{fig:exmaple_phase}
+	\end{figure}
+	
+	\begin{ex}
+		The exercises here are from \citet{michaillat2023, shone2002economic}
+		\begin{enumerate}[label*=(\alph*)]
+			\item (Problem 3) Consider the linear system of differential equations given by
+			\begin{align*}
+				\begin{pmatrix}
+					\dot{x} \\ \dot{y}
+				\end{pmatrix}
+				=
+				\begin{pmatrix}
+					1 & 1 \\ 4 & 1
+				\end{pmatrix}
+				\begin{pmatrix}
+					x \\ y
+				\end{pmatrix}
+			\end{align*}
+			\begin{enumerate}[label=\arabic*.]
+				\item Find the general solution of the system using either eigenvalue method, given $(x_0, y_0) = (\kappa_1, \kappa_2)$.
+				\item Draw the phase diagram that plots the trajectories of the system
+			\end{enumerate}
+			\item The IS-LM continuous time model \citep[p.10.3]{shone2002economic}.
+			\begin{align*}
+				\text{(IS)}: & \ c(t) = a + b(1 - \tau) y(t) - h r(t), \\
+				\text{(LM)}: & \ m(t) = k y(t) - u r(t)
+			\end{align*}
+			where $a > 0, b \in (0,1), \tau \in (0,1), h > 0$ and $c, a, b, \tau, y, h, r$ are consumption, fixed consumption, marginal propensity to consume, tax, real income, coeff. of investment, and interest rate. On the other hand, $k, u > 0$ control the demand for real money. Assume that the dynamics of the 2 markets are
+			\begin{align*}
+				\dot{y} = \alpha (c(t) - y(t)) \ \ (\alpha > 0), \\
+				\dot{r} = \beta (m(t) - m_0) \ \ (\beta > 0)
+			\end{align*}
+			where income adjusts according to the excess demand in that market and interest rates adjust according to the excess demand in the money market.
+			\begin{enumerate}[label=\arabic*.]
+				\item Express the system explicitly in $\dot{y}, \dot{r}$.
+				\item Find the fixed point $y^*, r^*$.
+				\item Draw the phase diagram with the 2 loci $\dot{y} = 0$ and $\dot{r}=0$.
+			\end{enumerate}
+		\end{enumerate}
+	\end{ex}	
+	
+	\subsection{System of 2 Nonlinear Differential Equations}
+	In macroeconomics, most of the advanced dynamics fall into this category. These systems, in general, are difficult to solve explicitly. Nevertheless, without solving them, we can still characterize their properties by constructing the phase diagrams.  
+	
+	Consider the following nonlinear system that describes a typical growth model
+	\begin{align}
+		\begin{matrix}
+			\dot{k} = f (k) - c - \delta k, \\
+			\dot{c} = [ f'(k) - (\delta + \rho) ] c
+		\end{matrix} \label{eq:sys_nonlin}
+	\end{align}
+	where $\rho > 0, \delta \in (0,1)$ are parameters, the capital stock $k(t)$ is a state variable with the initial value $k_0$ given and $c(t)$ is the control variable. The production function satisfies the Inada conditions as follows
+	\begin{align*}
+		&f(0) = 0, \\
+		&f' > 0, f'' < 0, \\
+		&\lim_{k\to\infty}  f'(k) = 0, \lim_{k\to 0} f'(k) = \infty.
+	\end{align*}
+	
+	\begin{enumerate}
+		\item (A. Nullclines) As always, we draw the nullclines. The $\dot{k}=0$ curve is defined by
+		\begin{align*}
+			c = f(k) - \delta k
+		\end{align*}
+		The $\dot{c} = 0$ curve is defined by 
+		\begin{align*}
+			f'(k) = \delta + \rho.
+		\end{align*}
+		In the $(k,c)$ plane, the $\dot{k}=0$ curve is concave in $k$ (because $f(k)$ is concave) while the $\dot{c}=0$ curve is just a vertical line.
+		\item (B. Steady State) The intersection of these two loci is the steady state $(k^*, c^*)$.
+		\item (C. Directional Arrows)  To do this, we investigate the partial derivatives
+		\begin{align*}
+			\frac{\partial \dot{k}}{\partial c} &= - 1 < 0, \\
+			\frac{\partial \dot{c}}{\partial k} &= c \cdot f''(k) < 0
+		\end{align*}
+		What do they mean?
+		\begin{itemize}
+			\item The first equation says $\dot{k}$ is a decreasing function in $c$. So when $c$ increases, $\dot{k}$ turns more negative, implying that $k$ decreases (points above $\dot{k}=0$ moves leftward); and when $c$ decreases, the reverse happens, $k$ increases and the points move rightward.
+			\item The second equation says $\dot{c}$ is decreasing in $k$. So when $k$ increases, $\dot{c}$ turns negative, implying that $c$ decreases (the points to the right of $\dot{c}=0$ moves downward); and when $k$ decreases, $c$ increases and the points to the left of $\dot{c}=0$ moves upward.
+		\end{itemize}
+		\item (D. Tracjectories)  The directional arrows drawn describe a saddle around the steady state. The
+		only way for the economy to converge to the steady state is on the saddle path leading
+		to it. This means that given any initial capital $k_0$, initial consumption $c_0$ is such that the
+		pair $(k_0, c_0)$ lies on the saddle path.
+	\end{enumerate}
+	
+	\begin{figure}[ht]
+		\centering
+		\includegraphics[scale=0.4]{figs/phasediag2.png}
+		\caption{Phase Diagram of system \eqref{eq:sys_nonlin} \citep{michaillat2023}. }
+		\label{fig:phase_diagram}
+	\end{figure}
+	\begin{figure}[H]
+		\centering
+		\begin{subfigure}[b]{0.45\linewidth}
+			\includegraphics[width=\linewidth]{figs/romerramsey.png}
+			\caption{ Trajectories \citep{romer2011advanced} }
+		\end{subfigure}
+		\begin{subfigure}[b]{0.45\linewidth}
+			\includegraphics[width=\linewidth]{figs/phase_diagram.png}
+			\caption{ A closer look. \\ Source code: \url{https://github.com/Mv77/Ramsey_growth/blob/master/Ramsey.py}  }
+		\end{subfigure}
+		\caption{ More on the trajectories of this model.}
+	\end{figure}
+	
+	\subsubsection{Lineariziation around the Steady State}
+	The phase diagram indicates that the system is a saddle around the steady state in Fig.~\ref{fig:phase_diagram}. We can also obtain this result by linearizing the nonlinear system \eqref{eq:sys_nonlin} using a first-order Taylor expansion about the steady state:
+	\begin{align*}
+		\dot{k} = \dot{k^*} + (k-k^*) \frac{\partial \dot{k}}{\partial k} + (c-c^*) \frac{\partial \dot{k}}{\partial c}, \\
+		\dot{c} = \dot{c^*} + (k-k^*)\frac{\partial \dot{c}}{\partial k} + (c - c^*)\frac{\partial \dot{c}}{\partial c}.
+	\end{align*}
+	Since at the steady state $\dot{k^*} = \dot{c^*} = 0$, the system reduced to
+	\begin{align*}
+		\begin{pmatrix}
+			\dot{k} \\ \dot{c}
+		\end{pmatrix}
+		=
+		\J^*
+		\begin{pmatrix}
+			k - k^* \\ c - c^*
+		\end{pmatrix}
+	\end{align*}
+	where $\J^*$ is the Jacobian matrix evaluated at the steady state
+	\begin{equation*}
+		{\J}^{*}= 
+			\begin{pmatrix}
+				\dfrac{\partial \dot{k}}{\partial k}\vert_{(k^{*},c^{*})}  & \dfrac{\partial \dot{k}}{\partial c}\vert_{(k^{*},c^{*})} \\ 
+				\dfrac{\partial\dot{c}}{\partial k}\vert_{(k^{*},c^{*})} & \dfrac{\partial \dot{c}}{\partial c}\vert_{(k^{*},c^{*})}
+		\end{pmatrix}.
+	\end{equation*}
+	More explicitly
+	\begin{equation*}
+		{\J}^{*}= 
+		\begin{pmatrix}
+			f'(k^*) - \delta & -1 \\
+			c f''(k^*) & f'(k^*) - (\delta + \rho)
+		\end{pmatrix}.
+	\end{equation*}
+	The result of evaluation is
+	\begin{equation*}
+		{\J}^{*}= 
+		\begin{pmatrix}
+			\rho & - 1 \\
+			c f''(k) & 0
+		\end{pmatrix}.
+	\end{equation*}
+	Calculating its determinant shows that
+	\begin{align*}
+		\det(\J^*) = c f''(k) < 0
+	\end{align*}
+	Thus, the 2 eigenvalues have opposite sign, so the system around the steady state is a saddle.
+	
+	\begin{ex}
+		Given the system
+		\begin{align*}
+			\dot{k}(t) &= \frac{q(t) - 1}{\chi} k(t), \\
+			\dot{q}(t) &= r q(t) - f'(k(t)) - 0.5 \chi^{-1} (q(t)-1)^2
+		\end{align*}
+		where $\chi, r > 0$ and 
+		$$
+			f(k(t)) = A k(t)^\alpha
+		$$
+		Draw the phase diagram and show that the steady state is a saddle point locally.
+		\begin{figure}[ht]
+			\centering
+			\includegraphics[scale=0.35]{figs/phase_diagram2.png}
+			\caption{Illustration with $r=0.1, \chi = 0.9, A = 2, \alpha = 0.3$.}
+		\end{figure}
+	\end{ex}
+	
+%	\begin{ex}[Holling-Tanner predatory-prey model (optional)]
+%		From \citet[p.199]{shone2002economic}. Consider 
+%		\begin{align*}
+%			\text{(prey population):} &\ \dot{x} = x\left(1 - \frac{x}{6}\right) - \frac{6xy}{(8+8x)}, \\
+%			\text{(predator population):} &\ \dot{y}= 0.2 y \left(1 - \frac{0.4 y}{x}\right)
+%		\end{align*}
+%		Find the fixed points. Check if any of the fixed points exhibit a stable limit cycle. \footnote{Hint: (i) $P1 = (6,0)$ and $P2 = (0.846, 2.114)$. (ii) Fixed point $P2$ exhibits a stable limit cycle.} A limit cycle is an isolated closed integral curve, which is also called an orbit. A limit cycle is asymptotically stable if all the nearby cycles tend to the closed orbit from both sides. Its stability conditions
+%		\begin{enumerate}
+%			\item eigenvalues have complex roots 
+%		\end{enumerate}
+%	\end{ex}	
+	
 	%===================== Dyn Opt ====================%
 	
-	\chapter{Dynamic Optimization}
+	\chapter{Dynamic Programming}
 	There are 2 versions of dynamic optimization methods. The first deals with continuous time, where a variable is differentiable with time. The second deals with discrete time, where a variable is not differentiable with respect to time.
 	
 	\begin{figure}[h!]
@@ -1962,9 +3004,17 @@ format=plain]{caption}
 \label{fig:concept}
 \end{figure}
 
+	In discrete time, we often use the Bellman method, while in continuous time, we often use the Hamiltonian method. Both of them are useful for analysis, and then we often use numerical simulations or a phase diagram to work out the dynamics of the model. The notes are based on \citet{chiang1992element, sydsaeter2008further, heer2009dynamic, campante2021advanced}, with references to a lot of online materials such as 
+	\begin{enumerate}
+		\item \url{http://www.chrisedmond.net/phd2019.html}
+		\item \url{http://www.chrisedmond.net/hons2019.html}
+		\item \url{https://pascalmichaillat.org/c3/}
+	\end{enumerate}
 	
-	\section{Dynamic Programming}
-	Also known as Discrete-Time Optimization. Household solves
+	\section{Motivation (Ramsey) }
+	This is a discrete-Time version of the optimal growth model \citep{ramsey1928mathematical}. 
+	
+	The household solves
 	\begin{align*}
 		\max_{c_t} & \sum^\infty_{t=0} \beta^t u(c_t), \\
 		s.t. &\ c_t = f(k_t) - k_{t+1} + (1-\delta) k_t.
@@ -1976,7 +3026,7 @@ format=plain]{caption}
 	\end{align*}
 	Find the solution for the optimal choice of $c_t$.
 	
-	\subsection{Lagrangian Method}
+	\section{Lagrangian Method}
 	The Lagrangian:
 
 $$
@@ -2022,7 +3072,7 @@ In the steady-state, $c_{t+1} = c_t = \bar{c}$ and $k_{t+1} = k_t = \bar{k}$.
 
 Provided with a functional form of the production function $f(k)$, one can find the steady-state values of $\bar{c}, \bar{k}$ and then use backward induction to figure out the dynamics from a given $k_0$.
 	
-	\subsection{Bellman Method}
+	\section{Bellman Method}
 	The following steps describe Bellman's method.
 	\begin{enumerate}
 		\item Set up the Bellman equation
@@ -2059,23 +3109,23 @@ Provided with a functional form of the production function $f(k)$, one can find 
 			\lim_{t\to 0} \beta^t u'(c_t) k_{t+1} = 0.
 		\end{align*}
 	\end{enumerate}
-
-
 	
-	\section{Optimal Control}
+	\section{Ramsey-Cass-Koopsman Model}
+	
+	\chapter{Optimal Control}
 	Also known as Continuous-Time Optimization. Let us consider the problem
 	\begin{align}
 		\max_{ \{c_t\}^T_{t=0} } e^{-(\rho-n) t} u(c_t)  dt, \\
 		s.t. \ c_t + \dot{k}_t = f(k_t) - \delta k_t.
 	\end{align}
-	The control variable is $c_t$ and the state variable is $a_t$. Assume a nonzero initial condition, the constraint gives us the equation of motion for the state variable
+	The control variable is $c_t$, and the state variable is $a_t$. Assume a nonzero initial condition, the constraint gives us the equation of motion for the state variable
 	\begin{align*}
 		&(\textbf{transition equation}) & \dot{k}_t &= f(k_t) - \delta k_t - c_t, \\
 		&(\textbf{initial condition}) & k_0 &> 0
 	\end{align*}
 
 	
-	\subsection{Lagrangian Method}
+	\section{Lagrangian Method}
 	Everything begins with the Lagrangian function. In fact, it's more intuitive to start here than going straight to Hamiltonian:
 
 $$
@@ -2090,7 +3140,7 @@ $$
 
 We want to maximize $c(t)$ with respect to $k(t)$, but $\dot{k}(t)$ is not independent with $k(t)$. So $\dot{k}(t)$ needs to be got rid of, and can somehow be expressed in terms of $k(t)$.
 
-First, separate the $\dot{k}(t)$ term out of the integral.
+First, separate the $\dot{k}(t)$ term from the integral.
 
 $$
     \mathcal{L} = \int_{0}^{\infty} \left\{ e^{-\rho t} u(c(t)) + \lambda(t) \left[ F( k(t)) - \delta k(t) - c(t)  \right] \right\} dt - \int_{0}^{\infty} \lambda(t)\dot{k}(t)dt
@@ -2104,7 +3154,7 @@ $$
      = \lambda(\infty) k(\infty) - \lambda(0) k(0) - \int_{0}^{\infty} \dot{\lambda}(t)k(t)dt 
 $$
 
-Notice that if $k$ at time $t=\infty$ is indeed $\infty$, and $\lambda(\infty)$ (the penalty term) is also non-zero, then there is no reason to consume now. The household will wait until the very very end of time close to infinity since the utility is essentially infinity. On the other hand, if $k$ at $t=\infty$ is $-\infty$, there is no reason to save, it's better to consume everything and leave nothing left. Such extreme cases would appear if $\lambda(\infty)k(\infty)$ is not bounded and it will dominate everything.
+Notice that if $k$ at time $t=\infty$ is indeed $\infty$, and $\lambda(\infty)$ (the penalty term) is also non-zero, there is no reason to consume now. The household will wait until the very end of time close to infinity since the utility is essentially infinity. On the other hand, if $k$ at $t=\infty$ is $-\infty$, there is no reason to save, it's better to consume everything and leave nothing left. Such extreme cases would appear if $\lambda(\infty)k(\infty)$ is not bounded, and it will dominate everything.
 
 To counter that problem, we introduce the transversality (no Ponzi scheme) condition.
 
@@ -2130,14 +3180,14 @@ $$
     \mathcal{L} = \int_{0}^{\infty} \left\{ e^{-\rho t} u(c(t)) + \lambda(t) \left[ F( k(t)) - \delta k(t) - c(t)  \right] +  \dot{\lambda}(t)k(t) \right\} dt 
 $$
 
-The Lagrangian enables us to maximize the function at each point in time, so we only care about maximizing the functional form inside the integral (we don't care about time anymore). Rewrite the term inside the integral as $L$, and call this the *modified Lagrangian*. The following 2 expressions are equivalent.
+The Lagrangian enables us to maximize the function at each point in time, so we only care about maximizing the functional form inside the integral (we don't care about time anymore). Rewrite the term inside the integral as $L$, and call this the *modified Lagrangian*. The following two expressions are equivalent.
 
 \begin{align}
      L = {e^{-\rho t} u(c(t)) + \lambda(t) \left[ f( k(t)) - \delta k(t) - c(t)  \right]} -  \lambda(t)\dot{k}(t)     \label{eq:foc_c2} \\                            
      L =  \underbrace{e^{-\rho t} u(c(t)) + \lambda(t) \left[ f( k(t)) - \delta k(t) - c(t)  \right]}_{\text{Hamiltonian}}+  \dot{\lambda}(t)k(t)  \label{eq:foc_k2}
 \end{align}
 
-Terminologically speaking: $c(t)$ is the control variable since it can jump (taking any value at any point in time) while $k(t)$ is the state variable because it accumulates over time. ${\lambda}(t)$ is the co-state variable (also known as *shadow price* in economics because it shows the marginal cost of violating the constraints at each point in time). 
+Terminologically speaking: $c(t)$ is the control variable since it can jump (taking any value at any point in time). In contrast, $k(t)$ is the state variable because it accumulates over time. ${\lambda}(t)$ is the co-state variable (also known as *shadow price* in economics because it shows the marginal cost of violating the constraints at each point in time). 
 
 Sticking with the Lagrangian method, we derive the FOC:
 
@@ -2185,7 +3235,7 @@ $$
 
 This condition constitutes the optimal path of consumption chosen by the household.
 
-	\subsection{Hamiltonian}
+	\section{Hamiltonian}
 	A cookbook method (Pontryagin’s maximum principle) for this problem.
 		The maximum principle can be summarized as a series of steps with the economic intuition explained as follows \citep{campante2021advanced}.
 	\begin{enumerate}
@@ -2208,7 +3258,7 @@ This condition constitutes the optimal path of consumption chosen by the househo
 		\end{align}
 		The Hamilton is static, but our model is dynamic. This means that, at any instant, we must figure out that whatever we leave for the next instant is consistent with optimization. This is the key insight into the problem. Furthermore, what we care about in an infinite time span can be broken down into a sequence of choices between the current instant and the next in an infinitesimally small time frame.
 		
-		To figure out that path, the maximization principle tells you that you need to satisfy the co-state equations. The first equation \eqref{eq:kdot} links one instant of the state variable to the next and must be satisfied at any time. The second equation \eqref{eq:costate} is an ``asset pricing" condition. Basically, the term $\dot{\lambda}_t$ is the appreciation in the marginal value of capital, so $-\dot{\lambda}_t$ is its depreciation. If you carry more capital to the next, its value should depreciate more as the volume increase. The term $\partial H/\partial k$, on the other hand, shows the marginal return of capital at this instant, contributing to the utility and production (which are encompassed in the Hamiltonian). Obviously, the equilibrium is brought by equalizing the 2 terms. (\href{https://www3.nd.edu/~nmark/Climate/CurrentValueHamiltonian.pdf}{Read more})
+		To figure out that path, the maximization principle tells you that you need to satisfy the co-state equations. The first equation \eqref{eq:kdot} links one instant of the state variable to the next and must be satisfied at any time. The second equation \eqref{eq:costate} is an ``asset pricing" condition. Basically, the term $\dot{\lambda}_t$ is the appreciation in the marginal value of capital, so $-\dot{\lambda}_t$ is its depreciation. If you carry more capital to the next, its value should depreciate more as the volume increase. The term $\partial H/\partial k$, on the other hand, shows the marginal return of capital at this instant, contributing to the utility and production (which are encompassed in the Hamiltonian). Obviously, the equilibrium is brought by equalizing the two terms. (\href{https://www3.nd.edu/~nmark/Climate/CurrentValueHamiltonian.pdf}{Read more})
 		
 		\item Set the transversality condition
 		\begin{align}
@@ -2240,25 +3290,10 @@ This condition constitutes the optimal path of consumption chosen by the househo
 		\end{align*}
 	\end{enumerate}
 	
-	\section{Models}
+	\section{Economic Applications}
 	
-	\subsection{RCK}
-	This section deals with the neoclassical growth model, also known as the Ramsey-Cass-Koopsman, in continuous time. \citet{ramsey1928mathematical} first solved this problem before he died at the age of 26. He was so ahead of his time that nearly 4 decades later, by the works of \citet{cass1965optimum} and \citet{koopmans1963concept}, the model became as well-known as today. 
+	\section{Real Business Cycle (RBC)}
 	
-	\subsubsection{Endogenous Labor}
-	The economy solves
-	\begin{align*}
-		\max & \int^\infty_0  \beta^t \left[ \ln(c_t) + \gamma \ln(1-l_t)\right] dt, \\
-		\text{ s.t. } c_t + i_t &= y_t, \\
-		y_t &= f(k_t) = A k_t^\alpha, \\
-		\dot{k}_t &= i_t - \delta k_t
-	\end{align*}
-	
-	\subsection{Real Business Cycle}
-	
-	\subsection{Dynamic General Equilibrium}
-		
-	\subsection{Continuous-time OLG}
 	
 	\section{Programing}
 	Sources:
@@ -2282,7 +3317,7 @@ This condition constitutes the optimal path of consumption chosen by the househo
 	
 	\chapter{Cheatsheets}
 		\section{Differentiation}
-	See Chapter 5 of \citet{springcamp}.
+	See \citet[Ch. 5]{springcamp}.
 	\subsection*{Basic Rules}
 	\begin{align*}
 		&(cf)' = cf' &&
@@ -2326,7 +3361,7 @@ This condition constitutes the optimal path of consumption chosen by the househo
 	\]
 	
 	\section{Integration}
-	See Chapter 8 of \citet{springcamp}
+	See \citet[Ch. 8]{springcamp}
 	\subsection*{Basic Integrals}
 	\begin{align*}
 		&\int k \, dx = kx + C \quad \text{(where $k$ is a constant)} \\
@@ -2347,7 +3382,7 @@ This condition constitutes the optimal path of consumption chosen by the househo
 	\]
 	
 	\section{Taylor Series Formula}
-	See Chapter 6.6 of \citet{springcamp}. The Taylor series expansion of a function $f(x)$ at a point $a$ is given by:
+	See \citet[Ch. 6.6]{springcamp}. The Taylor series expansion of a function $f(x)$ at a point $a$ is given by:
 	\[
 	f(x) = f(a) + f'(a)(x - a) + \frac{f''(a)}{2!}(x - a)^2 + \frac{f'''(a)}{3!}(x - a)^3 + \dotsb
 	\]
@@ -2368,7 +3403,7 @@ This condition constitutes the optimal path of consumption chosen by the househo
 	\]
 	
 	\section{Implicit Function Theorem}
-	See Chapter 10.6 of \citet{springcamp}. Let \( F(x, y) \) be a continuously differentiable function defined in a neighborhood of a point \( (a, b) \). If \( F(a, b) = 0 \) and \( \frac{\partial F}{\partial y} \neq 0 \) at \( (a, b) \), then there exists an open interval \( I \) containing \( a \) and an open interval \( J \) containing \( b \), and a unique continuously differentiable function \( f : I \to J \), such that for all \( x \) in \( I \), the equation \( F(x, f(x)) = 0 \) holds.
+	See \citet[Ch 10.6]{springcamp}. Let \( F(x, y) \) be a continuously differentiable function defined in a neighborhood of a point \( (a, b) \). If \( F(a, b) = 0 \) and \( \frac{\partial F}{\partial y} \neq 0 \) at \( (a, b) \), then there exists an open interval \( I \) containing \( a \) and an open interval \( J \) containing \( b \), and a unique continuously differentiable function \( f : I \to J \), such that for all \( x \) in \( I \), the equation \( F(x, f(x)) = 0 \) holds.
 	
 	Furthermore, the derivative \( f'(x) \) where $y = f(x)$ is given by:
 	\[ f'(x) = -\dfrac{\dfrac{\partial F}{\partial x}(x, f(x))}{\dfrac{\partial F}{\partial y}(x, f(x))} \]
@@ -2385,7 +3420,7 @@ This condition constitutes the optimal path of consumption chosen by the househo
 	
 	
 	\section{Intermediate Value Theorem}
-	See Chapter 6.10 of \citet{springcamp}. Let \( f \) be a continuous function on the closed interval \([a, b]\). If \( y \) is any number between \( f(a) \) and \( f(b) \), then there exists at least one number \( c \) in the open interval \((a, b)\) such that \( f(c) = y \).
+	See \citet[Ch 6.10]{springcamp}. Let \( f \) be a continuous function on the closed interval \([a, b]\). If \( y \) is any number between \( f(a) \) and \( f(b) \), then there exists at least one number \( c \) in the open interval \((a, b)\) such that \( f(c) = y \).
 	
 	\textbf{Application:} \red{Mostly to prove the existence of a solution.}
 	
@@ -2408,7 +3443,7 @@ This condition constitutes the optimal path of consumption chosen by the househo
 	\end{example}
 	
 	\section{Matrix Algebra}
-	See Chapter 9 of \citet{springcamp}
+	See \citet[Ch. 9]{springcamp}
 	\subsection{Matrix Operations}
 	
 	\subsubsection*{Addition and Subtraction}
@@ -2484,7 +3519,7 @@ This condition constitutes the optimal path of consumption chosen by the househo
 		- a_{12}[a_{21}a_{33} - a_{31}a_{23}] 
 		+ a_{13}[a_{21}a_{32} - a_{31}a_{22}]
 	\end{align*}
-	For higher order, see the Spring Camp's materials. Most oftentimes, you need the determinant to be nonzero.
+	For higher order, see \citet[Ch. 9.4.2]{springcamp}. 
 	
 	\section{Jacobians, Gradients, and Hessians}
 	The Gradient $\nabla$ is a vector that points in the direction of the steepest increase of a scalar-valued (1D) function of multiple variables. Its magnitude $|\nabla |$ is the rate of change in that direction. The gradient is a vector and has the same dimension as the number of variables in the function. For a function of $n$ variables, the gradient is an n-dimensional vector.
@@ -2498,7 +3533,7 @@ This condition constitutes the optimal path of consumption chosen by the househo
 	j is the same as the element in row 
 	j and column 
 	i.
-	The mixed partial derivatives in the Hessian matrix satisfy the equality of mixed partials $\frac{\partial^2 f}{\partial x \partial y} = \frac{\partial^2 f}{\partial y\partial x}$. The eigenvalues of the Hessian matrix are indicators of the curvature of the function at a critical point. Positive eigenvalues suggest a local minimum, negative eigenvalues suggest a local maximum, and a mix of positive and negative eigenvalues suggest a saddle point. For more detail, see Chapter 10 of \citet{springcamp}.
+	The mixed partial derivatives in the Hessian matrix satisfy the equality of mixed partials $\frac{\partial^2 f}{\partial x \partial y} = \frac{\partial^2 f}{\partial y\partial x}$. The eigenvalues of the Hessian matrix are indicators of the curvature of the function at a critical point. Positive eigenvalues suggest a local minimum, negative eigenvalues suggest a local maximum, and a mix of positive and negative eigenvalues suggest a saddle point. For more detail, see \citet[Ch 10]{springcamp}.
 	
 	\subsection*{1D (1 dimension)}
 	Let \( f(x) \) be a one-dimensional function. The Gradient \( \nabla \) is a vector of the first order derivative of \( f \) with respect to \( x \) mapping $\R^1 \to \R^1$ (a scalar field)
@@ -2567,7 +3602,7 @@ This condition constitutes the optimal path of consumption chosen by the househo
 	\]
 	In a sense, The Hessian is the Jacobian of the gradient of a function that maps from n-dimension to 1-Dimension.
 	
-	\chapter{Dynamical Stability Analysis}
+	\chapter{Dynamical Stability Analysis} \label{sec:appendix_dyn}
 	Borrow from \citet{de2002theory}, Technical Appendix A.2. (p.311) and \citet{dannan2003stability}.
 	\section{Dimension One}
 	Let $f(x)$ be a function defined on some interval $I$ of $\R$ with values in $I$. The time path, given an initial state $x_0 \in I$ and the equation $x_{t+1} = f(x_t)$ is uniquely defined.
