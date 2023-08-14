@@ -20,10 +20,10 @@
   - [R]: R introduction and basic commands
 * 9/19 (A):
   - [Stata]: OLS regression, output the results and interpret them
-  - [R]: Time series analysis commands and data processing
+  - [R]: Process and visualize data
 * 9/20 (A):
   - [Stata]: Panel data analysis
-  - [R]: Time series decomposing with moving average
+  - [R]: Time series decomposing
 * 9/21 (A):
   - [Stata]: Panel data analysis, Make tables and figures
   - [R]: Time series exponential smoothing
