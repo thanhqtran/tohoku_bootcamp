@@ -26,10 +26,10 @@
   - [R]: Time series decomposing and smoothing
 * 9/21 (A):
   - [Stata]: Panel data analysis, Make tables and figures
-  - [R]: Simple time series forecasting
+  - [R]: Time series forecasting （1）
 * 9/22 (A):
   - [Stata]: GMM 2SLS IV
-  - [R]: 
+  - [R]: Time series forecasting (2)
 
 (Week 2)
 
