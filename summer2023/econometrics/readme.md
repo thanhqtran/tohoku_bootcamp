@@ -23,13 +23,13 @@
   - [R]: Process and visualize data
 * 9/20 (A):
   - [Stata]: Panel data analysis
-  - [R]: Time series decomposing
+  - [R]: Time series decomposing and smoothing
 * 9/21 (A):
   - [Stata]: Panel data analysis, Make tables and figures
-  - [R]: Time series exponential smoothing
+  - [R]: Simple time series forecasting
 * 9/22 (A):
   - [Stata]: GMM 2SLS IV
-  - [R]: Autocorrelation and partial autocorrelation in R
+  - [R]: 
 
 (Week 2)
 
