@@ -23,7 +23,7 @@
   - [R]: Process and decompose time series
 * 9/20 (A):
   - [Stata]: Panel data analysis
-  - [R]: Visualization: ggplot package
+  - [R]: Visualization: ggplot2 package
 * 9/21 (A):
   - [Stata]: Panel data analysis, Make tables and figures
   - [R]: Time series forecasting （1）
