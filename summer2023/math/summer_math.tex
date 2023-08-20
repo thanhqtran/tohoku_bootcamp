@@ -3307,6 +3307,1539 @@ This condition constitutes the optimal path of consumption chosen by the househo
 	\subsection{Policy Function Iteration}
 	
 		
+%============ CHAPTER 1 ===========%
+\chapter{Basics of Probability theory, Brownian motion and martingales}
+
+\section{Probability theory}
+
+\subsection{Probability space}
+Let $\Omega$ be a (non-empty) sample space. A $\sigma$-algebra ($\sigma$-field) on $\Omega$ is a family of subsets of such that
+\begin{itemize}
+\item the empty set $\oslash$ belongs to $F$;
+\item if $A$ belongs to $F$, then so does the complement $\Omega \backslash A$;
+\item if $A_1$, $A_2$, ... is a sequence of sets in $F$, then their union $A_1 \cup A_2 \cup ...$ also belongs to $F$.
+\end{itemize}
+
+Let $F$ be a $\sigma$-algebra on $\Omega$. A Probability measure $P$, defined on $F$, is a function $P : F \rightarrow [0,1]$ such that
+\begin{itemize}
+\item $P(\Omega) = 1$;
+\item if $A_1$, $A_2$, ... are pairwise disjoint sets (i.e. $A_i \cap A_j \cap ... = \oslash$ for $i \neq j$) belonging to $F$, then
+$$P(A_1 \cup A_2 \cup ...)  = P(A_1) + P(A_2) + ...$$
+\end{itemize}
+
+The triple ($\Omega$, $F$, $P$) is called a \textbf{probability space}. The sets belonging to $F$ are called events.
+
+\subsection{Random variables}
+Let ($\Omega$, $F$, $P$) be a probability space. A \textbf{random variable} $X$ is a mapping from the sample space, $\Omega$, to another measurable space of possible values of $X$ (state space)
+$$ X : \Omega \rightarrow R$$
+with the property that $X^{-1}((-\infty, x]) = \{\omega \in \Omega : X(\omega) \leq x\} \in F$ for all $x \in R$. We say that $X$ is $F$-measurable.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.5]{Chapter 1/Chapter1_1.png}
+	\caption{Mapping}
+\end{figure}
+
+The \textbf{distribution function} of $X$, $F_X : R \rightarrow [0,1]$ is defined by
+$$ F_X(X) = P \{\omega \in \Omega : X(\omega) \leq x \} = P(X \leq x) = \mu_X((-\infty, x]) $$
+
+\subsection{Expectations and conditional expectations}
+
+$$E(g(X)) = \int_R g(x) f_X(x) dx  (= \int_R g(x) dF_X(x) = \int_R g(x) d\mu_X(x)) $$
+$E(X | Y=y)$ is the mean of the conditional distribution of $X$ given $Y=y$.
+$E(X | Y)$ is a random variable and the tower rule states:
+$$E(E(X | Y)) = E(X)$$
+Similarly,
+$$E(E(X | Y_1,...,Y_n)) = E(X)$$
+$E(X | Y_1,...,Y_n)$ is the optimal estimator of $X$ based on $Y_1,...,Y_n$ in the sense that for every function $h$
+$$ E[ (X-E(X | Y_1,...,Y_n)^2 ] \leq E[ (X - h(Y_1,...,Y_n))^2 ] $$
+
+\subsection{Stochastic processes}
+
+A stochastic process, $X$, is a collection (family) of random variables
+$$ X = \{X_t : t \in T \} = \{X_t(\omega), t \in T, \omega \in \Omega \} $$
+
+Classification
+\begin{itemize}
+\item Discrete time stochastic processes, $T = \{0,1,2,...\}$;
+\item Continuous time stochastic processes, $T = [0, \infty) (T = R^{+})$
+\end{itemize}
+
+$X$ is a function of two variables:
+\begin{itemize}
+\item for a fixed instant of time $t \in T$, it is a random variable $X_t = X_t(\omega), \omega \in \Omega$.
+\item for a fixed random outcome $\omega \in \Omega$, it is a function of time $X_t = X_t(\omega), t \in T$ (trajectory, realisation or sample path).
+\end{itemize}
+
+\section{Brownian motion}
+
+\subsection{Standard Brownian motion}
+Let ($\Omega$, $F$, $P$) be a probability space. A standard Brownian motion (or Wiener process) under $P$ is a stochastic process, $\{W_t, t \geq 0 \}$, with continuous state space $R$ and $T = R^{+}$, and the following defining properties:
+\begin{itemize}
+\item $W_0 = 0$
+\item independent increments, i.e. for every choice of $0 \leq t_0 < t_1 < ... < t_n, n \geq 1, W_{t_1} - W_{t_0}, W_{t_2} - W_{t_1}, ...,$ are independent random variables.
+\item Gaussian increments, i.e. for $0 \leq s < t, W_t - W_s \sim N(0, t-s)$.
+\item Continuous sample paths (no jumps)
+\item stationary increments, i.e. for $0 \leq s < t$ and $h \geq 0$, $W_t - W_s \indist W_{t+h} - W_{s+h} $.
+\end{itemize}
+
+Statistical properties of standard Brownian motion:
+\begin{itemize}
+\item $E(W_t) = 0$
+\item $Var(W_t) = t$
+\item $Cov(W_s, W_t) = min(s,t)$
+\item $Corr(W_s, W_t) = \sqrt{\frac{min(s,t)}{max(s,t}}$
+\end{itemize}
+
+\begin{figure}[H]
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[scale=0.5]{Chapter 1/Chapter1_2.png}
+	\end{subfigure}
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[scale=0.5]{Chapter 1/Chapter1_3.png}
+	\end{subfigure}
+\end{figure}
+
+Properties of standard Brownian motion:
+\begin{itemize}
+\item $W_t$ is a Markov process
+\item $W_t$ is a martingale
+\item $W_t$ returns infinitely often to 0 and to any other level
+\item $W_t$ is 0.5 self-similar, i.e.
+$$ (T^{\frac{1}{2}} W_{t_1}, ..., T^{\frac{1}{2}} W_{t_n}) \indist (W_{T\,\,t_1}, ..., W_{T\,\,t_n}) $$
+for every $T>0$, any choice of $t_i \geq 0, i = 1, ..., n$ and $n \geq 1$.
+\item $W_t^* = \frac{1}{\sqrt{c}} W_{ct}$ is also a standard Brownian motion (scaling property)
+\item $W_t^{{**}} = t W_{1/t}$ is also a standard Brownian motion (inversion property)
+\item $W_t$ has nowhere differentiable paths
+\item $W_t$ has unbounded variation
+\end{itemize}
+
+\subsection{General Brownian motion}
+General Brownian motion with drift parameter $\mu \in R$ and diffusion (volatility) parameter $\sigma > 0$ is a stochastic process, $\{X_t,t>0\}$,
+$$ X_t = X_0 + \mu t + \sigma W_t $$
+with Gaussian increments, $X_t - X_s \sim N(\mu(t-s), \sigma^2(t-s))$ for $0 \leq s < t$. We have
+\begin{itemize}
+\item $E(X_t - X_0) = \mu t$
+\item $Var(X_t) = \sigma^2 t$
+\item $Cov(X_s, X_t) = \sigma^2 min(s,t)$
+\end{itemize}
+
+\begin{figure}[H]
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[scale=0.5]{Chapter 1/Chapter1_4.png}
+	\end{subfigure}
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[scale=0.5]{Chapter 1/Chapter1_5.png}
+	\end{subfigure}
+\end{figure}
+
+\subsection{Geometric Brownian motion}
+Geometric Brownian motion is a stochastic process, $\{S_t, t \geq 0\}$, such that
+$$ S_t = e^{X_t} = S_0 e^{\mu t + \sigma W_t} $$
+$ S_t \geq 0 $ for all $t \geq 0$ and $S_t \sim LogN(X_0+\mu t, \sigma^2 t)$.
+\begin{itemize}
+\item $E(S_t) = e^{X_0+(\mu+0.5\sigma^2)t}$
+\item $Var(S_t) = e^{2X_0 + (2\mu + \sigma^2)t} (e^{\sigma^2 t} -1) = [E(S_t)]^2 (e^{\sigma^2 t}-1)$
+\item $Cov(S_s,S_t) = e^{2X_0 + (\mu + 0.5\sigma^2)(s+t)}(e^{\sigma^2 t} -1)$, $0\leq s < t$.
+\end{itemize}
+
+\begin{figure}[H]
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[scale=0.5]{Chapter 1/Chapter1_6.png}
+	\end{subfigure}
+	\begin{subfigure}{0.5\textwidth}
+		\centering
+		\includegraphics[scale=0.5]{Chapter 1/Chapter1_7.png}
+	\end{subfigure}
+\end{figure}
+
+\section{Martingales}
+
+\subsection{Discrete time martingales}
+A discrete time stochastic process, $\{X_n\}$, is said to be a martingale if
+\begin{itemize}
+\item $E(|X_n|) < \infty$ for all $n$
+\item $E(X_n | X_0, ..., X_m) = X_m$ for all $m<n$
+\end{itemize}
+
+\begin{itemize}[label={$\Rightarrow$}]
+\item The current value $X_m$ is the optimal estimator of its future value $X_n$. 
+\item The expected change in the process is zero.
+\item A martingale has a constant mean (driftless)
+\end{itemize}
+$$E(X_n) = E(E(X_n | X_0, ..., X_m)) = E(X_m) $$
+\begin{example}
+(risk-neutral probability): Suppose a share has price $S_t$ at time $t$, and assume for simplicity that it does not pay dividends. Let $S_t^* = e^{-rt} St$ be the price of the share discounted at the risk-free rate $r$. If, according to a partic-
+ular probability distribution we assume for $S_t$, $S_t^* = e^{-rt} St$ is a martingale, then for $m<n$ find
+$$ E\left( \frac{S_n}{S_m} | S_0, S_1, ..., S_m \right) = ? $$
+\end{example}
+
+\subsection{Filtration}
+Let ($\Omega$, $F$, $P$) be a probability space on which a Brownian motion $W_t$, $t \geq 0$, is defined.
+
+A \textbf{filtration} for the Brownian motion is a collection of $\sigma$-algebras, $\{F_t\}_{t\geq0}$, satisfying:
+\begin{itemize}
+\item for $0 \leq t < u$, $F_t \subset F_u \subset F$ (information accumulates). i.e. there is at least as much information available at the later time, $F_u$, as there is at the earlier time, $F_t$.
+\item for each $t \geq 0$, $W_t$ is $F_t$-measurable (adaptivity), i.e. the information available at time $t$ is sufficient to evaluate $W_t$.
+\item for $0\leq t<u$, $W_u - W_t$ is independent of $F_t$ (independence of future increments). i.e. any increment after time $t$ is independent of the information available at time $t$.
+\end{itemize}
+($\Omega$, $F$, $\{F_t\}_{t\geq0}$, $P$) is called the filtered probability space.
+
+Let $F_t^X$ represent the information generated by the stochastic process $X=\{X_t, t\geq 0\}$ on the interval $[0, t ]$.
+
+The filtration $\{F_t^X\}_{t \geq 0}$ such that $F_t^X = \sigma(X_s, s \leq t)$ is the smallest $\sigma$-algebra containing only the information obtained by observing the process itself on $[0,t]$, is the natural filtration associated with $\{X_t, t\geq 0\}$.
+
+We say that the stochastic process $\{X_t, t \geq 0\}$ is adapted to the filtration  $\{F_t\}_{t \geq 0}$ if $\sigma(Xt) \subset F_t$ for all $t \geq 0$ (we also say that $X_t$ is $F_t$-measurable), i.e. if, based upon observations of the trajectory $\{X_s, 0 \leq s \leq t\}$ , it is possible to decide whether a given event $A \in F_t$ has occurred or not (or equivalently, whether the information in $F_t$ is sufficient to determine the trajectory $\{X_s, 0 \leq s \leq t\}$ ).
+
+If $\{X_t\}_{t \geq 0}$ is adapted to the filtration $\{F_t\}_{t \geq 0}$, then $\{f(X_t)\}_{t \geq 0}$ is also adapted to $\{F_t\}_{t \geq 0}$.
+
+\begin{example}
+Consider the possible outcome of three days share price, i.e.
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.6]{Chapter 1/Chapter1_8.png}
+\end{figure}
+\begin{enumerate}[label=(\alph*)]
+\item Write down $\Omega$, $F_0$, $F_1$, $F_2$ and $F_3$.
+\item Suppose $u=\frac{1}{d}$, so that $ud = du = 1$. Write down $\sigma(S_2)$.
+\end{enumerate}
+\end{example}
+
+Properties of conditional expectation (with filtration):
+\begin{itemize}
+\item $E(c_1X_1 + c_2X_2 | F) = c_1 E(X_1 | F) + c_2 E(X_2 | F)$
+\item $E( E(X|F) ) = E(X)$
+\item $E(X|F) = E(X)$ if $X$ is independent of $F$
+\item $E(X|F) = X$ if $X$ is $F$-measurable, i.e. $\sigma(X) \subset F$
+\item $E(XZ|F) = XE(Z|F)$ if $X$ is $F$-measurable
+\item $E(X|F) = E(E(X|F)|F') = E(E(X|F')|F)$ if $F \subset F'$
+\end{itemize}
+
+\subsection{Continuous time martingales}
+A continuous time stochastic process, $\{X_t\}$, is said to be a martingale with respect to a filtration $\{F_t\}_{t\geq 0}$ if
+\begin{itemize}
+\item $X_t$ is adapted to the filtration $\{F_t\}_{t\geq 0}$
+\item $E(|X_t|) < \infty$ for all $t$
+\item $E(X_t | F_s) = X_s$ for all $s \leq t$
+\end{itemize}
+
+\begin{itemize}[label={$\Rightarrow$}]
+\item The current value $X_s$ is the optimal estimator of its future value $X_t$. 
+\item The expected change in the process is zero.
+\item A martingale has a constant mean (driftless)
+\end{itemize}
+$$E(X_t) = E(E(X_t | F_s)) = E(X_s) \text{ for all } s \leq t$$
+\begin{example}
+Let $X_t = e^{\lambda W_t - 0.5 \lambda^2 t}$, where $\lambda$ is a constant. Show that $X_t$ is a martingale wrt $\{F_t\}_{t\geq 0}$, the filtration associated with $W_t$.
+\end{example}
+
+\section{Exercises}
+\begin{ex}
+Show that $X_t = W_t^2 - t$ is a martingale wrt $\{F_t\}_{t\geq 0}$, the filtration associated with $W_t$.
+\end{ex}
+
+%============ CHAPTER 2 ===========%
+\chapter{Stochastic calculus and Ito process}
+
+\textbf{Stochastic calculus} is a branch of mathematics that operates on stochastic processes.
+
+It allows a consistent theory of integration to be defined for integrals of stochastic processes with respect to stochastic processes and helps to describe continuous-time stochastic processes using stochastic differential equations (SDE).
+
+\section{Ito integral}
+
+Suppose that $W_t$ is a Brownian motion and that $C_t$ is a stochastic process adapted to the natural filtration of the Brownian motion.
+
+A stochastic integral of the type
+$$I(C) = \int_a^b C_s dW_s $$
+is called an Ito integral.
+
+A direct approach to $I(C)$ is doomed to failure. Because $W_t$ has nowhere differentiable paths and has unbounded (first-order) variation.
+
+
+However, such Ito integrals can be given a meaning for a suitable class of $C_s$ through successive aproximations by step functions.
+
+\subsection{Example}
+
+Consider the integral
+\begin{equation}
+\int_0^t W_s dW_s
+\end{equation}
+and the Riemann-Stieltjes sums
+$$ S_n = \sum_{i=1}^n W_{t_{i-1}} (W_{t_i} - W_{t_{i-1}}) $$
+where $\tau_n:0 = t_0 < t_1 < ... < t_{n-1} = t$ is a partition of $[0,t]$ with $||\tau_n || = max_{j=1,...,n}(t_j - t_{j-1})$.
+
+Note that
+$$ S_n = \frac{1}{2}W_t^2 - \frac{1}{2}\sum_{i=1}^n (W_{t_i} - W_{t_{i-1}})^2 = \frac{1}{2}W_t^2 - \frac{1}{2}Q_n(t) $$
+where $Q_n(t) = \sum_{i=1}^n (W_{t_i} - W_{t_{i-1}})^2$ is the sampled quadratic variation of Brownian motion.
+
+\vspace{4pt}
+Proof:
+\begin{align*}
+S_n &= W_0(W_1- W_0) + W_1 (W_2 - W_1) + ... + W_{n-1} (W_n - W_{n-1}) \\
+Q_n &= (W_1 - W_0)^2 + (W_2-W_1)^2 + ... + (W_n - W_{n-1})^2 \\
+&= W_0^2 + 2W_1^2 + 2W_2^2 + ... + 2W_{n-1}^2 + W_n^2 - 2W_0W_1 - 2W_1W_2 - ... - 2W_{n-1}W_n \\
+&= -2(W_0W_1 + W_1W_2 + ... + W_{n-1}W_n - W_0^2 - W_1^2 - ... - W_{n-1}^2) + W_n^2 - W_0^2 \\
+&= -2S_n - W_0^2 + W_n^2 \\
+&= -2S_n + W_n^2 \\
+\therefore S_n &= \frac{1}{2}W_n^2 - \frac{1}{2}Q_n
+\end{align*}
+
+$$E[Q_n(t)] = \sum_{i=1}^n E[(W_{t_i} - W_{t_{i-1}})^2] = t$$
+$$Var[Q_n(t)] = \sum_{i=1}^t Var[(W_{t_i} - W_{t_{i-1}})^2] = 2 \sum_{i=1}^n (t_i - t_{i-1})^2 \,\,\,\,\,(\leq 2 ||\tau_n|| \sum_{i=1}^n (t_i - t_{i-1}) = 2||\tau_n||t ) $$
+
+Recall
+\begin{itemize}
+\item Convergence in probability
+$$ \lim_{n \rightarrow \infty} P(|X_n - X| \geq \epsilon) = \lim_{n \rightarrow \infty} P(\{\omega:|X_n(\omega) - X(\omega)| \geq \epsilon\}) = 0 \text{  for any } \epsilon > 0 $$
+\item Convergence in $r$-th mean
+$$ \lim_{n \rightarrow \infty} E(|X_n - X|^r) = 0 $$
+\end{itemize}
+Mean square convergence ($r = 2$) implies convergence in probability.
+
+We have
+$$ E[(Q_n(t) - t)^2] = E[(Q_n(t)- E[Q_n(t)])^2] = Var[Q_n] \rightarrow 0 \text{  as  } ||\tau_n|| = max_{i=1,...,n}(t_i - t_{i-1}) \rightarrow 0 $$
+i.e. we have shown that $Q_n(t)$ converges to $t$ in mean square sense, hence in probability.
+$$ S_n = \frac{1}{2}(W_t^2 - Q_n(t)) \rightarrow \frac{1}{2}(W_t^2 - t) $$
+Hence
+\begin{align*}
+(W_{t+dt}-W_t)^2 &= (dW_t)^2 = dt \\
+dW_t dt &= 0 \\
+(dt)^2 &= 0
+\end{align*}
+Hence, we could define integral (2.1) as a mean square limit
+$$ \int_0^t W_s dW_s = \frac{1}{2}(W_t^2 - t) $$
+
+We have shown that
+$$ \lim_{n \rightarrow \infty, ||\tau_n|| \rightarrow 0} \sum_{i=1}^n (W_{t_i} - W_{t_{i-1}})^2 = t $$
+
+So, in terms of differentials we write informally
+\begin{equation}
+(W_{t+dt} - W_t)^2 = (dW_t)^2 = dt
+\end{equation}
+Furthermore, we have
+\begin{align}
+dW_t dt = 0 \nonumber \\
+(dt)^2 = 0
+\end{align}
+
+\subsection{Simple processes}
+The stochastic process $\{C_t, t\in [0, T]\}$ is said to be \textbf{simple} if it satisfies the following properties
+\begin{itemize}
+\item There exist a partition $\tau_n$ :and a sequence, $Z_i$, $i = 1,...,n$ of random variables such that
+$$ C_t = \begin{cases}
+Z_i, \text{     if } t_{i-1} \leq t < t_i \\
+Z_n, \text{     if } t = T
+\end{cases} $$
+\item The sequence $Z_i$ is adapted to the natural filtration $F_{t_{i-1}} = \sigma (W_s, s \leq t_{i-1} ), \,\, i = 1, ... , n$.
+\item $E[Z_i^2] < \infty$ for all $i$
+\end{itemize}
+
+The Ito integral of a simple process $C$ on $[0, T]$ is given by
+\begin{equation}
+\int_0^T C_s dW_s = \sum_{i=1}^n C_{t_{i-1}} (W_{t_i} - W_{t_{i-1}}) = \sum_{i=1}^n Z_i (W_{t_i} - W_{t_{i-1}})
+\end{equation}
+
+The Ito integral of a simple process $C$ on $[0,t]$, $t_{k-1} \leq t \leq t_k$, is given by
+\begin{equation}
+\int_0^t C_s dW_s = \int_0^T C_s 1_{[0,t]}(s) dW_s = \sum_{i=1}^{k-1} Z_i (W_{t_i} - W_{t_{i-1}}) + Z_k (W_t - W_{t_{k-1}})
+\end{equation}
+
+\begin{example}
+Let $C_t = 1$ for $t \in [0,T]$. Then we have
+\begin{equation}
+\int_0^t C_s dW_s = \int_0^t dW_s = W_t - W_0 = W_t
+\end{equation}
+\end{example}
+
+Let $\sigma(t)$ be a given deterministic function of time, then it can be shown that
+$$ \int_0^t \sigma(s) dW_s \sim N \left(0, \int_0^t \sigma^2(s) ds \right) $$
+
+\begin{example}
+Let $C_t = \begin{cases}
+1, \text{   if } 0 \leq t < t_1 \\
+2, \text{   if } t_1 \leq < T \\
+0, \text{   otherwise}
+\end{cases}$
+
+Then
+$$ \int_0^t C_s dW_s = \begin{cases}
+\int_0^t dW_s = W_t \text{,   if } 0 \leq t < t_1 \\
+\int_0^{t_1} dW_s + \int_0^{t_1} dW_s + \int_{t_1}^t 2dW_s = 2W_t - W_{t_1} \text{,   if } t_1 \leq t < T
+\end{cases} $$
+\end{example}
+
+\begin{example}
+Let $C_t = \begin{cases}
+W_{t_{i-1}}, \text{   if } 0t_{i-1}\leq t < t_i \\
+W_{t_{n-1}}, \text{   if } t = T
+\end{cases}$
+
+Then, for $t_{k-1} \leq t < t_k$, we have
+$$ \int_0^t C_s dW_s = \sum_{i=1}^{k-1} W_{t_{i-1}} (W_{t_i} - W_{t_{i-1}}) + W_{t_{k-1}} (W_t - W_{t_{k-1}}) $$
+\end{example}
+
+\subsection{General Ito integral}
+Let the stochastic process $\{C_t, t\in [0, T]\}$ be such that
+\begin{itemize}
+\item $C_t$ is adapted to the natural filtration $F_t = \sigma (W_s, s \leq t)$, $t \in [0,T]$.
+\item $\int_0^T E[C_s^2] ds < \infty$.
+\end{itemize}
+
+Then $C_t$ can be approximated by a sequence $C^{(n)}$ of simple processes such that
+$$ \int_0^T E[C_s - C_s^{(n)}]^2 ds \xrightarrow{n \rightarrow \infty} 0 $$
+
+It can be shown that the mean square limit, $I_t(C)$ , such that
+$$ E \sup_{0 \leq t \leq T} [I_t(C) - I_t(C^{(n)})]^2 = E \sup_{0 \leq t \leq T} [\int_0^t C_s dW_s - \int_0^t C^{(n)} dW_s]^2 \xrightarrow{n \rightarrow \infty} 0 $$
+exists and is called the \textbf{Ito stochastic integral} of C.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.4]{Chapter 2/Chapter2_1.png}
+	\caption{Illustration of Ito integral}
+\end{figure}
+
+An Ito stochastic integral has some properties:
+\begin{itemize}
+\item The Ito stochastic integral is linear.
+
+For constants $c_1$, $c_2$ and processes $C^{(1)}$ and $C^{(2)}$ on $[0, T]$
+$$ \int_0^t (c_1 C_s^{(1)} + c_2 C_s^{(2)}) dW_s = c_1 \int_0^t C_s^{(1)} dW_s + c_2 \int_0^t C_s^{(2)} dW_s $$
+\item The Ito stochastic integral is linear on adjacent intervals.
+
+For $0 \leq t \leq T$
+$$ \int_0^T C_s dW_s = \int_0^t C_s dW_s + \int_t^T C_s dW_s $$
+\end{itemize}
+
+Denote $I_t(C) = \int_0^t C_s W_s$, $t \in [0, T]$. The stochastic process $I_t(C)$
+\begin{itemize}
+\item is a martingale with respect to the natural Brownian filtration $\{F_t, t \in [0, T]\}$, i.e. for $s<t$
+$$ E[I_t(C) | F_s] = I_s(C) $$
+\item has expectation zero
+$$ E[I_t(C)] = E[I_0(C)] = 0 $$
+\item satisfies the isometry property
+$$ E[(\int_0^t C_s dW_s)^2] = \int_0^t E[C_s^2] ds $$
+\item has continuous sample paths
+\end{itemize}
+
+\section{Ito formula}
+
+\subsection{Diffusion process}
+Stochastic differential equations (SDE) can be used to define a continuous time stochastic processes.
+
+\textbf{Diffusion processes}, $X_t$, are processes that satisfy the Ito SDE
+\begin{equation}
+X_t = X_0 + \int_0^t \mu(s,X_s) ds + \int_0^t \sigma(s,X_s) dW_s
+\end{equation}
+or expressed in differential form
+\begin{equation}
+dX_t = \mu(t,X_t) dt + \sigma(t,X_t) dW_t
+\end{equation}
+
+For example, a Brownian motion takes the form
+$$ dX_t = \mu dt + \sigma dW_t $$
+
+\subsection{Ito formula}
+Let $f(t, x)$ be a deterministic, twice partially differentiable function with continuous partial derivatives. Let $X_t$ be a diffusion process adapted to $W_t$. Define the process $Z_t = f(t, X_t)$. The stochastic differential (the SDE) of $Z_t$ is given by
+\begin{equation}
+df(t,X_t) = \left[ \frac{\partial f}{\partial t} + \mu(t,X_t) \frac{\partial f}{\partial x} + \frac{1}{2} \sigma^2(t,X_t) \frac{\partial^2 f}{\partial x^2} \right] dt + \sigma(t,X_t) \frac{\partial f}{\partial x} dW_t
+\end{equation}
+
+$Z_t$ is again a diffusion process.
+
+\vspace{15pt}
+Proof: Make a second-order Taylor expansion
+\begin{equation}
+df(t,X_t) = \frac{\partial f}{\partial t}dt + \frac{\partial f}{\partial x}dX_t + \frac{1}{2} \frac{\partial^2 f}{\partial t^2} (dt)^2 + \frac{1}{2} \frac{\partial^2 f}{\partial x^2} (dX_t)^2 + \frac{\partial^2 f}{\partial t \partial x}dt\,\,dX_t 
+\end{equation}
+As $dX_t = \mu(t,X_t) dt + \sigma(t,X_t) dW_t$,
+$$ (dX_t)^2 = (\mu(t,X_t) dt)^2 + (\sigma(t,X_t) dW_t)^2 + 2\mu(t,X_t)\sigma(t,X_t)dt dW_t $$
+For small $dt$, we have $(dt)^2 \rightarrow 0$, $dt dW_t \rightarrow 0$ and $(dW_t)^2 \rightarrow dt$.
+$$ \therefore (dX_t)^2 = \sigma^2(t,X_t)dt $$
+Plugging everything in completes the proof.
+
+\pagebreak
+
+\begin{example}
+Let $f(x) = x^2$. Find the SDE for $W_t^2$.
+
+\vspace{15pt}
+\textbf{Solution:}
+Let $X_t = W_t$. Therefore $dX_t = dW_t$ and it is a diffusion process with $\mu = 0$ and $\sigma = 1$.
+Then 
+$$ \frac{\partial f}{\partial x} = 2x \,\,\,\,\,\,\,\,\,\, \frac{\partial^2 f}{\partial x^2} = 2 \,\,\,\,\,\,\,\,\,\,
+\frac{\partial f}{\partial t} = 0 $$
+\begin{align*}
+dW_t^2 = df &= \left( \frac{\partial f}{\partial t} + \mu \frac{\partial f}{\partial x} + \frac{1}{2} \sigma^2 \frac{\partial^2 f}{\partial x^2} \right) dt + \sigma \frac{\partial f}{\partial x} dW_t \\
+&= ( 0 + 0 + \frac{1}{2}\times 1^2 \times 2)dt + 1 \times 2 W_t dW_t \\
+&= dt + 2W_t dW_t
+\end{align*}
+\begin{align*}
+\int_0^t dW_s^2 &= \int_0^t ds + \int_0^t 2W_s dW_s \\
+W_t^2 - W_0^2 &= t + 2\int_0^t W_s dW_s \\
+\therefore \int_0^t W_s dW_s &= \frac{1}{2}(W_t^2 - t)
+\end{align*}
+\end{example}
+
+\begin{ex}
+Let $f(t,x) = x^2-t$ and $X_t = W_t$. Find the SDE for $W_t^2-t$ and compare the resulting SDE with Example 2.5.
+\end{ex}
+
+\begin{ex}
+Consider a particular form of geometric Brownian motion $S_t = f(t,W_t) = e^{(\alpha - 0.5 \sigma^2)t + \sigma W_t}$, where $\alpha$ and $\sigma > 0$ are constants. Find the SDE for $S_t$.
+\end{ex}
+
+\subsection{Geometric Brownian motion revisited}
+A standard model for the price of a risky asset like a stock is
+$$ \frac{dS_t}{S_t} = \alpha dt + \sigma dW_t $$
+where $\alpha, \sigma >0$. Consider the SDE
+\begin{equation}
+dS_t = \alpha S_t dt + \sigma S_t dW_t
+\end{equation}
+Suppose $S_t = f(t,W_t)$. Comparing (2.11) with (2.9) yields the following system of two partial differential equations
+$$ \frac{\partial f}{\partial t}(t,x) + \frac{1}{2}\frac{\partial^2 f}{\partial x^2}(t,x) = \alpha f(t,x) $$
+$$ \frac{\partial f}{\partial x}(t,x) = \sigma f(t,x) $$
+The second equation gives
+$$ \frac{\partial f}{\partial x}(t,x) = \sigma f(t,x) \Longrightarrow \frac{\partial f(t,x)}{f(t,x)} = \sigma \partial x \Longrightarrow f(t,x) = f(t,0)e^{\sigma x} $$
+Substituting into the first gives
+$$ \frac{\partial f}{\partial t}(t,0)e^{\sigma x} + \frac{1}{2}f(t,0)\sigma^2 e^{\sigma x} = \alpha f(t,0) e^{\sigma x} \Longrightarrow \frac{\partial f}{\partial t}(t,0) + \frac{1}{2}f(t,0)\sigma^2 = \alpha f(t,0) \Longrightarrow$$
+$$ \frac{\partial f}{\partial t}(t,0) = \left(\alpha - \frac{1}{2}\sigma^2 \right) f(t,0) \Longrightarrow \frac{\partial f(t,0)}{f(t,0)} = \left(\alpha - \frac{1}{2}\sigma^2 \right) \partial t \Longrightarrow f(t,0) = f(0,0) e^{(\alpha - \frac{1}{2}\sigma^2)t} $$
+Thus we obtain
+$$f(t,x) = f(t,0)e^{\sigma x} = f(0,0)e^{(\alpha - \frac{1}{2}\sigma^2)t+\sigma x} $$
+Since $S_0 = f(0,W_0) = f(0,0)$, we have
+$$ S_t = f(t,W_t) = S_0 e^{(\alpha - \frac{1}{2}\sigma^2)t + \sigma W_t} $$
+Hence, the solution of (2.11) is a geometric Brownian motion with drift parameter $\mu = \alpha - \frac{1}{2}\sigma^2$ and diffusion parameter $\sigma$. Thus $\frac{S_t}{S_0} \sim LogN( (\alpha-\frac{1}{2}\sigma^2)t, \sigma^2 t)$ and
+$$ E\left[ \frac{S_t}{S_0} \right] = e^{\alpha t} \text{           } Var\left[ \frac{S_t}{S_0} \right] = e^{2\alpha t}(e^{\sigma^2t}-1) $$
+
+\subsection{Mean-reverting process}
+A standard model for the spot rate of interest (Vasicek model) is
+$$ dr_t = -\alpha (r_t -\mu)dt + \sigma dW_t $$
+where $\alpha, \sigma>0$, $\mu \in R$.
+
+Let $X_t = r_t-\mu$. Consider the SDE
+\begin{equation}
+dX_t = -\alpha X_t dt + \sigma dW_t
+\end{equation}
+Suppose $Y_t = e^{\alpha t}X_t = f(t,X_t)$ where $f(t,X_t) = e^{\alpha t}x$ and $X_t$ is a diffusion process with $\mu(t,X_t) = -\alpha X_t$ and $\sigma(t,X_t) = \sigma$. Apply Ito's lemma to $Y_t$ yields
+$$ dY_t = [\alpha e^{\alpha t}X_t-\alpha e^{\alpha t}X_t+0]dt + [e^{\alpha t}]\sigma dW_t $$
+which is equivalent to
+$$ d(e^{\alpha t} X_t) = \sigma e^{\alpha t} dW_t $$
+Integrating between 0 and $t$ we obtain
+$$\int_0^t d(e^{\alpha s}X_s) = \sigma \int_0^t e^{\alpha s} dW_s \Longrightarrow e^{\alpha t}X_t - e^{\alpha 0}X_0 = \sigma \int_0^t e^{\alpha s} dW_s $$
+Finally we have
+$$ X_t = X_0e^{\alpha t} + \sigma e^{-\alpha t} \int_0^t e^{\alpha s} dW_s $$
+or
+$$ r_t = r_0e^{-\alpha t} + \mu(1-e^{-\alpha t}) + \sigma e^{-\alpha t} \int_0^t e^{\alpha s} dW_s $$
+Properties:
+\begin{itemize}
+\item $E[X_t] = X_0 e^{-\alpha t}$
+\item $Var[X_t] = \frac{\sigma^2}{2\alpha}(1-e^{-2\alpha t})$
+\end{itemize}
+The mean-reverting (Ornstein-Uhlenbeck) process is a Gaussian process with
+$$X_t \sim N(X_0e^{-\alpha t}, \frac{\sigma^2}{2\alpha}(1-e^{-2\alpha t}))$$
+The asymptotic (long term $t \rightarrow \infty$) distribution is $N(0,\frac{\sigma^2}{2\alpha})$.
+
+
+%============ CHAPTER 3 ===========%
+\chapter{Introduction to derivative securities}
+
+\section{Derivative securities}
+
+\subsection{Definitions}
+A \textbf{derivative security} is a security (financial contract) whose value is derived from that of another underlying, more basic, security.
+
+Underlying securities can include stock, bond, index, interest rate, currency, commodity and so on.
+
+Common securities:
+\begin{itemize}
+\item Forwards
+\item Futures
+\item Options
+\item Swaps
+\end{itemize}
+
+A \textbf{forward contract} is an agreement between two parties to buy (or sell) an asset at a pre-specified future date for a delivery (forward) price agreed in advance.
+
+A \textbf{futures contract} is a standardised forward contract traded on an exchange.
+
+An \textbf{option} is a financial contract which conveys the right, but not the obligation, to engage in a specific transaction, on some underlying security, at or by a pre-specified future date at a specified price.
+\begin{itemize}
+\item Call: right to buy the underlying asset
+\item Put: right to sell the underlying asset
+\item European: the right can be exercised only at maturity
+\item American: the right can be exercised at any time prior to or at maturity
+\end{itemize}
+
+\subsection{Assumptions}
+Before diving into derivative pricing models, we need to make several assumptions:
+\begin{itemize}
+\item No market frictions: no transaction costs, no bid/ask spread, no taxes, no restrictions on short sales 
+\item The same risk-free interest for borrowing and lending
+\item Competitive markets: market participants act as price takers
+\item Rational agents: market participants prefer more to less
+\item No arbitrage
+\end{itemize}
+
+An \textbf{arbitrage} opportunity is a situation where we can make sure profit with no risk. Namely,
+\begin{itemize}
+\item Start at time 0 with a zero-cost portfolio
+\item At some future time $T$
+\begin{itemize}[label=$\circ$]
+\item the probability of a loss is 0
+\item the probability that we make a strictly positive profit is strictly greater than 0
+\end{itemize}
+\end{itemize}
+The principle of no arbitrage states that arbitrage opportunities do not exist. Any two assets (or combination of assets) that have exactly the same cash flows (give exactly the same payments) must have the same price ("Law of one price").
+
+\section{Forward contracts}
+
+\begin{itemize}
+\item $S_t$ is the price of the underlying (share) at time $t$
+\item $T$ is the expiry date (maturity)
+\item $F_{0,T}$ is the forward price (the price the buyer agrees to pay at time $T$) at time $t=0$
+\item $r$ is the risk-free continuously-compounding rate of interest (constant)
+\end{itemize}
+
+\subsubsection*{Non-dividend-paying share}
+
+The forward price $F_{0,T}$ should be set so that the value of the contract at time $t = 0$ is zero.
+\begin{equation}
+F_{0,T} = S_0 e^{rT}
+\end{equation}
+
+\begin{example}
+A share of XYZ company has a current price of \$42.60. A three-month forward contract on it is issued. Calculate the forward price given that the yield available on three-month government securities is 6\% per annum effective.
+
+\vspace{15pt}
+\textbf{Solution:}
+Here $S_0 = \$42.60$, $T = \frac{3}{12}$ and $r = 0.06$.
+Apply the formula and we get
+$$ F_{0,\frac{3}{12}} = \$ 42.60 \times e^{0.06 \times \frac{3}{12}} = \$ 43.24 $$
+\end{example}
+
+\subsubsection*{Discrete dividend-paying share}
+
+Suppose a stock is expected to make multiple dividend payments, $D_{t_i}$, at times $t_i$, $i=1,...,n$ throughout the life of the forward contract.
+\begin{equation}
+F_{0,T} = S_0 e^{rT} - \sum_{i=1}^n e^{r(T-t_i)}D_{t_i} = \left(S_0 - \sum_{i=1}^n e^{-rt_i} D_{t_i} \right) e^{rT} = (S_0 - I) e^{rT}
+\end{equation}
+
+\begin{example}
+Suppose XYZ stock costs \$100 today and is expected to pay a \$1.25 quarterly dividend, with the first coming 3 months from today and the last just prior to the delivery of the stock. Suppose the annual continuously compounded risk-free rate is 10\%. Calculate the delivery (forward) price of a 1-year forward contract on the stock.
+
+\vspace{15pt}
+\textbf{Solution:}
+Here $S_0 = \$100$, $r=0.1$, $T = 1$ and Dividend $=1.25$.
+Therefore
+\begin{align*}
+F_{0,1} &= \$100 e^{0.1 \times 1} - \$1.25 (e^{0.1\times \frac{9}{12}} + e^{0.1\times \frac{6}{12}} + e^{0.1\times \frac{3}{12}} + e^{0.1\times \frac{0}{12}}) \\
+&= \$ 105.32
+\end{align*}
+\end{example}
+
+In the example, if short-selling is allowed, we can have the following two portfolios:
+\begin{table}[H]
+\centering
+\begin{tabular}{c|c}
+Portfolio A & Portfolio B \\
+Take out forward at price $F_{0,T}$ & Borrow \$100 and buy share \\
+ & \\
+After 1 year & After 1 year \\
+$-F_{0,T}$ cash $+ 1$ share & $-100e^{0.1}$ cash $+1$ share \\
+& + dividends of $1.25(1+e^{0.025}+e^{0.05}+e^{0.075})$
+\end{tabular}
+\end{table}
+
+
+\vspace{15pt}
+\subsubsection*{Continuous dividend-paying share}
+
+Suppose a dividend is being paid continuously at a rate proportional to the level of the index, i.e. suppose $q$ is a constant annualised dividend yield.
+\begin{equation}
+F_{0,T} = S_0 e^{(r-q)T}
+\end{equation}
+
+\subsubsection*{Currency exchange}
+
+Suppose one has 1\texteuro at time 0. Let the euro-denominated interest rate is $r_e$ and the exchange rate today is $S_0 \$ /$\texteuro.
+\begin{equation}
+F_{0,T} = S_0 e^{(r-r_e)T}
+\end{equation}
+
+\begin{ex}
+Suppose the euro-denominated interest rate is 2\% p.a. continuously-componded and the dollar-denominated rate is 3\% p.a. continuously-componded. The current exchange rate is 1.25\$/\texteuro . Find the 1-year forward rate.
+\end{ex}
+
+\subsubsection*{Commodities}
+
+Storage costs are the costs of storing a commodity. They can be regarded as negative income (known series of discrete cashflows or as a continuous outflow).
+
+Let $U$ be the present value of the storage costs during the life of a forward contract
+\begin{equation}
+F_{0,T} = (S_0 + U)e^{rT}
+\end{equation}
+If the storage costs incurred at any time are proportional to the price of the commodity, they can be regarded as negative yield.
+\begin{equation}
+F_{0,T} = S_0 e^{(r+u)T}
+\end{equation}
+
+The forward price is a biased predictor of the future spot price of the underlying.
+
+Consider a $T$-year forward contract on a non-dividend-paying share with an expected return of $\alpha$. Then
+$$ F_{0,T} = S_0 e^{rT} $$
+$$ E_0[S_T] = S_0 e^{\alpha T} $$
+The quantity $\alpha - r$ is the risk premium on the asset, i.e. the amount by which the asset is expected to outperform the risk-free asset.
+
+\section{Futures}
+
+\subsection{Forward vs Futures}
+In practice, forward and futures prices are not necessarily the same.
+
+For underlying assets whose values are positively (negatively) correlated with interest rates, futures prices will be higher (lower) than forward prices.
+
+If we ignore the possible differences in liquidity (futures are generally more liquid), transaction costs and tax treatment and assume that the risk-free rate is deterministic, then the forward prices and futures prices should be equal.
+
+Suppose that a futures contract lasts for $n$ days, $G_{i,T}$ is the futures price at the end of day $i (0 \leq i \leq n)$, is the (constant) risk-free rate per day, $T$ is the delivery date at which time the value of the underlying security is $S_T$.
+
+\textbf{Strategy 1}: (1) long position in $e^{\delta}$ futures at the end of day 0 and increase the holding to $e^{(i+1)\delta}$ futures at the end of day $i, 1 \leq i \leq n$; (2) invest $G_{0,T}$ (at day 0) in a risk-free zero-coupon bond.
+
+\textbf{Strategy 2}: (1) long position in $e^{n \delta}$ forwards at the end of day 0; (2) invest $F_{0,T}$ (at day 0) in a risk-free zero-coupon bond.
+
+\begin{table}[H]
+\centering
+\begin{tabular}{ccl}
+ & time 0 & time $T$ \\
+\textbf{Strategy 1}: & $G_{0,T}$ & $(S_T-G_{0,T})e^{n \delta} + G_{0,T}e^{n \delta} = S_T e^{n \delta}$ \\
+\textbf{Strategy 2}: & $F_{0,T}$ & $(S_T-F_{0,T})e^{n \delta} + F_{0,T}e^{n \delta} = S_T e^{n \delta}$ \\
+\end{tabular}
+\end{table}
+
+\subsection{Hedging with futures}
+A \textbf{short hedge} is a hedge that involves taking a short position in futures contract whereas a \textbf{long hedge} is one that involves taking a long position.
+
+Hedging reduces the market risk from future price changes but it makes the overall outcome more certain by reducing the risk, not to make profits.
+
+Futures contracts might not be available on the asset whose price is to be hedged; or the hedger may be uncertain about the exact date when the asset will be bought or sold. Such risk is called \textbf{basis risk} and
+$$ Basis = Spot price of asset to be hedged - Futures price of contract used $$
+If the asset to be hedged and the asset underlying the futures contract are the same, the basis should be zero at the expiration of futures contract.
+
+Hedging with a futures on a different asset from the one being hedged is called \textbf{cross-hedging}.
+
+The hedge ratio is the ratio of the size of the position taken in futures contracts to the size of the exposure in the underlying asset.
+
+Minimum variance (optimal) hedge ratio is
+$$ h^* = \rho \frac{\sigma_S}{\sigma_F} $$
+where $rho$ is the coefficient of correlation between $\Delta S$ and $\Delta F$ (change in spot and futures prices over the term of the hedge); $\sigma_S$, $\sigma_F$ are standard deviation of $S$ and $F$.
+
+The hedge effectiveness is the proportion of the variance eliminated by hedging
+$$ \rho^2 = (h^*)^2 \frac{\sigma_F^2}{\sigma_S^2} $$
+This is the $R^2$ value from a regression analysis of $\Delta S$ against $\Delta F$ and a value of 0.8 or higher is regarded effective.
+
+The optimal number of futures contracts required is
+$$ N^* = \frac{h^* Q_A}{Q_F} $$
+where $Q_A$ is size of position being hedged (number of units of the asset) and $Q_F$ is the size of futures contract.
+
+\section{Options}
+
+\subsection{Introduction}
+\begin{itemize}
+\item $S_t$ is the price of the underlying (share) at time $t$
+\item $K$ is the strike (exercise) price
+\item $T$ is the expiry date (maturity)
+\item $c_t$ is the price at time $t$ of a European call option
+\item $C_t$ is the price at time $t$ of an American call option
+\item $p_t$ is the price at time $t$ of a European put option
+\item $P_t$ is the price at time $t$ of an American put option
+\item $r$ is the risk-free continuously-compounding rate of interest (constant) 
+\end{itemize}
+
+\textbf{European call option}
+
+Payoff at maturity $c_T = max\{S_T - K, 0\} = (S_T - K)_+$.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.4]{Chapter 3/Chapter3_1.png}
+	\caption{European call option}
+\end{figure}
+
+A call option is described as
+\begin{itemize}
+\item in-the-money if $S_t > K$
+\item at-the-money if $S_t = K$
+\item out-of-the-money if $S_t < K$
+\end{itemize}
+
+\textbf{European put option}
+
+Payoff at maturity $p_T = max\{K - S_T, 0\} = (K - S_T)_+$.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.4]{Chapter 3/Chapter3_2.png}
+	\caption{European put option}
+\end{figure}
+
+A put option is described as
+\begin{itemize}
+\item in-the-money if $S_t < K$
+\item at-the-money if $S_t = K$
+\item out-of-the-money if $S_t > K$
+\end{itemize}
+
+The \textbf{intrinsic value} of an option is the value assuming expiry of the contract immediately rather than at some time in the future.
+\begin{itemize}
+\item call option: max{$S_t - K, 0$}
+\item put option: max{$K - S_t, 0$}
+\end{itemize}
+The intrinsic value of an option is: positive, if it is in-the-money; zero, if it is at-the-money; zero, if it is out-of-the-money.
+
+The \textbf{time value} of an option is defined as the market price of the option minus its intrinsic value.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.5]{Chapter 3/Chapter3_3.png}
+	\caption{European put option}
+\end{figure}
+
+\begin{table}[H]
+\centering
+\begin{tabular}{ccccc}
+\hline
+ & $c_t$ & $p_t$ & $C_t$ & $P_t$ \\
+Current stock price & + & - & + & - \\
+Strike price & - & + & - & + \\
+Time to expiration & ? & ? & + & + \\
+Volatility & + & + & + & + \\
+Risk-free rate & + & - & + & - \\
+Dividends & - & + & - & + \\
+\end{tabular}
+\end{table}
+
+For European options on non-dividend-paying shares the following relationship, known as \textbf{put-call parity}, holds
+\begin{equation}
+c_t + K e^{-r(T-t)} = p_t + S_t
+\end{equation}
+In the case of dividend-paying shares, the put-call parity relationship is
+\begin{equation}
+c_t + K e^{-r(T-t)} = p_t + S_te^{-q(T-t)}
+\end{equation}
+
+\begin{example}
+Company $X$ issues 3-month European call options on its own shares with a strike price of 120 cents. They are currently priced at 30 cents per share. The current share price is 123 cents and the current force of risk-free interest is 6\% per annum. If dividends are payable continuously at a rate of $q = 12\%$ per annum then calculate the fair price for put options on shares of $X$ at the same strike price.
+
+\pagebreak
+\textbf{Solution:}
+In this example, $t=0$, $T = \frac{3}{12}$, $c_0 = \$0.30$, $K=\$1.20$, $S_0 = \$ 1.23$, $r=0.06$, $q=0.12$.
+
+Therefore
+\begin{align*}
+c_0 + K e^{-r(\frac{3}{12}-0)} &= p_0 + S_0e^{-q(\frac{3}{12}-0)}  \\
+\$0.30 + \$1.20 e^{-0.06 \times\frac{3}{12}} &= p_0 + \$1.23 e^{-0.12\times \frac{3}{12}} \\
+p_0 &= \$0.29
+\end{align*}
+\end{example}
+
+\subsection{Greeks}
+
+The rate at which a derivative price changes as different factors vary (sensitivity) is given by its partial derivatives (the Greeks).
+
+The Greeks help to understand and manage the risks in a portfolio (hedging).
+
+Let $f(t, S_t)$ be the value at time $t$ of a derivative when the price of the underlying asset at $t$ is $S_t$.
+
+The rate of change of a derivative price with respect to the price of the underlying share is given by
+\begin{equation}
+\Delta = \frac{\partial f}{\partial S_t}
+\end{equation}
+
+The overall delta of a portfolio is obtained by adding up the deltas for the individual assets and derivatives taking into account the number of units held of each.
+
+\subsubsection*{Delta Hedging}
+
+A portfolio for which the weighted sum of the individual deltas is equal to zero is called delta-hedged or delta-neutral.
+
+If the overall delta is equal to zero and the underlying asset prices follow a diffusion then the portfolio is instantaneously risk-free.
+
+\subsubsection*{Gamma Hedging}
+
+Let $f(t, S_t)$ be the value at time $t$ of a derivative when the price of the underlying asset at $t$ is $S_t$.
+
+The rate of change of $\Delta$ with the price of the underlying share is given by
+\begin{equation}
+\Gamma = \frac{\partial^2 f}{\partial S_t^2}
+\end{equation}
+
+For practical hedging purposes, a portfolio with a low is preferable, as costly rebalancing will be required less frequently in order to keep the portfolio approximately delta-hedged.
+
+A portfolio for which the overall gamma is equal to zero is called gamma-neutral.
+
+\subsubsection*{Vega}
+
+The rate of change of a derivative price with respect to a change in the assumed level of volatility of the price of underlying share is given by
+\begin{equation}
+V = \frac{\partial f}{\partial \sigma}
+\end{equation}
+
+Since $\sigma$ is not directly observable, a portfolio with a low $V$ is preferable.
+
+\subsubsection*{Rho}
+
+The rate of change of a derivative price with respect to changes in the risk-free rate of interest is given by
+\begin{equation}
+\rho = \frac{\partial f}{\partial r}
+\end{equation}
+
+A low value of $\rho$ reduces risk relative to uncertainty in the risk-free rate of interest.
+
+\subsubsection*{Lambda}
+
+The rate of change of a derivative price with respect to a change in the continuous dividend yield on the underlying share is given by
+\begin{equation}
+\lambda = \frac{\partial f}{\partial q}
+\end{equation}
+
+\subsubsection*{Theta}
+
+The rate of change of a derivative price with respect to the passage of time is given by
+\begin{equation}
+\Theta = \frac{\partial f}{\partial t}
+\end{equation}
+
+
+%============ CHAPTER 4 ===========%
+\chapter{Binomial model}
+
+\section{Option pricing - discrete time}
+In order to price derivative securities, we will
+\begin{itemize}
+\item assume that the underlying share price is a discrete time stochastic process with discrete state space (geometric random walk)
+\item use binomial trees (lattices)
+\item apply the no-arbitrage principle (replicating portfolio) and show that it is equivalent to the risk-neutral pricing approach
+\end{itemize}
+
+The model for the stock price is simple but
+\begin{itemize}
+\item it introduces the key concepts of financial economic pricing
+\item it leads us to the celebrated Black-Scholes model as a limiting case
+\end{itemize}
+
+In this model, there are two tradeable assets: a risky asset (e.g. stock) and a riskless asset.
+
+\begin{itemize}
+\item The share price process, $S_t$, $t=0, 1, 2, ...$.
+\begin{itemize}[label=$\circ$]
+\item $S_0 \in R_{++}$
+\item $S_{t+1} = \begin{cases}
+uS_t \text{,     with probability } p \\
+dS_t \text{,     with probability } 1-p
+\end{cases}
+,d < u, p \in (0,1), t = 0,1,2,...$
+\item $(\Omega, F, P)$ with a filtration $\{F_t\}_{0 \leq t \leq T}$ generated by $S_t$
+\end{itemize}
+\item The cash process, $B_t$, $t = 0, 1, 2 ...$.
+\begin{itemize}[label=$\circ$]
+\item $B_0 = 1$
+\item assumed to be risk-free, so $B_t = e^{rt}$
+\item $r>0$, so $B_t > B_{t-1}$ for $t>0$
+\end{itemize}
+\end{itemize}
+
+\subsection{One-period model}
+Suppose we have a stock whose price is $S_0$ and an option on the stock whose current price (at time $t=0$) is $f_0$. We suppose that the option lasts for one-period time interval to $t=1$ and that its payoff is $f_u$, if the stock price moves up to $u S_0$, and $f_d$, if the stock price moves down to $d S_0$.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.5]{Chapter 4/Chapter4_1.png}
+	\caption{One-period model}
+\end{figure}
+
+\textbf{Proposition 1}: The model is arbitrage-free if and only if the following conditions hold:
+\begin{equation}
+d < e^r < u
+\end{equation}
+
+At time $t=0$ construct a (replicating) portfolio, $(\phi,\psi)$, which consists of $\phi$ units of stock and $\psi$ units of cash.
+$$ V_0 = \phi S_0 + \psi $$
+At time $t=1$ the portfolio has the value
+$$ V_1 = \begin{cases}
+\phi u S_0 + \psi e^r \text{,     if the stock price went up} \\
+\phi d S_0 + \psi e^r \text{,     if the stock price went down}
+\end{cases} $$
+Let us choose $\phi$ and $\psi$ so that $V_1 = f_1 = \begin{cases}
+f_u \text{,     if the stock price went up} \\
+f_d \text{,     if the stock price went down}
+\end{cases}$
+, i.e. we have the system
+\begin{align}
+\phi u S_0 + \psi e^r &= f_u \nonumber \\
+\phi d S_0 + \psi e^r &= f_d
+\end{align}
+A replicating portfolio $(\phi, \psi)$ is one that has the same payoff as the derivative in all circumstances.
+
+Solving (4.2) yields
+$$ \phi = \frac{f_u - f_d}{S_0(u-d)} \,\,\,\,\,\,\,\,\,\, \psi = e^{-r}\left(\frac{uf_d - df_u}{u-d}\right) $$
+Now since $V_1 = f_1$, by the no-arbitrage principle we have
+\begin{equation}
+f_0 = V_0 = \phi S_0 + \psi = \frac{f_u - f_d}{u-d} + e^{-r} \left(\frac{uf_d - df_u}{u-d} \right)
+\end{equation}
+The replicating portfolio $(\phi,\psi)$, is an example of a hedging strategy, i.e. an investment strategy which reduces the amount of risk carried by the issuer of the derivative contract.
+
+\textbf{Note} that (4.3) does not depend on the real-world probability measure.
+
+\begin{example}
+A stock price is currently $S_0 = \$20$, and it is known that at the end of three months it will be \$22 with probability $p=0.7$ or \$18 with probability $1-p=0.3$. Suppose that the continuously-compounding risk-free rate is 12\% per annum. Calculate the price of a three-month European call option with strike price $K=\$21$.
+
+\vspace{15pt}
+\textbf{Solution:}
+\begin{align*}
+c_0 &= e^{-0.12\times \frac{3}{12}} \cdot [0.7 \times \max(\$22 - \$21, 0) + 0.3 \times \max(\$18 - \$21, 0)] \\
+c_0 &= \$0.68
+\end{align*}
+
+\end{example}
+
+\vspace{20pt}
+From (4.3) we can write 
+$$ f_0 = \frac{f_u - f_d}{u-d} + e^{-r} \left(\frac{uf_d - df_u}{u-d} \right)= e^{-r}[qf_u + (1-q)f_d] $$
+where $q = \frac{e^r-d}{u-d}$ and the no-arbitrage condition (4.1) ensures that $0<q<1$. We have
+\begin{equation}
+f_0 = e^{-r} [qf_u + (1-q)f_d] = e^{-r}E_Q[f_1|F_0]
+\end{equation}
+where $Q$ is a probability measure which gives probability $q$ to an upward move and $1-q$ to a downward move.
+
+The option price is a discounted value of the 'expected' payoff (under the risk-neutral probability measure $Q$.
+
+
+$Q$ is a artificial probability measure equivalent to $P$. $Q$ is called the martingale measure or the risk-neutral probability measure as opposed to the real-world probability measure $P$.
+
+Under the risk-neutral probability measure, all discounted price processes of the risky assets are martingales. In a risk-neutral world the expected return on all assets is the risk-free rate.
+
+\subsection{Two-period model}
+
+\underline{First fundamental theorem of asset pricing}
+
+The market is arbitrage free if there exist a probability measure, equivalent to the original probability measure, such that the discounted prices of all assets are martingales (i.e. a risk-neutral probability measure).
+
+\underline{Second fundamental theorem of asset pricing}
+
+An arbitrage free market is complete if there exist a unique probability measure, equivalent to the original probability measure, under which the discounted prices of all assets are martingales.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.5]{Chapter 4/Chapter4_2.png}
+	\caption{Two-period model}
+\end{figure}
+
+Working backwards, we can also construct a self-financing replicating strategy $(\phi_{t+1,(j)} , \psi_{t+1,(j))}$, where $\phi_{t+1,(j)}$ is the number of units of stock when in state $t,(j)$ at time $t$ and $\psi_{t+1,(j)}$ is the amount held in cash when in state $t,(j)$ at time $t$, as
+$$ \phi_{t+1,(j)} = \frac{f_{t+1,(2\,\,j-1)}-f_{t+1,(2\,\,j)}}{S_{t,(j)} (u_{t,(j)}- d_{t,(j)})} $$
+$$ \psi_{t+1,(j)} = e^{-r} \frac{u_{t,(j)}f_{t+1,(2\,\,j)} - d_{t,(j)}f_{t+1,(2\,\,j-1)}}{u_{t,(j)} - d_{t,(j)}} $$
+
+A portfolio strategy $(\phi_t, \psi_t)$ is said to be self-financing if it has no external cashflows, i.e. $\Delta V_t = \phi_t \Delta S_t + \psi_t \Delta B_t$, i.e. if for all $t=1, ..., n-1$.
+
+It is essential that a replicating strategy should be previsible, i.e. the replicating portfolio to hold at each node can be determined without any knowledge of the future share price.
+
+Let $V_t^* = e^{-rt} V_t = 	e^{-rt} (\phi_{t+1} S_t + \psi_{t+1})$. We have
+\begin{align*}
+V_t^* - V_{t-1}^* &= e^{-rt} (\phi_{t+1} S_t + \psi_{t+1}) - e^{-r(t-1)} (\phi_t S_{t-1} + \psi_t) \\
+&= e^{-rt} (\phi_t S_t + \psi_t e^r) - e^{-r(t-1)} (\phi_t S_{t-1} + \psi_t \\
+&= \phi_t S_t^* + \psi_t e^{-r(t-1)} - \phi_t S_{t-1}^* - \psi_t e^{-r(t-1)} \\
+&= \phi_t (S_t^* - S_{t-1}^*) = \phi_t \Delta S_t^*
+\end{align*}
+
+\textbf{Binomial representation theorem}: Suppose the measure $Q$ is such that the binomial process $S_t^*$ is a $Q$-martingale. If $V_t^*$ is any other $Q$-martingale, then there exists a previsible process $\phi_t$ such that
+$$ V_i^* = V_0^* + \sum_{k=1}^i \phi_k \Delta S_k^* $$
+In our context: $S_i^* = e^{-r} S_i$; $\Delta S_k^* = S_k^* - S_{k-1}^*$; $V_i^* =
+e^{-r} V_i$; the required shareholding at time step $k$, $\phi_k$, is previsible.
+
+$$ f_{1,(1)} = e^{-r} [q_{1,(1)} f_{2,(1)} + (1-q_{1,(1)})f_{2,(2)}] $$
+$$ f_{1,(2)} = e^{-r} [q_{1,(2) }f_{2,(3)} + (1-q_{1,(2)})f_{2,(4)}] $$
+where
+$$ q_{1,(1)} = \frac{e^r - d_{1,(1)}}{u_{1,(1)} - d_{1,(1)}} \,\,\,\,\,and\,\,\,\,\, q_{1,(2)} = \frac{e^r - d_{1,(2)}}{u_{1,(2)} - d_{1,(2)}} $$
+and the no-arbitrage conditions $d_{t,(j)} < e^r < u_{t,(j)}$ ensure that $0<q_{t,(j)}<1$. The price at time 0 is found by treating the values $f_{1,(1)}$ and $f_{1,(2)}$ in the same way as derivative payoffs at time 1, i.e.
+$$ f_0 = e^{-r} [q_{0,(1)} f_{1,(1)} + (1-q_{0,(1)}) f_{1,(2)}] $$
+where
+$$ q_{0,(1)} = \frac{e^r - d_{0,(1)}}{u_{0,(1)} - d_{0,(1)}} $$
+\begin{equation}
+f_0 = e^{-r} E_Q[f_1|F_0] = e^{-r} E_Q[e^{-r}E_Q[f_2|F_1]|F_0] = e^{-2r} E_Q[f_2|F_0]
+\end{equation}
+
+\begin{example}
+Consider a 2-year European put option with a strike price of \$52 on a stock whose current price is \$50. Suppose that the continuously-compounding risk-free interest rate is 5\% per annum, and that there are two time steps of 1 year, and in each time step the stock price either moves up by 20\% or down by 20\%. Calculate the price of the option.
+\end{example}
+
+\subsection{n-period model}
+
+The results of the one-period and two-period binomial models generalise to the $n$-period case, $f_0 = e^{-nr} E_Q[f_n | F_0]$ and $E_Q[S_n | F_0] = S_0 e^{nr}$.
+
+The binomial model is an effective model provided the time to maturity, $T$, is broken up into a suitable number of sub-periods, $\Delta t = T/n$.
+
+The model is flexible and allows for different levels of volatility when in different states but at the end of the $n$-th sub-period there are $2^n$ possible states for the stock price.
+
+Assume that the volatility is the same in all states, i.e. 
+$$u_{t,(j)} = u \,\,\,\,\, and \,\,\,\,\, d_{t,(j)} = d \Longrightarrow q_{t,(j)} = q $$ 
+for all $t,(j)$ with $d < e^r < u$, and $0<q<1$. Then computing times are substantially reduced for options with payoffs which are not path-dependent (we have $n+1$ instead of $2^n$ possible states).
+
+Assume that the volatility is the same in all states.
+
+Under the assumption that all steps are independent from one another, for the stock price we have
+$$ S_t = S_0 u^{N_t} d^{t-N_t} $$
+where $N_t \sim Binomial(t,q)$ is the number of up-steps between time 0 and time $t$.
+
+Since $P(N_n = k) = \binom{n}{k} q^k (1-q)^{n-k}$, $k=0,1,...,n$, the price at time 0 of European, non-path-dependent derivative is
+$$ f_0 = e^{-nr} E_Q[f_n|F_0] = e^{-nr}\sum_{k=0}^n \frac{n!}{k!(n-k)!} q^k(1-q)^{n-k} f(S_0u^kd^{n-k}) $$
+For a 2-period binomial model we have
+$$ f_0 = e^{-2r}(q^2f(u^2 S_0) + 2q(1-q)f(udS_0) + (1-q)^2 f(d^2S_0)) $$
+
+\subsection{Alternative underlying assets}
+The basic binomial tree model can be adapted to deal with e.g. American options, different types of underlying asset, dividend-paying underlying assets ...
+
+\begin{example}
+As in Example 4.3 but the option under consideration is American rather than European.
+\end{example}
+
+\subsubsection*{Options on an equity index}
+
+Suppose a stock index (or a stock) pays a continuous dividend at the rate $g$ per period, which we reinvest in the stock, i.e. if we buy 1 share at time $t$, at time $t + 1$ we have $e^g$ shares.
+
+The no-arbitrage condition is $d < e^{r-g} < u$. The replicating portfolio $(\phi, \psi)$ will satisfy
+$$ \phi u S_0 e^g + \psi e^r = f_u $$
+$$ \phi d S_0 e^g + \psi e^r = f_d $$
+Solving the above system yields
+$$ \phi = e^{-g} \frac{f_u - f_d}{S_0(u-d)} \,\,\,\,\,\,\,\,\,\, \psi = e^{-r}\frac{uf_d - df_u}{u-d} $$
+and
+$$ q = \frac{e^{r-g} - d}{u-d} $$
+so that $f_0 = e^{-r} [qf_u + (1-q) f_d] = e^{-r} E_Q[f_1|F_0]$ .The no arbitrage condition ensures that $0<q<1$.
+
+\subsubsection*{Options on currencies}
+
+Suppose the spot exchange rate is $S_0$ and $r_f$ is the foreign interest rate continuously-compounded per period.
+
+Taking into account the interest on the foreign-currency-denominated obligation, the replicating portfolio $(\phi, \psi)$ should satisfy
+$$ \phi u S_0 e^{r_f} + \psi e^r = f_u $$
+$$ \phi d S_0 e^{r_f} + \psi e^r = f_d $$
+Solving the above system yields
+$$ \phi = e^{-r_f} \frac{f_u - f_d}{S_0(u-d)} \,\,\,\,\,\,\,\,\,\, \psi = e^{-r}\frac{uf_d - df_u}{u-d} $$
+and
+$$ q = \frac{e^{r-r_f} - d}{u-d} $$
+
+\begin{example}
+Suppose the euro-denominated interest rate is 3.1\% p.a. continuously-compounded and the dollar-denominated rate is 5.5\% p.a. continuously-compounded. The current exchange rate is assumed to be 1.05\$/\texteuro. Price a dollar-denominated American put option on the euro with strike 1.1\$/\texteuro and $T=0.5$, using a 3-period binomial tree withu $u = e^{(r-r_f)h+\sigma \sqrt{h}}$, $d = e^{(r-r_f)h- \sigma \sqrt{h}}$, $\sigma = 0.1$, $h = 0.5/3$.
+\end{example}
+
+\subsubsection*{Options on shares paying discrete dividends}
+
+Suppose that a dividend will be paid between time $t$ and $t+1$ and that its future value at time $t+1$ is $D$ (or alternatively, the dividend is proportional to the stock price, $\gamma$).
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[scale=0.5]{Chapter 4/Chapter4_3.png}
+	\caption{Discrete dividend-paying share}
+\end{figure}
+
+\begin{example}
+Suppose that $S_0=100$, $T=3$, $K=95$, $u=1.1$, $d=0.9$ and $r=0.03$. Calculate the price of a European call option on a stock which pays a 5\% dividend at $t=2$, assuming $\Delta t = 1$.
+\end{example}
+
+\begin{ex}
+Suppose that $S_0=100$, $T=2$, $K=100$, $u=1.12$, $d=0.9$ and $r=0.06$. Calculate the price of a European put option on a stock which pays discrete dividend amount of \$4 at $t=1$ and $t=2$, assuming $\Delta t = 1$.
+\end{ex}
+
+\section{Approximation to continuous-time model}
+
+Recall the geometric Brownian motion model
+\begin{align}
+dS_t = rS_t dt + \sigma S_t dW_t \Longleftrightarrow S_t = S_0 e^{(r-\frac{1}{2}\sigma^2)t + \sigma W_t} \Longrightarrow \nonumber \\
+\frac{S_{t+\Delta t}}{S_t} \sim LogN\left( \left(r-\frac{1}{2}\sigma^2 \right) \Delta t, \sigma^2 \Delta t \right) \Longrightarrow \nonumber \\
+E\left[ \frac{S_{t+\Delta t}}{S_t} | F_t \right] = e^{r \Delta t} \nonumber \\
+Var\left[ ln \frac{S_{t+\Delta t}}{S_t} | F_t \right] = \sigma^2 \Delta t
+\end{align}
+
+For the expected return and the variance of the stock in the binomial model (under $Q$) we have
+\begin{align}
+E\left[ \frac{S_{t+\Delta t}}{S_t} | F_t \right] = q\frac{uS_t}{S_t} + (1-q)\frac{dS_t}{S_t} = qu + (1-q)d \nonumber \\
+Var\left[ ln \frac{S_{t+\Delta t}}{S_t} | F_t \right] = [q(ln\,u)^2 + (1-q)(ln\,d)^2] - \left( E\left[ ln \left( \frac{S_{t+\Delta t}}{S_t} \right) | F_t \right] \right)^2
+\end{align}
+
+So, matching the expectations, we have
+$$ e^{r \Delta t} = qu + (1-q)d \Longrightarrow q = \frac{e^{r\Delta t}-d}{u-d} $$
+and matching the variances, assuming that $d = 1/u$ and ignoring the terms of higher order than $\Delta t$, we have
+$$ \sigma^2 \Delta t = [q(ln\,u)^2 + (1-q) (ln\,d)^2] - \left( E\left[ ln \left( \frac{S_{t+\Delta t}}{S_t} \right) | F_t \right] \right)^2 \Longrightarrow \sigma^2 \Delta t \approx (ln\,u)^2 $$
+\begin{equation}
+u \approx e^{\sigma \sqrt{\Delta t}} \,\,\,\,\,\,\,\,\,\, d \approx e^{-\sigma \sqrt{\Delta t}}
+\end{equation}
+
+Note that we can perform the same analysis under $P$ and we will obtain
+$$ p = \frac{e^{\mu \Delta t}-d}{u-d} $$
+and expressions (4.8) will be the same. This shows that as we change the measure the expected return on the stock changes but its volatility remains the same (as $t \rightarrow 0$). This is an illustration of the Girsanov's theorem.
+
+\begin{example}
+A non-dividend paying share has volatility of 20\% per annum. Calculate the values of u and d for the share price movements over one month.
+
+\vspace{15pt}
+\textbf{Solution:}
+Using the formula, we have
+$$ u \approx e^{0.2 \sqrt{\frac{1}{12}}} = 1.06 $$
+$$ d \approx e^{0.2 \sqrt{\frac{1}{12}}} = 0.94 $$
+\end{example}
+
+\vspace{20pt}
+For $t \rightarrow 0$:
+\begin{itemize}
+\item the binomial scheme converges to the Black-Scholes PDE
+\item the binomial value of an option converges to the Black-Scholes value
+\end{itemize}
+
+
+%============ CHAPTER 5 ===========%
+\chapter{Black-Scholes option pricing model}
+
+\section{Introduction}
+In the last chapter, we looked at option pricing in discrete time. Now we will introduce the model in continuous time.
+
+In order to price derivative securities we will assume that the underlying share price follows a continuous time stochastic process with continuous state space, namely geometric Brownian motion. We will discuss two methods of pricing derivatives in continuous-time
+\begin{itemize}
+\item the PDE approach
+\item the risk-neutral (martingale) valuation approach
+\end{itemize}
+We will derive the Black-Scholes pricing formula and Garman-Kohlhagen pricing formula.
+
+The Black-Scholes model is underpinned by a number of key assumptions but
+\begin{itemize}
+\item it provides a good approximation to reality
+\item it offers valuable insight into option pricing and is widely used in practice.
+\end{itemize}
+
+\subsection{Assumptions}
+The assumptions underlying the Black-Scholes model are as follows:
+\begin{enumerate}
+\item The price of the underlying share follows a geometric Brownian motion ($\sigma$-constant).
+\item The market in the underlying share is complete: all derivative securities have payoffs which can be replicated
+\item There are no risk-free arbitrage opportunities (no-arbitrage principle)
+\item The risk-free rate of interest is constant, the same for all maturities and the same for borrowing or lending
+\item Unlimited short selling (that is, negative holdings) is allowed
+\item There are no taxes or transaction costs
+\item The underlying asset can be traded continuously and in infinitesimally small numbers of units
+\end{enumerate}
+
+We need to note that each of the assumptions is unrealistic to some degree, e.g.
+\begin{itemize}
+\item Share prices can jump; the distribution of security returns, ln$(S_t/S_u)$ , has a higher peak and fatter tails in reality than that implied by the normal distribution; (invalidates 1 and 2)
+\item The risk-free rate does vary and in an unpredictable way; different rates may apply for borrowing and lend- ing; (invalidates 4)
+\item Unlimited sort selling may not be allowed; (invalidates 5)
+\item Shares can normally only be dealt in integer multiples of one unit, not continuously and dealings attract transaction costs; (invalidates 2, 5, 6 and 7)
+\end{itemize}
+
+\subsection{The Black-Scholes model}
+The non-dividend-paying share price process, $S_t$, $t \geq 0$, is a geometric Brownian motion, governed by the stochastic differential equation
+\begin{equation}
+\frac{dS_t}{S_t} = \mu dt + \sigma dW_t
+\end{equation}
+where $W_t$ is a standard Brownian motion and $\mu$ and $\sigma$ are constants. Hence $S_t = S_0 e^{(\mu-\frac{1}{2}\sigma^2)t + \sigma W_t}$ and $lnS_t = lnS_0 + (\mu - \frac{1}{2}\sigma^2)t + \sigma W_t \sim N(lnS_0 + (\mu - \frac{1}{2}\sigma^2)t, \sigma^2 t)$.
+
+The risk-free Money Market Account (MMA) process, $B_t$, $t \geq 0$, is governed by the ordinary differential equation
+\begin{equation}
+dB_t = r B_t dt
+\end{equation}
+where $r \geq 0$ is the constant risk-free rate of interest. Hence, $B_t = B_0 e^{rt}$.
+
+\textbf{The Black-Scholes (-Merton) formula}
+
+\textbf{\underline{Proposition 1:}} Let $c_t = f(t, S_t)$ be the price at time $t$ of a European call option with strike price $K$ and time to maturity $T>t$, and the price of the non-dividend-paying underlying asset at $t$ is $S_t$. Then
+\begin{equation}
+f(t,S_t) = S_t \Phi(d_1) - Ke^{-r(T-t)}\Phi(d_2)
+\end{equation}
+where
+\begin{equation}
+d_{1,2} = \frac{log\frac{S_t}{K}+(r \pm \frac{1}{2}\sigma^2)(T-t)}{\sigma \sqrt{T-t}}
+\end{equation}
+and $\Phi(z)$ is the cdf of the standard normal distribution. (Note that $d_2 = d_1 - \sigma \sqrt{T-t}$)
+
+Let $p_t = f(t, S_t)$ denote the price at time $t$ of the corresponding European put option. Then
+$$ f(t,S_t) = Ke^{-r(T-t)}\Phi(-d_2) - S_t \Phi(-d_1) $$
+where $d_1$ and $d_2$ are defined in (5.4).
+
+\subsection{Proof - the PDE approach}
+
+Since $S_t$ follows a diffusion process, we first apply Ito's lemma to write a SDE that gives the change in the derivative price, $f(t, S_t)$, over a very small time period $[t, t + dt)$
+\begin{equation}
+df(t,S_t) = \left[ \frac{\partial f}{\partial t} + \mu S_t \frac{\partial f}{\partial S_t} + \frac{1}{2} \sigma^2 S_t^2 \frac{\partial^2 f}{\partial S_t^2} \right] dt + \sigma S_t \frac{\partial f}{\partial S_t} dW_t
+\end{equation}
+
+Suppose that at time $t$, $0 \leq t < T$, we hold the following portfolio
+\begin{enumerate}
+\item minus one derivative, $f(t, S_t)$
+\item plus $\Delta = \frac{\partial f}{\partial S_t}$ units of shares
+\end{enumerate}
+with value
+$$ V(t,S_t) = -f(t,S_t) + \Delta S_t $$
+
+The (pure) investment gain of the portfolio $V(t, S_t)$ over the period $[t, t+dt)$ is
+\begin{align}
+dV(t,S_t) = -df(t,S_t) + \Delta dS_t \\ \nonumber
+= \left[ -\frac{\partial f}{\partial t} - \frac{1}{2} \sigma^2 S_t^2 \frac{\partial^2 f}{\partial S_t^2} \right] dt
+\end{align}
+
+$V(t, S_t)$ is an instantaneously risk-free portfolio under the no-arbitrage principle, it must yield a return equal to the risk-free rate of return over the period $[t, t+dt)$, i.e.
+\begin{align}
+dV(t,S_t) &= rV(t,S_t)dt \\ \nonumber
+&= [-rf(t,S_t) + r \Delta S_t ] dt \\ \nonumber
+&= \left[ -r f(t,S_t) + r\frac{\partial f}{\partial S_t}S_t \right] dt
+\end{align}
+Hence, (5.6) must be equal to (5.7). Equating the two, we obtain the following non-stochastic second-order partial differential equation (PDE), known as the Black-Scholes PDE
+\begin{equation}
+\frac{\partial f}{\partial t} + rS_t \frac{\partial f}{\partial S_t} + \frac{1}{2} \sigma^2 S_t^2 \frac{\partial^2 f}{\partial S_t^2} = rf(t,S_t)
+\end{equation}
+The value of the European call (and put) option can be found by solving (5.8) with the boundary condition
+\begin{equation}
+f(T,S_T) = \max \{S_T - K,0\}
+\end{equation}
+
+Solving the PDE requires advanced knowledge and will not be covered here. Instead of solving the PDE, we will see another approach which is easier to understand and to compute.
+
+Recall the definitions of the Greeks. Note that (5.8) can be written as
+\begin{equation}
+\Theta + rS_t \Delta + \frac{1}{2}\sigma^2 S_t^2 \Gamma = rf(t,S_t)
+\end{equation}
+
+\subsection{Preliminaries}
+
+\begin{itemize}
+\item $(\Omega, F, P)$, the share price process, $S_t = S_0e^{(\mu-\frac{1}{2}\sigma^2)t+\sigma W_t}$, $t \geq 0$, i.e. $dS_t = \mu S_t dt + \sigma S_t dW_t$
+\item The MMA process, $B_t =e^{rt}$, $t \geq 0$, i.e. $dB_t = r B_t dt$
+\item Tradable asset - its price at time $t$ is equal to the total return on the investment up to time $t$ assuming that we hold onto the asset until that time, $S_t$ or $\tilde{S_t}$
+\item The replicating portfolio - at time $t$ we hold the portfolio $(\phi_t, \psi_t)$ where $\phi_t$ represents the number of units of $S_t$ held at time $t$ and $\psi_t$ is the number of units of $B_t$ held at time $t$. We assume that $S_t$ is a tradable asset.
+\item Previsible processes - we require that $\phi_t, \psi_t$ are $F_t$-measurable (so $\phi_t$ and $\psi_t$ are known based on information up to but not including time $t$)
+\item Self-financing strategies - the portfolio strategy $V_t = \phi_t S_t + \psi_t B_t$ is self-financing iff $dV_t = \phi_t dS_t + \psi_t dB_t$
+\item Let $X$ be any derivative payment contingent upon $T$ where $T$ is the time of payment of $X$ ($X$ is $F_T$-measurable and, therefore, depends upon the path $S_t$ up to time $T$)
+\item Replicating strategy - a self-financing strategy $(\phi_t, \psi_t)$, defined on $0 \leq t \leq T$, such that $\phi_t$ and $\psi_t$ are previsible and $V_T = \phi_T S_T + \psi_T B_T = X$
+\item Complete market - the market is complete if for any such contingent claims $X$ there is a replicating strategy $(\phi_t, \psi_t)$
+\item Equivalent probability measures, change of measure and the Radon-Nikodym derivative
+\end{itemize}
+
+Given $P$ and $Q$ equivalent measures and a time horizon $T$, we can define a random variable $\frac{dQ}{dP}$ defined on $P$ possible paths, taking positive real values, such that
+$$ E_Q[X_T] = E_P \left[ \frac{dQ}{dP} X_T \right] $$
+$$ E_Q[X_t | F_s] = E_P \left[ \frac{\eta_t}{\eta_s}X_t | F_s \right] = \eta_s^{-1} E_P[\eta_t X_t | F_s] \,\,\,\,\,s \leq t \leq T $$
+where $\eta_t$ is the process $E_P[\frac{dQ}{dP} | F_t]$ and $X_t$ is adapted to the history $F_t$.
+
+\textbf{\underline{Cameron-Martin-Girsanov Theorem}}: If $W_t$ is a standard Brownian motion under $P$ and $\gamma_t$ is a previsible process satisfying the condition $E_P[exp(\frac{1}{2} \int_0^T \gamma_t^2 dt)] < \infty$ ,then there exists a measure $Q$ such that
+\begin{enumerate}[label=(\roman*)]
+\item $Q$ is equivalent to $P$
+\item $\frac{dQ}{dP} = exp \left( -\int_0^T \gamma_t dW_t - \frac{1}{2} \int_0^T \gamma_t^2 dt \right)$
+\item $\tilde{W_t} = W_t + \int_0^t \gamma_s ds$ is a standard Brownian motion under $Q$
+\end{enumerate}
+Additionally, the Radon-Nikodym derivative of $Q$ with respect to $P$ (at time $T$) is $exp(-\int_0^T \gamma_t dW_t - \frac{1}{2}\int_0^T \gamma_t^2 dt)$.
+
+\begin{example}
+Recall the geometric Brownian motion
+$$ dS_t = S_t(\mu dt + \sigma dW_t) \Longleftrightarrow S_t = S_0 e^{(\mu-\frac{1}{2}\sigma^2)t + \sigma W_t} $$
+where $W_t$ is a $P$-Brownian motion. Show that we can change the measure so that
+$$ dS_t = S_t(r dt + \sigma d\tilde{W_t}) \Longleftrightarrow S_t = S_0 e^{(r-\frac{1}{2}\sigma^2)t + \sigma \tilde{W_t}} $$
+where $\tilde{W_t}$ is a $Q$-Brownian motion and $r$ is an arbitrary constant drift.
+\end{example}
+
+\textbf{\underline{Martingale Representation theorem}}: Suppose that $S_t^*$ is a martingale with respect to $Q$ ($Q$-martingale), i.e. for any $s<t$, $E_Q[S_t^* | F_s] = S_s^*$. Furthermore, assume that the volatility of $S_t^*$ is (with probability 1) always non-zero. Then, if $V_t^*$ is another $Q$-martingale, there exists a unique previsible process $\phi_t$ such that
+$$ V_t^* = V_0^* + \int_0^t \phi_s dS_s^* \Longleftrightarrow dV_t^* = \phi_t dS_t^* $$
+and $\phi_t$ is previsible.
+
+\begin{example}
+Show that if the diffusion processes
+$$ dX_t = \mu_X(t,X_t) dt + \sigma_X(t,X_t) dW_t $$
+and 
+$$ dY_t = \mu_Y(t,Y_t) dt + \sigma_Y(t,Y_t) dW_t $$
+where $W_t$ is a $Q$-Brownian motion, are martingales, then the martingale representation theorem holds with $\phi_t = \frac{\sigma_Y(t,X_t)}{\sigma_X(t,Y_t)}$.
+
+\vspace{15pt}
+\textbf{Solution:}
+$$ S_t^* = e^{-rt}S_t = e^{-rt}S_0e^{(r-\frac{1}{2}\sigma^2)t + \sigma \tilde{W_t}} $$
+\begin{align*}
+E_Q(S_t^*) &= e^{-rt}S_0 e^{(r-\frac{1}{2}\sigma^2)t} e^{0+\frac{1}{2}\sigma^2 t} \\
+&= e^{-rt}S_0 e^{rt} e^{-\frac{1}{2}\sigma^2 t} e^{\frac{1}{2}\sigma^2 t} \\
+&= S_0
+\end{align*}
+
+$\therefore S_t^*$ is a martingale.
+
+\begin{align*}
+\therefore r_t + \sigma \tilde{W_t} &= \mu t + \sigma W_t \\
+\tilde{W_t} = W_t + \left( \frac{\mu - r}{\sigma} \right) t
+\end{align*}
+\end{example}
+
+\subsection{Martingale (5-step) approach}
+The derivative pricing formula $V_t = B_t E_Q[\frac{X}{B_T}|Ft]$ can be derived using the martingale approach, which consist of the following 5 steps:
+\begin{enumerate}
+\item Find the equivalent martingale measure $Q$ under which $S_t^* = \frac{S_t}{B_t} = e^{-rt} S_t$ is a martingale.
+\item Let $V_t = E_Q[e^{-r(T-t)}X|F_t]$ where $X$ is the derivative payoff at time $T$. This is proposed as the fair price of the derivative at time $t$.
+\item Let $V_t^* = E_Q[\frac{X}{B_T}|F_t] = e^{-rt}V_t$. This is a martingale under $Q$.
+\item By the martingale representation theorem, there exists a previsible process $\phi_t$ such that $dV_t^* = \phi_t dS_t^*$.
+\item Let $\phi_t = V_t^* - \phi_t S_t^*$ and at time $t$ hold the portfolio consisting of
+\begin{itemize}
+\item $\phi_t$ units of the tradable asset $S_t$
+\item $\psi_t$ units of the cash account
+\end{itemize}
+\end{enumerate}
+At time $t$ the value of this portfolio is equal to $V_t$. Also $V_T = X$. Therefore, the hedging strategy $(\phi_t,\psi_t)$ is replicating and so $V_t$ is the fair price of the derivative at time $t$.
+
+\textit{Step 1}:
+Using the C-M-G theorem, the equivalent martingale measure $Q$, under which $S_t^* = e^{-rt}S_t$ is a martingale, is such that
+$$ \frac{dQ}{dP} = exp \left( -\gamma W_T - \frac{1}{2} \gamma^2 T \right) $$
+where
+$$ \gamma = \frac{\mu - r}{\sigma} $$
+is the \textbf{market price of risk}.
+
+\textit{Step 2}:
+Let $X$ be any derivative payment contingent upon $F_T$, payable at some future time $T$, where $F_T$ is the sigma algebra generated by $S_u$ for $0 \leq u \leq T$. Then, the value of the derivative payment at time $t<T$ is
+$$ V_t = E_Q[e^{-r(T-t)}X|F_t] $$
+
+\textit{Step 3}:
+We have
+$$ V_t^* = E_Q \left[ \frac{X}{B_T} | F_t \right] = B_T^{-1} E_Q[X|F_t] = e^{-rT} E_Q[X|F_t] = e^{-rt}E_Q[e^{-r(T-t)}X|F_t] = e^{-rt}V_t $$
+$V_t^*$ is a martingale with respect to $Q$ since for $0<s<t$
+$$ E_Q[V_t^*|F_s] = E_Q\left[ E_Q \left[ \frac{X}{B_T}|F_t \right] | F_s \right] = E_Q \left[ \frac{X}{B_T} | F_s \right] = B_T^{-1} E_Q[X|F_s] = V_s^* $$
+
+\textit{Step 4}:
+Since $dV_t^* = \phi_t dS_t^*$, $\phi_t = \frac{dV_t^*}{dS_t^*} = \Delta$.
+
+\textit{Step 5}:
+At time $t$ the value of this portfolio is equal to
+$$\phi_t S_t + \psi_t B_t = e^{rt} (\phi_t S_t^* + \psi_t)  = e^{rt} (\phi_t S_t^* + V_t^* - \phi_t S_t^*) = e^{rt} V_t^* = V_t $$
+At time $t+dt$
+\begin{align*}
+\phi_t S_{t+dt} + \psi_t B_{t+dt} = B_{t+dt} (\phi_t e^{-r(r+dt)}S_{t+dt} + \psi_t) = e^{r(t+dt)} (\phi_t S_{t+dt}^* + \psi_t) = \\
+e^{r(t+dt)} (\phi_t S_t^* + \phi_t dS_t^* + \psi_t) = e^{r(t+dt)} (V_t^* + dV_t^*) = e^{r(t+dt)} V_{t+dt}^* = V_{t+dt}
+\end{align*}
+Therefore, $dV_t = V_{t+dt} - V_t = \phi_t dS_t + \psi_t dB_t$, i.e the portfolio is self-financing. Furthermore,
+$$ V_T = E_Q[e^{-r(T-T)}X|F_T] = X $$
+Hence, the hedging strategy $(\phi_t, \psi_t)$ is replicating and $V_t$ is the fair price for the derivative at time $t$.
+
+
+\subsection{Proof - martingale (5-step) approach}
+
+\subsubsection*{Digital call}
+
+The payoff of this option at exercise time $T$ is
+$$ X = \begin{cases}
+1 \text{,          if } S_T \geq K \\
+0 \text{,          otherwise}
+\end{cases} $$
+The price of the option, $c_t^D$, at time 0 is given by
+$$ c_0^D = E_Q[e^{-rT}X|F_0] = e^{-rT} E_Q[1_{\{S_T \geq K\}}|S_0] = e^{-rT} Q[S_T \geq K] = e^{-rT} Q[S_T^* \geq e^{-rT} K] $$
+Under $Q$,
+\begin{align*}
+S_T^* &= e^{-rT}S_T = e^{-rT} S_0 e^{(r-\frac{1}{2}\sigma)T + \sigma \tilde{W_t}} = S_0 e^{-\frac{1}{2}\sigma^2 T + \sigma \tilde{W_t}} \\
+&= e^{-rT} Q[ln S_T^* \geq -rT + ln K] = e^{-rT} Q[ln S_0 - \frac{1}{2} \sigma^2 T + \sigma \tilde{W_t} \geq -rT + ln K] \\
+&= e^{-rT} Q \left[\tilde{W_t} \geq - \frac{ln \frac{S_0}{K} + (r-\frac{1}{2}\sigma^2)T}{\sigma} \right] = e^{-rT} Q \left[\tilde{W_1} \geq - \frac{ln \frac{S_0}{K} + (r-\frac{1}{2}\sigma^2)T}{\sigma \sqrt{T}} \right] \\
+&= e^{-rT} [1-\Phi(-d_2)] = e^{-rT} \Phi(d_2)
+\end{align*}
+
+\subsubsection*{Asset-or-nothing call}
+
+The payoff of this option at exercise time $T$ is
+$$ X = \begin{cases}
+S_T \text{,          if } S_T \geq K \\
+0 \text{,          otherwise}
+\end{cases} $$
+The price of the option, $c_t^{AN}$, at time 0 is given by
+\begin{align*}
+c_0^{AN} &= E_Q[e^{-rT}X|F_0] = E_Q[e^{-rT} S_T 1_{\{S_T \geq K\}}|S_0] = E_Q[S_T^* 1_{\{S_T^* \geq e^{-rT} K\}}] \\
+&= E_Q \left [S_0e^{-\frac{1}{2}\sigma^2T + \sigma \tilde{W_T}} 1_{\{S_T^* \geq e^{-rT}K\}}|S_0 \right] = E_Q \left[ S_0e^{-\frac{1}{2}\sigma^2T + \sigma \sqrt{T} \tilde{W_1}} 1_{\{\tilde{W_1} \geq -d_2 \}}|S_0 \right] \\
+&= \int_{-d_2}^{\infty} S_0 e^{-\frac{1}{2}\sigma^2 T + \sigma \sqrt{T}y} f_{\tilde{W_1}}(y) dy = S_0 \int_{-d_2}^{\infty} e^{-\frac{1}{2}\sigma^2 T + \sigma \sqrt{T}y} \frac{1}{\sqrt{2\pi}} e^{-\frac{1}{2}y^2} dy \\
+&= S_0 \int_{-d_2}^{\infty} \frac{1}{\sqrt{2\pi}} e^{-\frac{1}{2}(y-\sigma \sqrt{T})^2} dy = S_0 \int_{-d_2-\sigma \sqrt{T}}^{\infty} \frac{1}{\sqrt{2\pi}} e^{-\frac{1}{2}z^2} dz \\
+&= S_0 [1-\Phi(-d_1)] = S_0 \Phi(d_1)
+\end{align*}
+
+\subsubsection*{European call}
+
+The payoff of a European call option is
+$$ X = \begin{cases}
+S_T-K \text{,          if } S_T \geq K \\
+0 \text{,          otherwise}
+\end{cases} $$
+The price of the option, $c_t$, at time 0 is given by
+\begin{align*}
+c_0 &= E_Q[e^{-rT}X|F_0] \\
+&= e^{-rT} E_Q[(S_T-K) 1{\{S_T \geq K \}} | S_0] \\
+&= E_Q[(S_T^* - e^{-rT}K) 1{\{S_T^* \geq e^{-rT} K \}} | S_0] \\
+&= E_Q[S_T^* 1{\{S_T^* \geq e^{-rT} K \}} | S_0] - E_Q[e^{-rT}K 1{\{S_T^* \geq e^{-rT} K \}} | S_0] \\
+&= E_Q[S_T^* 1{\{S_T^* \geq e^{-rT} K \}} | S_0] - Ke^{-rT} E_Q[1{\{S_T^* \geq e^{-rT} K \}} | S_0] \\
+&= S_0 \Phi(d_1) - Ke^{-rT} \Phi(d_2)
+\end{align*}
+
+The martingale approach has several advantages:
+\begin{itemize}
+\item it gives us much more clarity in the process of pricing derivatives
+\item it gives us the price as an expectation which can be evaluated explicitly in some cases and in a straightforward numerical way in other cases
+\item it gives us the replicating strategy for the derivative
+\item it can be applied to any $T$-measurable derivative payment, including path-dependent options (e.g. Asian options, lookback options), whereas the PDE approach, in general, can not.
+\end{itemize}
+
+The martingale approach is often referred to as \textit{risk-neutral pricing}. The measure is called the risk-neutral measure or the equivalent martingale measure.
+
+\section{Garman-Kohlhagen model}
+
+So far we have assumed that the underlying share produced no income, so that the price of the underlying share, $S_t$, would give us investment return via capital growth only (the total return = capital growth).
+
+Now, assume that dividends are payable continuously at the constant rate of $q$ p.a. per share, that is, the dividend payable over the interval $[t, t + dt)$ is $q S_t dt$ (the total return = capital growth + dividend income).
+
+Let $\tilde{S_t}$, $t \geq 0$, be the value of an investment of $\tilde{S_0} = S_0$ at time 0 in the underlying dividend-paying share assuming that all dividends are reinvested instantaneously in the same underlying share, that is, by purchasing additional $q \, dt$ units over the interval $[t, t + dt)$.
+
+The tradeable asset $\tilde{S_t}$, $t \geq 0$, is governed by the SDE
+\begin{equation}
+d\tilde{S_t} = \tilde{\mu} \tilde{S_t} dt + \sigma \tilde{S_t} dW_t
+\end{equation}
+where $\tilde{\mu} = \mu + q$. Hence $\tilde{S_t} = \tilde{S_0}e^{(\mu + q - \frac{1}{2} \sigma^2)t + \sigma W_t}$ and $\tilde{S_t} = S_t e^{qt}$.
+
+So
+$$ dS_t = (\tilde{\mu}-q)S_t dt + \sigma S_t dW_t $$
+
+\vspace{15pt}
+\textbf{\underline{Proposition 2:}} Let $c_t = f(t, S_t)$ be the price at time $t$ of a European call option with strike price $K$ and time to maturity $T>t$, and the price of the dividend-paying underlying asset at $t$ is $S_t$, with continuous dividend rate $q$. Then
+\begin{equation}
+f(t,S_t) = S_t e^{-q(T-t)} \Phi(d_1) - Ke^{-r(T-t)}\Phi(d_2)
+\end{equation}
+where
+\begin{equation}
+d_{1,2} = \frac{log\frac{S_t}{K}+(r -q \pm \frac{1}{2}\sigma^2)(T-t)}{\sigma \sqrt{T-t}}
+\end{equation}
+and $\Phi(z)$ is the cdf of the standard normal distribution. (Note that $d_2 = d_1 - \sigma \sqrt{T-t}$).
+
+Let $p_t = f(t, S_t)$ denote the price at time $t$ of the corresponding European put option. Then
+$$ f(t,S_t) = Ke^{-r(T-t)}\Phi(-d_2) - S_t e^{-q(T-t)} \Phi(-d_1) $$
+where $d_1$ and $d_2$ are defined in (5.13).
+
+The proof of Garman-Kohlhagen formula is similar to that of Black-Scholes so we will leave it as a self-exercise (both PDE and Martingale approaches).
+
+\section{Greeks}
+
+$$\Delta_{call} = e^{-q(T-t)}\Phi(d_1), \,\,\,\,\,\,\,\,\,\, 0 < \Delta_{call} < 1 $$
+
+$$\Delta_{put} = e^{-q(T-t)}\Phi(-d_1), \,\,\,\,\,\,\,\,\,\, -1 < \Delta_{put} < 0 $$
+
+$$\Gamma_{call} =  \Gamma_{put} = \frac{e^{-q(T-t)}\phi(d_1)}{S_t \sigma \sqrt{T-t}}, \,\,\,\,\,\,\,\,\,\, \Gamma_{call} = \Gamma_{put} > 0 $$
+
+$$\Theta_{call} = qS_te^{-q(T-t)}\Phi(d_1) - rKe^{-r(T-t)}\Phi(d_2) - S_t e^{-q(T-t)}\phi(d_1)\frac{\sigma}{2\sqrt{T-t}}, \,\,\,\,\,\,\,\,\,\, \Theta_{call} < 0 \text{(usually)} $$
+
+$$\Theta_{put} = rKe^{-r(T-t)}\Phi(-d_2)- qS_te^{-q(T-t)}\Phi(-d_1) - S_t e^{-q(T-t)}\phi(d_1)\frac{\sigma}{2\sqrt{T-t}}, \,\,\,\,\,\,\,\,\,\, \Theta_{put} < 0 \text{(usually)} $$
+
+$$\V_{call} =  \V_{put} = S_t e^{-q(T-t)}\phi(d_1)\sqrt{T-t}, \,\,\,\,\,\,\,\,\,\, \V_{call} = \V_{put} > 0 $$
+
+$$\rho_{call} = (T-t)Ke^{-r(T-t)}\Phi(d_2), \,\,\,\,\,\,\,\,\,\, \rho_{call} > 0 $$
+
+$$\rho_{put} = -(T-t)Ke^{-r(T-t)}\Phi(-d_2), \,\,\,\,\,\,\,\,\,\, \rho_{put} < 0 $$
+
+$$\lambda_{call} = -(T-t)S_te^{-q(T-t)}\Phi(d_1), \,\,\,\,\,\,\,\,\,\, \lambda_{call} < 0 $$
+
+$$\lambda_{put} = (T-t)S_te^{-q(T-t)}\Phi(-d_1), \,\,\,\,\,\,\,\,\,\, \lambda_{put} > 0 $$
+
+\begin{ex}
+Prove the lemma:
+$$ S_t e^{-q(T-t)}\phi(d_1) = Ke^{-r(T-t)}\phi(d_2) $$
+\end{ex}
 
 	
 	
