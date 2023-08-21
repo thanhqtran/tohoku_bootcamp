@@ -54,7 +54,7 @@ format=plain]{caption}
 \usepackage{subcaption}
 \usepackage{graphicx}
 \usepackage{rotating}
-
+\usepackage{minted}
 
 %----------bib manager---------%
 %\usepackage[backend=bibtex,style=authoryear,natbib=true]{biblatex} 
@@ -872,7 +872,7 @@ v_{2,2}
 		
 	\end{example}	
 	
-	\subsection{System of 2 Nonlinear Difference Equations}
+	\subsection{System of 2 Nonlinear Difference Equations} \label{sec:sys_nonlin}
 	We focus on the nonlinear dynamics, as they are the most common in economics.
 	
 	Consider the linear dynamics in $\R^2 \to \R^2$ following \eqref{sys_nonlin}. Given the initial state $(x_0, y_0)$. Assume that
@@ -3083,11 +3083,10 @@ Provided with a functional form of the production function $f(k)$, one can find 
 		\begin{align*}
 			V(k_t) = \max_{ \{c_t, k_{t+1}\}^{+\infty}_{t=0}  } \sum^{+\infty}_{t=0} \beta^t u(c_t)
 		\end{align*}
-		\item This Value function can be transformed to a functional equation called the \textbf{Bellman equation}. \footnote{Not all optimization problems can be represented with a Bellman equation. The
-			theorem applies only if the problem satisfies the Principle of Optimality}
-		\begin{align*}
-			V(k_t) =  \left[ u(c_t) + \beta V(k_{t+1}) \right]
-		\end{align*}
+		\item This Value function can be transformed to a functional equation called the \textbf{Bellman equation}. 
+		\begin{align}
+			V(k_t) =  \left[ u(c_t) + \beta V(k_{t+1}) \right] \label{eq:bellman}
+		\end{align}
 		where one can replace
 		\begin{align*}
 			c_t = f(k_t) - k_{t+1} + (1-\delta) k_t
@@ -3121,30 +3120,433 @@ Provided with a functional form of the production function $f(k)$, one can find 
 		allows us to determine the optimal path of consumption by iterating equations \eqref{bell_c} and \eqref{bell_k}.
 	\end{enumerate}
 	
-	\begin{ex}
-	Apply and solve the following problems
+	\begin{ex} \label{ex:ramsey}
+	Apply and solve for the Euler equation of the following problems.
 	\begin{enumerate}
-		\item Simple consumption-saving \begin{align*}
+		\item CRRA consumption-saving 
+		\begin{align*}
 			\max_{c_t} &\sum^{+\infty}_{t=0} \beta^t \frac{c_t^{1-\sigma}}{1-\sigma} \\
 			a_{t+1} &= (1+r) a_t - c_t, \\
 			a_0 &> 0
 		\end{align*}
 		given $\sigma > 0, \sigma \neq 0, 0 < \beta  < 1, 0 < r < 1$.
-		\item Cobb-Douglas Ramsey \begin{align*}
+		\item Brock-Mirman model (1972)
+		\begin{align*}
 			\max_{c_t} &\sum^{+\infty}_{t=0} \beta^t \ln(c_t) \\
-			k_{t+1} &= A k_t^\alpha - c_t, \\
+			k_{t+1} &= k_t^\alpha - c_t, \\
 			k_0 &> 0
 		\end{align*}
 		given $0 < \beta < 1, A > 0, 0 < \alpha < 1$.
+		\item Ramsey-Cass-Koopsman (1965)
+		\begin{align*}
+			\max_{c_t} &\sum^{+\infty}_{t=0} \beta^t \ln(c_t) \\
+			k_{t+1} &= k_t^\alpha - c_t + (1-\delta)k_t, \\
+			k_0 &> 0
+		\end{align*}
+		given $0 < \beta < 1, A > 0, 0 < \alpha < 1, 0 < \delta < 1$.
+		\item Habit Persistence \citep[p.8]{manuelli2009exercises}
+		\begin{align*}
+			\max_{c_t} &\sum^{\infty}_{t=0} \beta^t (\ln c_t + \gamma \ln c_{t-1}) \\
+			c_t &= A k_t^\alpha - k_{t+1}
+		\end{align*}
+		given $0 < \beta < 1, A > 0, 0 < \alpha < 1, k_0 > 0, c_{-1} > 0, \gamma > 0$.
 	\end{enumerate}
 	\end{ex}
 	
-	\section{Further Issues}
-	\subsection{Closed-Form Solutions}
-	\subsection{Linearize about the Steady State}
-	\subsection{Numerical Methods}
+	\section{Closed-Form Solutions}
+	In the next task, we learn how to derive the Value Function and Policy Function using Guess and Verify methods.
 	
-	\section{Real Business Cycle}
+	\subsection{Guess and Verify the Policy Function}
+	\textbf{Conjecture:} Suppose the Policy function has the following form
+	\begin{align}
+		c_t = \mu k_t^\alpha \label{eq:verify_policy1}
+	\end{align}
+	so that consumption takes a constant fraction of income. The trick is to find an expression for $\mu$ which satisfies the Euler equation. Substituting \eqref{eq:verify_policy1} into \eqref{eq:euler2} yields
+	\begin{align*}
+		\frac{k_{t+1}^\alpha}{k_t^\alpha} = \alpha \beta k_{t+1}^{\alpha-1}
+	\end{align*}
+	This implies
+	\begin{align*}
+		k_{t+1}  = \alpha\beta k_t^\alpha
+	\end{align*}
+	Constraint becomes
+	\begin{equation*}
+		c_t = k_t^\alpha - k_{t+1} = (1-\alpha\beta)k_t^\alpha.
+	\end{equation*}
+	That is our Policy function in closed form.
+		
+	\subsection{Guess and Verify the Value Function}
+	\textbf{Conjecture:} Suppose the Value function has the following form
+	\begin{align}
+		V(k_t) = A + B \ln (k_t) \label{eq:ini_guess}
+	\end{align}
+	The guess depends on the form of the utility function and the number of state variables. Here, the utility function is logarithmic and there is only 1 state variable $k_t$. What we need to do is to find $A$ and $B$. Using this guess, the Bellman equation becomes
+	\begin{align*}
+		V(k_t) = \max_{c_t, k_{t+1}} \ln(c_t) + \beta (A + B \ln(k_{t+1}))
+	\end{align*}
+	The Lagrangian is
+	\begin{align*}
+		\mathcal{L} = \ln(c_t) + \beta A + \beta B \ln(k_{t+1}) + \lambda_t (k_{t+1} - k_t^\alpha - c_t)
+	\end{align*}
+	FOC:
+	\begin{align}
+		& c_t: \frac{1}{c_t} = \lambda_t \\
+		& k_{t+1}: \frac{\beta B}{k_{t+1}} = \lambda_t
+	\end{align}
+	So that
+	\begin{align*}
+		k_{t+1} = \beta B c_t
+	\end{align*}
+	Plugging back to the budget constraint to get:
+	\begin{align}
+		& c_t = \frac{k_t^\alpha}{1 + \beta B}  \label{eq:guess_c} \\
+		& k_{t+1} = \frac{\beta B \ k_t^\alpha}{1+\beta B} \label{eq:guess_k}
+	\end{align}
+	Plugging back to the Value function:
+	$$
+	V(k_t) = \ln(\frac{1}{1+\beta B}k_t^\alpha) + \beta A + \beta B \ln(\frac{\beta B}{1+\beta B}k^\alpha_t)
+	$$
+	Rearrange to get:
+	$$
+	V(k_t) = \underbrace{\left[ \beta(A + B\ln(\beta B)) - (1+\beta B)\ln(1+\beta B) \right]}_{A} + \underbrace{\alpha (1+\beta B)}_{B}\ln(k_t)
+	$$
+	By juxtaposing with equation \eqref{eq:ini_guess}, with some algebra we get:
+	\begin{align*}
+		& A = \frac{\alpha\beta}{(1-\alpha\beta)(1-\beta)}\ln(\alpha\beta) + \frac{1}{1-\beta}\ln(1-\alpha\beta)\\
+		& B = \frac{\alpha}{1-\alpha\beta}
+	\end{align*}
+	Plugging back to \eqref{eq:guess_c} and \eqref{eq:guess_k}, we get:
+	\begin{align*}
+		& c_t = (1-\alpha\beta)k_t^\alpha \\
+		& k_{t+1} = \alpha \beta k_t^\alpha
+	\end{align*}
+	With given $k_0 > 0$, the close-form solutions above solve the planner's problem.
+	
+	\begin{ex}
+		Continuing from Ex.\ref{ex:ramsey}. Use Guess and Verify method to find the Value and Policy function of those examples.
+		\begin{enumerate}
+			\item CRRA consumption-saving -- \textbf{Conjecture:} Value function $V(k) = A + B \ln(k)$.
+			\item Brock-Mirman -- \textbf{Conjecture:} Value function $V(k) = A + B \ln(k)$.
+			\item RCK -- \textbf{Conjecture:} Value function $V(k) = A + B \ln(k)$.
+			\item Habit Persistence -- \textbf{Conjecture:} Value function $V(k, c_{-1}) = E + F\ln(k) + G\ln(c_{-1})$ and Policy function $\ln (k_{t+1}) = I + H \ln (k_t)$
+		\end{enumerate}
+	\end{ex}
+	
+	\section{Value Function Iteration}
+	Most oftentimes, when the model becomes complicated, you may not be able to obtain the closed-form solution as above. In such a case, one can think of numerical methods to approximate the Value or Policy function. This method works because the Bellman Operator is a contraction mapping -- successive iterations will converge linearly to the true solution (For proof, see Theorem 12.1.1 of Judd(1998), p.402).
+	
+	\subsection{The Algorithm}
+	Recall the Bellman equation at \eqref{eq:bellman} \footnote{We suppress $t$ notation and let $t+1$ variable represented by a ``prime".}.
+	\begin{align*}
+		V(k) &= \max u(f(k) - k') + \beta V(k') \\
+		c + k' &= k^\alpha
+	\end{align*}
+	First, define $V_j(k)$ as a value function when the planning horizon ends at $j$ and forward. In other words, $V = \lim_{j\to\infty} V_j$ where $V$ satisfies the Bellman equation.
+	
+	\begin{enumerate}
+		\item Compute $V_1$. The Bellman is
+		$$
+			V_1 (k) = \max \ln(c) + \beta V_0 (k')
+		$$
+		We can take any guess for $V_0$. It is convenient and intuitive to take $V_0 = 0$. Since this planning will be terminal, there should not be any $k$ to be carried over to the next period. Consequently, $k'=0$. By plugging $k'=0$ the Bellman equation becomes
+		$$
+			V_1(k) = \max \ln(c)
+		$$
+		FOC is trivial and we get the policy function $c = k^\alpha$.
+		\item Compute $V_2$. Again, the Bellman is
+		$$
+			V_2(k) = \max \ln (c) + \beta V_1 (k')
+		$$
+		where
+		$$
+			V_1(k') = \alpha \ln k'
+		$$
+		as found in the previous step. Specifically
+		$$
+			V_2(k) = \max \ln (c) + \beta\alpha\ln k'
+		$$
+		We need to solve this for the next policy function. Taking FOCs:
+		\begin{align*}
+			c &= \frac{1}{1+\beta\alpha} k^\alpha, \\
+			k' &= \frac{\alpha\beta}{1+\beta\alpha} k^\alpha
+		\end{align*} 
+		Then evaluate $V_2$ to obtain
+		$$
+			V_2(k) = \ln \left( \frac{1}{1+\alpha\beta} \right) + \alpha\beta \ln \left( \frac{\alpha\beta}{1+\alpha\beta} \right) + \alpha(1+\beta\alpha)\ln k
+		$$
+		or $V_2(k) = V_0^2 + V_1^2 \ln k$.
+		\item Compute $V_3$. Proceed exactly like before
+		$$
+			V_3(k) = \max \ln c + \beta V_2 (k')
+		$$
+		FOC gives
+		\begin{align*}
+			c &= \frac{1}{1+\alpha\beta + \alpha^2\beta^2} k^\alpha, \\
+			k' &= \frac{\alpha\beta + \alpha^2\beta^2}{1+\alpha\beta + \alpha^2\beta^2} k^\alpha
+		\end{align*}
+		Plugging back to Bellman gives
+		$$
+			V_3(k) = \text{const.} + \alpha(1 + \alpha\beta + \alpha^2\beta^2) \ln k
+		$$
+		\item If we iterate large enough, the pattern emerges as
+		$$
+			V_{\infty} (k) = \text{some constant} + \underbrace{\alpha (1+\alpha\beta + (\alpha\beta)^2 + (\alpha\beta)^3 + \dots + \alpha^{j-1}\beta^{j-1} )}_{v_1^j} \ln k
+		$$
+		Using Geometric Series, we know that
+		$$
+			v_1 = \lim_{j\to\infty} v^j_1 = \frac{\alpha}{1-\alpha\beta}
+		$$
+		Hence, the Value function converges to
+		$$
+			V(k) = \text{const.} + \frac{\alpha}{1-\alpha\beta} \ln k
+		$$
+		which is exactly what we have above by the Guess and Verify method.
+	\end{enumerate}
+	
+	\subsection{Coding}
+	Let us follow \citet{mccandless2008abcs} and set the parameters as
+	\begin{table}[ht]
+		\centering
+		\begin{tabular}{c  c  l}
+			\toprule
+			Parameter & Meaning & Value \\
+			\midrule
+			$\alpha$ & Capital share & 0.36 \\
+			$\delta$ & Depreciation rate & 0.1 \\
+			$\beta$ & Subjective Discount & 0.98 \\
+			\bottomrule
+		\end{tabular}
+	\end{table}
+	
+\begin{minted}{python}
+import numpy as np
+import matplotlib.pyplot as plt
+from scipy.optimize import minimize_scalar
+		
+# Define global variables
+vlast = np.zeros(100)
+k0 = np.arange(0.06, 6.06, 0.06)
+beta = 0.98
+delta = 0.1
+theta = 0.36
+numits = 240
+		
+# Function to calculate the value
+def valfun(k):
+	global vlast, beta, delta, theta, kt
+	g = np.interp(k, k0, vlast) #smooth the line
+	kk = kt**theta - k + (1 - delta) * kt
+		if kk <= 0:
+			val = -888 - 800 * abs(kk)
+		else:
+			val = np.log(kk) + beta * g
+		return -val
+		
+# Initialize arrays
+v = np.zeros(100)
+kt1 = np.zeros(100)
+		
+# Begin recursive calculations
+for k in range(1, numits + 1):
+	for j in range(100):
+		kt = (j + 1) * 0.06
+		ktp1 = minimize_scalar(valfun, bounds=(0.01, 6.2), method='bounded').x
+		v[j] = -valfun(ktp1)
+		kt1[j] = ktp1
+		
+	if k % 48 == 0:
+		plt.plot(k0, v)
+		plt.draw()
+		
+	vlast = v.copy()
+		
+plt.show()
+		
+# Plot the policy function
+plt.plot(k0, kt1)
+plt.show()
+	\end{minted}
+
+Results:
+
+	\begin{figure}[ht]
+		\centering
+		\includegraphics[scale=0.6]{valuefun.pdf}
+		\caption{Value Function}
+	\end{figure}
+	
+	\begin{figure}[ht]
+		\centering
+		\includegraphics[scale=0.6]{policyfun.pdf}
+		\caption{Policy Function}
+	\end{figure}
+	
+		\section{Steady States and Stability}
+	For this section, let us deal with the Ramsey model with logarithmic preferences, Cobb-Douglas technology, and no technological progress (similar to RCK in Ex.~\ref{ex:ramsey}). 
+	\begin{align}
+		\max_{c_t, k_{t+1}} \ \sum^{\infty}_{t=0} \beta^t \ln(c_t), \\
+		k_{t+1} = k_t^\alpha + (1-\delta)k_t - c_t 
+	\end{align}
+	Consumption can be expressed as
+	\begin{align}
+		c_t = k_t^\alpha + (1-\delta)k_t - k_{t+1}. \label{eq:key_cons}
+	\end{align}
+	The Euler equation is
+	\begin{align}
+		\frac{c_{t+1}}{\beta c_t} = \alpha k_{t+1}^{\alpha-1} + (1-\delta)  \label{eq:euler2}
+	\end{align}
+	\subsection{The Steady State}
+	We can derive the steady states by letting $c_{t+1} = c_t = \bar{c}$ and $k_{t+1} = k_t = \bar{k}$. The Euler equation becomes
+	\begin{align*}
+		1/\beta = \alpha \bar{k}^{\alpha-1} + (1-\delta)
+	\end{align*}
+	So that
+	\begin{align}
+		\label{eq:k_eqm} \bar{k} &= \left( \frac{\alpha\beta}{1-(1-\delta)\beta} \right)^{1/(1-\alpha)}, \\
+		\label{eq:c_eqm} \bar{c} &= \bar{k}^\alpha - \delta\bar{k} \\
+		&= \left(\frac{1 - \beta[1-(1-\alpha)\delta]}{\alpha\beta}\right) \left( \frac{\alpha\beta}{1-(1-\delta)\beta} \right)^{1/(1-\alpha)}. \nonumber
+	\end{align}
+	
+	\subsection{Stability}
+	To investigate the stability around this steady state, we can apply the linear approximation that we have learned from Section \ref{sec:sys_nonlin}. What we need has the form
+	\begin{align}
+		\begin{pmatrix}
+			k_{t+1} - \bar{k} \\ c_{t+1} - \bar{c}
+		\end{pmatrix}
+		=  
+		\begin{pmatrix}
+			A & B \\ C & D
+		\end{pmatrix}
+		\begin{pmatrix}
+			k_{t} - \bar{k} \\ c_{t} - \bar{c}
+		\end{pmatrix} \label{eq:general_form}
+	\end{align}
+	Near the steady state $(\bar{c},\bar{k})$ we have
+	\begin{align*}
+		c_t &\approx \bar{c} + (c_t - \bar{c}), \\
+		k_t^\alpha + (1-\delta)k_t &\approx \bar{k}^\alpha + (1-\delta)\bar{k} + f'(\bar{k})(k_t - \bar{k}), \\
+		&= \bar{k}^\alpha + (1-\delta)\bar{k} + \alpha\bar{k}^{\alpha-1}(k_t - \bar{k}), \\
+		k_{t+1} &\approx \bar{k} + (k_t -\bar{k}).
+	\end{align*}
+	Substituting these into the \textbf{budget constraint} \eqref{eq:key_cons}
+	\begin{align*}
+		\bar{c} + (c_t - \bar{c}) &= \bar{k}^\alpha + (1-\delta)\bar{k} + \alpha\bar{k}^{\alpha-1}(k_t - \bar{k}) - k_{t+1} \\
+		\Leftrightarrow \bar{k}^\alpha - \delta\bar{k} + (c_t - \bar{c}) &= \bar{k}^\alpha + (1-\delta)\bar{k} + (1/\beta)(k_t - \bar{k}) - k_{t+1}
+	\end{align*}
+	Rearranging
+	\begin{align}
+		( k_{t+1} - \bar{k}) &= (1/\beta)(k_t - \bar{k}) - (c_t - \bar{c}) \label{eq:key1}
+	\end{align}
+	Next, we need one more equation containing $c_{t+1} - \bar{c}$, let us use the \textbf{Euler equation} and log-linearize it
+	\begin{align*}
+		\ln c_{t+1} - \ln c_t - \ln\beta = \ln [\alpha k_{t+1}^{\alpha-1} + (1-\delta) ]
+	\end{align*}
+	At the steady state, since $c_{t+1} = c_t = \bar{c}$
+	\begin{align*}
+		\ln \bar{c} - \ln \bar{c} - \ln\beta = \ln [\alpha \bar{k}^{\alpha-1} + (1-\delta) ]
+	\end{align*}
+	Take the first minus the second equation to obtain
+	\begin{align}
+		(\ln c_{t+1} - \ln \bar{c})  - (\ln c_t - \ln \bar{c}) = \ln [\alpha k_{t+1}^{\alpha-1} + (1-\delta) ] - \ln [\alpha \bar{k}^{\alpha-1} + (1-\delta) ] \label{eq:loglin}
+	\end{align}
+	Near the steady state $(\bar{c},\bar{k})$ we have
+	\begin{align*}
+		\ln c_{t+1} - \ln \bar{c} &\approx [\ln(\bar{c})]' (c_{t+1} - \bar{c}) = \frac{1}{\bar{c}} (c_{t+1} - \bar{c}), \\
+		\ln c_{t} - \ln \bar{c} &\approx  \frac{1}{\bar{c}} (c_{t} - \bar{c}),  \\
+		\ln [\alpha k_{t+1}^{\alpha-1} + (1-\delta) ] - \ln [\alpha \bar{k}^{\alpha-1} + (1-\delta) ] &\approx [\ln (\alpha \bar{k}^{\alpha-1} + (1-\delta) )]' (k_{t+1} - \bar{k}) \\
+		&= \frac{\alpha(\alpha-1)\bar{k}^{\alpha-2}}{\alpha \bar{k}^{\alpha-1} + (1-\delta) } (k_{t+1} - \bar{k})\\
+		&= \frac{\alpha(\alpha-1)\bar{k}^{\alpha-2}}{1/\beta} (k_{t+1} - \bar{k}) \\
+		&= \beta \alpha(\alpha-1)\bar{k}^{\alpha-2} (k_{t+1} - \bar{k})
+	\end{align*}
+	Plugging back to \eqref{eq:loglin} yields
+	\begin{align}
+		\frac{1}{\bar{c}} (c_{t+1} - \bar{c}) - \frac{1}{\bar{c}} (c_{t} - \bar{c}) = \beta \alpha(\alpha-1)\bar{k}^{\alpha-2} (k_{t+1} - \bar{k})
+	\end{align}
+	Rearranging
+	\begin{align}
+		\beta \alpha(\alpha-1)\bar{k}^{\alpha-2} (k_{t+1} - \bar{k}) - \frac{1}{\bar{c}} (c_{t+1} - \bar{c}) = - \frac{1}{\bar{c}} (c_{t} - \bar{c}) \label{eq:key2}
+	\end{align}
+	Combining \eqref{eq:key1} and \eqref{eq:key2} yields the system
+	\begin{align*}
+		( k_{t+1} - \bar{k}) + 0 \cdot (c_{t+1}-\bar{c}) &= (1/\beta)(k_t - \bar{k}) - (c_t - \bar{c}), \\
+		\beta \alpha(\alpha-1)\bar{k}^{\alpha-2} (k_{t+1} - \bar{k}) - \frac{1}{\bar{c}} (c_{t+1} - \bar{c}) &= 0\cdot(k_t - \bar{k})  - \frac{1}{\bar{c}} (c_{t} - \bar{c})
+	\end{align*}
+	Write this in matrix form
+	\begin{align*}
+		\begin{pmatrix}
+			1 & 0 \\
+			\beta \alpha(\alpha-1)\bar{k}^{\alpha-2} & -1/\bar{c} 
+		\end{pmatrix}
+		\begin{pmatrix}
+			k_{t+1} - \bar{k} \\
+			c_{t+1} - \bar{c}
+		\end{pmatrix}
+		=
+		\begin{pmatrix}
+			1/\beta & -1 \\
+			0 & -1/\bar{c}
+		\end{pmatrix}
+		\begin{pmatrix}
+			k_{t} - \bar{k} \\
+			c_{t} - \bar{c}
+		\end{pmatrix}
+	\end{align*}
+	To transform it into a form similar to \eqref{eq:general_form}, we do as follows
+	\begin{align*}
+		\begin{pmatrix}
+			k_{t+1} - \bar{k} \\
+			c_{t+1} - \bar{c}
+		\end{pmatrix}
+		&=
+		\begin{pmatrix}
+			1 & 0 \\
+			\beta \alpha(\alpha-1)\bar{k}^{\alpha-2} & -1/\bar{c} 
+		\end{pmatrix}^{-1}
+		\begin{pmatrix}
+			1/\beta & -1 \\
+			0 & -1/\bar{c}
+		\end{pmatrix}
+		\begin{pmatrix}
+			k_{t} - \bar{k} \\
+			c_{t} - \bar{c}
+		\end{pmatrix} \\
+		&= \begin{pmatrix}
+			1 & 0 \\
+			\red{\bar{c}}\beta \alpha(\alpha-1)\bar{k}^{\alpha-2} & -\bar{c} 
+		\end{pmatrix}
+		\begin{pmatrix}
+			1/\beta & -1 \\
+			0 & -1/\bar{c}
+		\end{pmatrix}
+		\begin{pmatrix}
+			k_{t} - \bar{k} \\
+			c_{t} - \bar{c}
+		\end{pmatrix} \\
+		&= \underbrace{\begin{pmatrix}
+				1/\beta & -1 \\
+				\bar{c} \alpha(\alpha-1)\bar{k}^{\alpha-2} & -\bar{c} \beta\alpha(\alpha-1)\bar{k}^{\alpha-2} + 1
+		\end{pmatrix}}_{\J}
+		\begin{pmatrix}
+			k_{t} - \bar{k} \\
+			c_{t} - \bar{c}
+		\end{pmatrix}
+	\end{align*}
+	The Trace and Determinant of $\J$ are
+	\begin{align*}
+		tr(\J) &= 1/\beta - \bar{c} \beta\alpha(\alpha-1)\bar{k}^{\alpha-2} + 1 \\
+		\det \J &= 1/\beta
+	\end{align*}
+	Since $\alpha < 1$, the term $A = - \bar{c} \beta\alpha(\alpha-1)\bar{k}^{\alpha-2} > 0$, hence
+	\begin{align*}
+		|1 + \det \J | = 1/\beta + 1 < tr(\J) = 1/\beta + 1 + A
+	\end{align*}
+	so the steady state is a saddle point. Just like what we have discussed.
+	
+	\begin{figure}[ht]
+		\centering
+		\includegraphics[scale=0.5]{figs/discrete_ramsey.png}
+		\caption{Phase Diagram for Discrete time Ramsey Model \citep{senouci2014endogenous}}
+	\end{figure}
 	
 	\chapter{Optimal Control}
 	Also known as Continuous-Time Optimization. Let us consider the problem
@@ -3226,7 +3628,7 @@ Terminologically speaking: $c(t)$ is the control variable since it can jump (tak
 Sticking with the Lagrangian method, we derive the FOC:
 
 \begin{align}
-     &(c(t)): \frac{dL}{d c(t)} = e^{-\rho t} u'(c(t)) - \lambda(t) = 0  \text{(using \eqref{eq:foc_c2})}     \\   
+     &(c(t)): \frac{dL}{d c(t)} = e^{-\rho t} u'(c(t)) - \lambda(t) = 0\  \text{(using \eqref{eq:foc_c2})}     \\   
      &(k(t)): \frac{dL}{d k(t)} = \lambda(t) [ f'(k(t)) - \delta] + \dot{\lambda}(t) = 0 \ \text{(using Eq.\eqref{eq:foc_k2})} \\
      &(\lambda(t)): \frac{dL}{d \lambda(t)} = f(k(t)) - \delta k(t) - c(t) = 0 \ \text{(using \eqref{eq:foc_c2})}           
 \end{align}
@@ -3323,10 +3725,48 @@ This condition constitutes the optimal path of consumption chosen by the househo
 			\frac{\dot{c}_t}{c_t} = f'(k_t) - \delta - \rho. 
 		\end{align*}
 	\end{enumerate}
+	Upon obtaining the Euler, you can use phase diagrams as introduced before to analyze the equilibrium. In this section, we learn how to apply Optimal Control through exercises.
 	
-	\section{Phase Diagrams}
+	\section{Exercises}
+	\begin{ex}
+		From \cite{michaillat2023}. Consider the investment problem where
+		\begin{align*}
+			\int^{+\infty}_{0} e^{-r t} \left[ f(k_t) - i_t - \frac{\chi}{2}\left(\frac{i_t^2}{k_t}\right) \right] dt
+		\end{align*}
+		subject to
+		\begin{align*}
+			\dot{k}_t = i_t, \\
+			k_0 > 0 
+		\end{align*}
+		The interest rate $r > 0$, capital adjustment cost $\chi > 0$, and $f(k_t) = k_t^\alpha$. 
+		\begin{enumerate}
+			\item Write down the current-value Hamiltonian.
+			\item Derive the optimal solutions.
+			\item Find the steady state
+		\end{enumerate}
+	\end{ex}
 	
-	\section{Economic Models}
+	\begin{ex}
+		From \citet[Ch. 4]{chu2021advanced}. Consider a Ramsey model with elastic labor supply (which is a deterministic case of RBC) where:
+		
+		\textbf{Household} solves
+		\begin{align*}
+			\max_{c_t, \ell_t} U:= \int^{\infty}_0 e^{-\rho t} [ \ln c_t + \beta ln (L - \ell_t) ] dt
+		\end{align*}
+		subject to
+		\begin{align*}
+			\dot{k}_t = R_t k_t + w_t \ell_t - c_t 
+		\end{align*}
+		\textbf{Firm} solves
+		\begin{align*}
+			\max_{k_t, \ell_t} y_t = f(k_t) = A k_t^\alpha l_t^{1-\alpha} - R_t k_t - w_t \ell_t
+		\end{align*}
+		\begin{enumerate}
+					\item Write down the current-value Hamiltonian.
+				\item Write the equilibrium conditions for capital and labor market.
+		\item Find the steady state.
+		\end{enumerate}
+	\end{ex}
 		
 %============ CHAPTER 1 ===========%
 \chapter{Basics of Probability theory, Brownian motion, and Martingales}
@@ -4914,12 +5354,11 @@ $$ S_t e^{-q(T-t)}\phi(d_1) = Ke^{-r(T-t)}\phi(d_2) $$
 	\]
 	
 	\section{Integration}
-	See \citet[Ch. 8]{springcamp}
 	\subsection*{Basic Integrals}
 	\begin{align*}
 		&\int k \, dx = kx + C \quad \text{(where $k$ is a constant)} \\
 		&\int x^n \, dx = \frac{1}{n+1} x^{n+1} + C \quad \text{(where $n \neq -1$)} \\
-		&\int e^x \, dx = e^x + C \\
+		&\int e^x \, dx = e^x + C, \ \ \
 		&\int \frac{1}{x} \, dx = \ln |x| + C
 	\end{align*}
 	
@@ -4933,9 +5372,10 @@ $$ S_t e^{-q(T-t)}\phi(d_1) = Ke^{-r(T-t)}\phi(d_2) $$
 	\[
 	\int u \, dv = uv - \int v \, du
 	\]
+	For more detail, see \citet[Ch. 8]{springcamp}.
 	
 	\section{Taylor Series Formula}
-	See \citet[Ch. 6.6]{springcamp}. The Taylor series expansion of a function $f(x)$ at a point $a$ is given by:
+	See \citet[Ch. 8]{springcamp}. The Taylor expansion of $f(x)$ at a point $a$ is:
 	\[
 	f(x) = f(a) + f'(a)(x - a) + \frac{f''(a)}{2!}(x - a)^2 + \frac{f'''(a)}{3!}(x - a)^3 + \dotsb
 	\]
@@ -4954,6 +5394,11 @@ $$ S_t e^{-q(T-t)}\phi(d_1) = Ke^{-r(T-t)}\phi(d_2) $$
 	\[
 	f(x) = f(a) + f'(a)(x - a) + \frac{f''(a)}{2!}(x - a)^2
 	\]
+	
+	\subsection*{Geometric Series}
+	\begin{align*}
+		\sum^n_{k=0} r^k = 1 + r + r^2 + \dots + r^n = \frac{1 - r^{n+1}}{1-r} \ \text{ given $|r| < 1$.}
+	\end{align*}
 	
 	\section{Implicit Function Theorem}
 	See \citet[Ch 10.6]{springcamp}. Let \( F(x, y) \) be a continuously differentiable function defined in a neighborhood of a point \( (a, b) \). If \( F(a, b) = 0 \) and \( \frac{\partial F}{\partial y} \neq 0 \) at \( (a, b) \), then there exists an open interval \( I \) containing \( a \) and an open interval \( J \) containing \( b \), and a unique continuously differentiable function \( f : I \to J \), such that for all \( x \) in \( I \), the equation \( F(x, f(x)) = 0 \) holds.
@@ -4997,7 +5442,7 @@ $$ S_t e^{-q(T-t)}\phi(d_1) = Ke^{-r(T-t)}\phi(d_2) $$
 	
 	\section{Matrix Algebra}
 	See \citet[Ch. 9]{springcamp}
-	\subsection{Matrix Operations}
+	\subsection*{Matrix Operations}
 	
 	\subsubsection*{Addition and Subtraction}
 	\[
@@ -5025,7 +5470,7 @@ $$ S_t e^{-q(T-t)}\phi(d_1) = Ke^{-r(T-t)}\phi(d_2) $$
 	\[
 	(cA)B = A(cB) = c(AB)
 	\]
-	\subsection{Matrix Multiplication}
+	\subsection*{Matrix Multiplication}
 	
 	Given matrices \( A_{m \times p} \) and \( B_{p \times n} \), their matrix product \( C = AB \) is defined by the formula:
 	\[
@@ -5035,7 +5480,7 @@ $$ S_t e^{-q(T-t)}\phi(d_1) = Ke^{-r(T-t)}\phi(d_2) $$
 	
 	In other words, the entry in the \( i \)-th row and \( j \)-th column of \( C \) is obtained by multiplying the elements in the \( i \)-th row of \( A \) with the corresponding elements in the \( j \)-th column of \( B \), and then summing up these products.
 	
-	\subsection{Transpose}
+	\subsection*{Transpose}
 	A transpose $\A^T$ of a $k \times n$ matrix is the $n\times k$ matrix obtained by interchanging rows and columns of $\A$. Notation: $\A^T$ or $\A'$.
 	
 	\begin{fdefinition}[Rules for Transposition]
@@ -5049,7 +5494,7 @@ $$ S_t e^{-q(T-t)}\phi(d_1) = Ke^{-r(T-t)}\phi(d_2) $$
 		A matrix is \textbf{symmetric} iff $\A = \A'$
 	\end{fdefinition}
 	
-	\subsection{Determinants}
+	\subsection*{Determinants}
 	\subsubsection*{Order 2}
 	The determinant of a $2\times 2$ matrix is given by
 	\begin{align*}
@@ -5073,6 +5518,122 @@ $$ S_t e^{-q(T-t)}\phi(d_1) = Ke^{-r(T-t)}\phi(d_2) $$
 		+ a_{13}[a_{21}a_{32} - a_{31}a_{22}]
 	\end{align*}
 	For higher order, see \citet[Ch. 9.4.2]{springcamp}. 
+	
+	\subsection*{Inverse}
+	\subsubsection{$2\times 2$ matrix}
+	Given
+	\[
+	A = \begin{bmatrix}
+		a & b \\
+		c & d
+	\end{bmatrix}
+	\]
+	The inverse matrix \(A^{-1}\) is given by:
+	\[
+	A^{-1} = \frac{1}{ad - bc} \begin{bmatrix}
+		d & -b \\
+		-c & a
+	\end{bmatrix}
+	\]
+	provided that $|A| \neq 0$.
+	\subsubsection{$3\times 3$ matrix}
+\[
+A = \begin{bmatrix}
+	a_{11} & a_{12} & a_{13} \\
+	a_{21} & a_{22} & a_{23} \\
+	a_{31} & a_{32} & a_{33}
+\end{bmatrix}
+\]
+
+The inverse matrix \(A^{-1}\) is given by:
+
+\[
+A^{-1} = \frac{1}{\text{det}(A)} \begin{bmatrix}
+	e_{11} & e_{12} & e_{13} \\
+	e_{21} & e_{22} & e_{23} \\
+	e_{31} & e_{32} & e_{33}
+\end{bmatrix}
+\]
+
+Where \(\text{det}(A)\) is the determinant of matrix \(A\), and the elements \(e_{ij}\) are given by:
+
+\begin{align*}
+	e_{11} &= a_{22}a_{33} - a_{23}a_{32} \\
+	e_{12} &= a_{13}a_{32} - a_{12}a_{33} \\
+	e_{13} &= a_{12}a_{23} - a_{13}a_{22} \\
+	e_{21} &= a_{23}a_{31} - a_{21}a_{33} \\
+	e_{22} &= a_{11}a_{33} - a_{13}a_{31} \\
+	e_{23} &= a_{13}a_{21} - a_{11}a_{23} \\
+	e_{31} &= a_{21}a_{32} - a_{22}a_{31} \\
+	e_{32} &= a_{12}a_{31} - a_{11}a_{32} \\
+	e_{33} &= a_{11}a_{22} - a_{12}a_{21}
+\end{align*}
+
+
+The matrix's inverse exists if and only if the determinant \(\text{det}(A)\) is non-zero.
+
+	\section*{Cramer's Rule}
+	For a system of equations:
+	
+
+	\begin{align*}
+		a_{11}x + a_{12}y &= b_1 \\
+		a_{21}x + a_{22}y &= b_2
+	\end{align*}
+
+	
+	The solutions \(x\) and \(y\) can be found using Cramer's Rule:
+	
+	\[
+	x = \frac{\begin{vmatrix}
+			b_1 & a_{12} \\
+			b_2 & a_{22}
+	\end{vmatrix}}{\begin{vmatrix}
+			a_{11} & a_{12} \\
+			a_{21} & a_{22}
+	\end{vmatrix}}
+	\]
+	
+	\[
+	y = \frac{\begin{vmatrix}
+			a_{11} & b_1 \\
+			a_{21} & b_2
+	\end{vmatrix}}{\begin{vmatrix}
+			a_{11} & a_{12} \\
+			a_{21} & a_{22}
+	\end{vmatrix}}
+	\]
+	
+	Where:
+	- \(A\) is the coefficient matrix:
+	\[
+	A = \begin{bmatrix}
+		a_{11} & a_{12} \\
+		a_{21} & a_{22}
+	\end{bmatrix}
+	\]
+	
+	- \(B_x\) is the matrix formed by replacing the first column of \(A\) with the constants column:
+$$
+	B_x = \begin{bmatrix}
+		b_1 & a_{12} \\
+		b_2 & a_{22}
+	\end{bmatrix}
+$$
+	
+	- \(B_y\) is the matrix formed by replacing the second column of \(A\) with the constants column:
+	\[
+	B_y = \begin{bmatrix}
+		a_{11} & b_1 \\
+		a_{21} & b_2
+	\end{bmatrix}
+	\]
+	
+	Cramer's Rule is valid when the determinant \(\begin{vmatrix}
+		a_{11} & a_{12} \\
+		a_{21} & a_{22}
+	\end{vmatrix}\) is non-zero.
+	
 	
 	\section{Jacobians, Gradients, and Hessians}
 	The Gradient $\nabla$ is a vector that points in the direction of the steepest increase of a scalar-valued (1D) function of multiple variables. Its magnitude $|\nabla |$ is the rate of change in that direction. The gradient is a vector and has the same dimension as the number of variables in the function. For a function of $n$ variables, the gradient is an n-dimensional vector.
@@ -5155,22 +5716,22 @@ $$ S_t e^{-q(T-t)}\phi(d_1) = Ke^{-r(T-t)}\phi(d_2) $$
 	\]
 	In a sense, The Hessian is the Jacobian of the gradient of a function that maps from n-dimension to 1-Dimension.
 	
-	\chapter{Dynamical Stability Analysis} \label{sec:appendix_dyn}
-	Borrow from \citet{de2002theory}, Technical Appendix A.2. (p.311) and \citet{dannan2003stability}.
-	\section{Dimension One}
-	Let $f(x)$ be a function defined on some interval $I$ of $\R$ with values in $I$. The time path, given an initial state $x_0 \in I$ and the equation $x_{t+1} = f(x_t)$ is uniquely defined.
-	
-	A steady state solution $\bar{x}$ to $\bar{x} = f(\bar{x})$ which is interior to $I$ is locally stable if for any initial value $x_0$ near enough to $\bar{x}$, the dynamics starting from $x_0$ converge to $\bar{x}$. Formally, there exists $\varepsilon > 0$ such that $(\bar{x}-\varepsilon, \bar{x} + \varepsilon) \in I$ and for any $x_0 \in (\bar{x}-\varepsilon, \bar{x} + \varepsilon)$ the corresponding dynamics satisfy
-	\begin{align*}
-		\lim_{t\to +\infty} x_t = \bar{x}
-	\end{align*}
-	At a corner steady state like 0, when $f$ is defined on $\R_{++}$, the corner local stability of 0 is defined similarly but for $x_0 \in (0,\varepsilon)$.
-	
-	\begin{definition}[Hyperbolicity]
-		Assume $f$ is continuously differentiable in $I$, $\bar{x}$ is a steady state $\in I$. If $f'(\bar{x}) =1$, then $\bar{x}$ is non-hyperbolic. Its stability type cannot be determined on the basic of its first-order derivative, but only by analyzing the second-order derivatives. 
-		
-		Otherwise, if $f'(\bar{x}) \neq 1$, then $\bar{x}$ is hyperbolic.
-	\end{definition}	
+%	\chapter{Dynamical Stability Analysis} \label{sec:appendix_dyn}
+%	Borrow from \citet{de2002theory}, Technical Appendix A.2. (p.311) and \citet{dannan2003stability}.
+%	\section{Dimension One}
+%	Let $f(x)$ be a function defined on some interval $I$ of $\R$ with values in $I$. The time path, given an initial state $x_0 \in I$ and the equation $x_{t+1} = f(x_t)$ is uniquely defined.
+%	
+%	A steady state solution $\bar{x}$ to $\bar{x} = f(\bar{x})$ which is interior to $I$ is locally stable if for any initial value $x_0$ near enough to $\bar{x}$, the dynamics starting from $x_0$ converge to $\bar{x}$. Formally, there exists $\varepsilon > 0$ such that $(\bar{x}-\varepsilon, \bar{x} + \varepsilon) \in I$ and for any $x_0 \in (\bar{x}-\varepsilon, \bar{x} + \varepsilon)$ the corresponding dynamics satisfy
+%	\begin{align*}
+%		\lim_{t\to +\infty} x_t = \bar{x}
+%	\end{align*}
+%	At a corner steady state like 0, when $f$ is defined on $\R_{++}$, the corner local stability of 0 is defined similarly but for $x_0 \in (0,\varepsilon)$.
+%	
+%	\begin{definition}[Hyperbolicity]
+%		Assume $f$ is continuously differentiable in $I$, $\bar{x}$ is a steady state $\in I$. If $f'(\bar{x}) =1$, then $\bar{x}$ is non-hyperbolic. Its stability type cannot be determined on the basic of its first-order derivative, but only by analyzing the second-order derivatives. 
+%		
+%		Otherwise, if $f'(\bar{x}) \neq 1$, then $\bar{x}$ is hyperbolic.
+%	\end{definition}	
 	
 	\chapter{Solutions to Some Problems}
 	\section{OLG Model} \label{appendix:olg}
