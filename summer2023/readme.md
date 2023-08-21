@@ -49,11 +49,11 @@
 
 (Week 2)
 
-* 9/04 (A): Dynamic Programming
-* 9/05 (A): Optimal Control
-* 9/06 (A): Applications & Programming I (RCK)
-* 9/07 (A): Applications & Programming II (RBC)
-* 9/08 (A): Applications & Programming III (OLG)
+* 9/04 (A): Differential Equations
+* 9/05 (A): Dynamic Programming
+* 9/06 (A): Programming for DP
+* 9/07 (A): Optimal Control
+* 9/08 (A): Programming for OC
 
 (Week 3)
 
