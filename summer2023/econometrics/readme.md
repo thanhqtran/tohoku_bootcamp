@@ -17,7 +17,7 @@
 
 * 9/18 (A):
   - [Stata]: OLS regression, descriptive statistics, use ShareLatex
-  - [R]: R introduction and basic commands
+  - [R]: Time series basic concepts and R basic commands
 * 9/19 (A):
   - [Stata]: OLS regression, output the results and interpret them
   - [R]: Process and decompose time series
