@@ -17,34 +17,34 @@
 
 * 9/18 (A):
   - [Stata]: OLS regression, descriptive statistics, use ShareLatex
-  - [R]: Time series basic concepts and R basic commands
+  - [R]: Introduction: Time series basics
 * 9/19 (A):
   - [Stata]: OLS regression, output the results and interpret them
-  - [R]: Process and decompose time series
+  - [R]: R programming basics
 * 9/20 (A):
   - [Stata]: Panel data analysis
-  - [R]: Visualization: ggplot2 package
+  - [R]: R data process and visualizing
 * 9/21 (A):
   - [Stata]: Panel data analysis, Make tables and figures
-  - [R]: Time series forecasting （1）
+  - [R]: Univariate time series forecasting (1)
 * 9/22 (A):
   - [Stata]: GMM 2SLS IV
-  - [R]: Time series forecasting (2)
+  - [R]: Univariate time series forecasting (2)
 
 (Week 2)
 
 * 9/25 (A):
   - [Stata]: GMM 2SLS IV, output results and interpret
-  - [R]: 
+  - [R]: Time series clustering and classifying
 * 9/26 (A):
   - [Stata]: Probit, Logit
-  - [R]:
+  - [R]: Time series conditional heteroscedastic model
 * 9/27 (A):
   - [Stata]: Probit, Logit, tables and figures
-  - [R]: 
+  - [R]: Nonlinear time series models
 * 9/28 (A):
   - [Stata]: DID method, mediating effects, moderating effects
-  - [R]:
+  - [R]: Multivariate time series analysis
 * 9/29 (A):
 * - [Stata]: Write an empirical analysis
-  - [R]:
+  - [R]: Principal Component Analysis and Factor Analysis
