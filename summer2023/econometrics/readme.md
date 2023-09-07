@@ -28,23 +28,23 @@
   - [Stata]: Panel data analysis, Make tables and figures
   - [R]: Univariate time series forecasting (1)
 * 9/22 (A):
-  - [Stata]: GMM 2SLS IV
+  - [Stata]: 2SLS IV
   - [R]: Univariate time series forecasting (2)
 
 (Week 2)
 
 * 9/25 (A):
-  - [Stata]: GMM 2SLS IV, output results and interpret
+  - [Stata]: Paper Replication
   - [R]: Time series clustering and classifying
 * 9/26 (A):
   - [Stata]: Probit, Logit
   - [R]: Time series conditional heteroscedastic model
 * 9/27 (A):
-  - [Stata]: Probit, Logit, tables and figures
+  - [Stata]: Paper Replication
   - [R]: Nonlinear time series models
 * 9/28 (A):
-  - [Stata]: DID method, mediating effects, moderating effects
+  - [Stata]: DID method
   - [R]: Multivariate time series analysis
 * 9/29 (A):
-* - [Stata]: Write an empirical analysis
+* - [Stata]: Paper Replication
   - [R]: Principal Component Analysis and Factor Analysis
