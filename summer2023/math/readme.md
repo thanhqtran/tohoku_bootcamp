@@ -1,10 +1,14 @@
-# General Information about the Summer BootCamp 2023
+# Lecture Notes
 
-**Classrooms:**
+Please download file `summer_math.pdf` in the repo.
+Or [click here](https://github.com/thanhqtran/tohoku_bootcamp/blob/main/summer2023/math/summer_math.pdf)
+
+# Venue
+
 * A: C14 (文科系総合研究科棟) 4F Room 401
 * B: C17（経済学部）2F Seminar Room 15
 
-## Mathematics II
+## Syllabus
 
 **Class time**
 
@@ -25,10 +29,10 @@
 (Week 2)
 
 * 9/04 (A): Differential Equations
-* 9/05 (A): Dynamic Programming
-* 9/06 (A): Programming for DP
-* 9/07 (A): Optimal Control
-* 9/08 (A): Programming for OC
+* 9/05 (A): Phase Diagrams
+* 9/06 (A): Bellman Equation
+* 9/07 (A): Dynamic Programming
+* 9/08 (A): Optimal Control
 
 (Week 3)
 

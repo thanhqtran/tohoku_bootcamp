@@ -1,3 +1,7 @@
+# Lecture Notes
+
+Please download file `spring_math.pdf` in the repo.
+
 # Venue
 
 Room 401, C-14 Building, Tohoku University, Kawauchi Campus.
