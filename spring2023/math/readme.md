@@ -1,6 +1,7 @@
 # Lecture Notes
 
 Please download file `spring_math.pdf` in the repo.
+Or [click here](https://github.com/thanhqtran/tohoku_bootcamp/blob/main/spring2023/math/spring_math.pdf)
 
 # Venue
 
