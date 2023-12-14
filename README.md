@@ -87,6 +87,14 @@ We recommend you use a Tohoku email account to register.
         </a>
     </td>
     <td align="center">
+        <a href="https://github.com/TristaTIAN1120">
+            <img src="https://avatars.githubusercontent.com/u/140711154?v=4" width="100;" alt="TristaTIAN1120"/>
+            <br />
+            <sub><b>TristaTIAN1120</b></sub>
+        </a>
+    </td></tr>
+<tr>
+    <td align="center">
         <a href="https://github.com/helensontheway0404">
             <img src="https://avatars.githubusercontent.com/u/141707243?v=4" width="100;" alt="helensontheway0404"/>
             <br />
