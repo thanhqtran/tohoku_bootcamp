@@ -14,7 +14,8 @@
 3/29 Entry Level Bayesian Time Series <br>
 
 # Requirements
-Bring your laptop with you every time when you come to class.
+Bring your laptop with you every time when you come to class.<br>
+Printed class materials will be assigned after signing at the beginning of each class.
 
 
 # Instructors
