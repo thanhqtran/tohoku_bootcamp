@@ -20,5 +20,6 @@ Printed class materials will be assigned after signing at the beginning of each 
 
 # Instructors
 Zihe Helen Li <br>
-Previously studied in School of Business, George Washington University, USA.
-Currently a 3rd-year PhD candidate in Tohoku University.
+Previously graduated in School of Business, George Washington University, USA.<br>
+Currently a 3rd-year PhD candidate in Tohoku University.<br>
+Two master's degrees: Master of Management (USA), and Master of Economics (Japan)
