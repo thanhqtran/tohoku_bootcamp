@@ -7,9 +7,9 @@
 3/22 Financial Data and Autocorrelation <br>
 
 ## Week 2
-3/25 ARIMA Family <br>
-3/26 GARCH Family <br>
-3/27 VAR Family <br>
+3/25 Linear Univariate Time Series Models <br>
+3/26 Conditional Heteroscedastic Time Series Models <br>
+3/27 Multivariate Time Series Models <br>
 3/28 Factor Analysis <br>
 3/29 Entry Level Bayesian Time Series <br>
 
