@@ -15,7 +15,7 @@
 
 # Requirements
 Bring your laptop with you every time when you come to class.<br>
-Printed class materials will be assigned after signing at the beginning of each class.
+Printed class materials will be assigned after signing on my name sheet at the beginning of each class.
 
 
 # Instructors
