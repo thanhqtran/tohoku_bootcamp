@@ -47,6 +47,8 @@ plt.scatter(sthres_(), n_(p_s), color='red')
 plt.vlines(p_s, 0, n_(p_s), linestyle='--', color='grey')
 plt.hlines(n_(p_s), 0, p_s, linestyle='--', color='grey')
 plt.ylim(1.4, 4)
+
+ax = plt.gca()
 ax.margins(0)
 # disable the top and right frame
 ax = plt.gca()
