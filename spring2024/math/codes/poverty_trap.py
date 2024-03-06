@@ -7,9 +7,9 @@ plt.rc('font', family='serif')
 
 # solve for h
 v = 1.2
-gamma1 = 8
-gamma2 = 8*2
-gamma3 = 6
+gamma1 = 8      # 3 eqms
+gamma2 = 8*2    # 1 high eqm
+gamma3 = 6      # 1 low eqm
 mu = np.log(v)
 phi = 0.3
 delta = 0.5
