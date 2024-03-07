@@ -6,11 +6,11 @@
 
 This is the official repository of INSEIKAI Tohoku BootCamp. 
 
-Every year, The Graduate Student Association at Tohoku University (hereby referred to as Inseikai) hosts 2 bootcamps for new graduate students enrolled to either the Master's program or the Ph.D. program. 
+Every year, The Graduate Student Association at Tohoku University (hereby referred to as Inseikai) hosts two boot camps for new graduate students enrolled in either the Master's or the Ph.D. programs. 
 
 To match the enrollment timing, the Spring Camp is organized around February to March, and the Summer Camp is organized around August to September, each lasting from 6 to 9 weeks. 
 
-The Bootcamp is a series of training courses designed to equip new students with mathematic, econometric, and qualitative tools that are necessary for their coursework and research. 
+The Bootcamp is a series of training courses designed to equip new students with the mathematical, econometric, and qualitative tools necessary for their coursework and research. 
 
 All courses are hosted **on-site** at the [Kawauchi Minami campus](https://goo.gl/maps/CBEscMB3hzLt4Byo7) and are **free of charge**.
 
@@ -111,4 +111,4 @@ We recommend you use a Tohoku email account to register.
 </table>
 <!-- readme: collaborators,contributors -end -->
 
-[![wakatime](https://wakatime.com/badge/user/cc163315-2340-4910-bf0e-56d030d0986e/project/5152c272-a4c9-4081-98ae-d99c715ecb9a.svg)](https://wakatime.com/badge/user/cc163315-2340-4910-bf0e-56d030d0986e/project/5152c272-a4c9-4081-98ae-d99c715ecb9a)
+[![contribution wakatime](https://wakatime.com/badge/user/cc163315-2340-4910-bf0e-56d030d0986e/project/5152c272-a4c9-4081-98ae-d99c715ecb9a.svg)](https://wakatime.com/badge/user/cc163315-2340-4910-bf0e-56d030d0986e/project/5152c272-a4c9-4081-98ae-d99c715ecb9a)
