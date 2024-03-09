@@ -15,7 +15,10 @@
 
 # Requirements
 Bring your laptop with you every time when you come to class.<br>
-Printed class materials will be assigned after signing on my name sheet at the beginning of each class.
+Printed class materials will be assigned after signing on my name sheet at the beginning of each class.<br>
+<br>
+[IMPORTANT]<br>
+Remember, this course is mainly focusing on practical experiences of time series with RStudio. We will mention some mathematical logics behind these models and commands, but we will not go deep. If you want to learn more about math, please check my supervisor Jun Nagayasu's international economics course, or check courses in the School of Information Science.
 
 
 # Instructors
