@@ -25,5 +25,5 @@ Remember, this course is mainly focusing on practical experiences of time series
 Zihe Helen Li <br>
 Previously graduated from School of Business, George Washington University, USA.<br>
 Previously worked in Washington DC for nearly three years. <br>
-Currently a 3rd-year PhD candidate in Tohoku University.<br>
+Currently a 3rd-year PhD candidate in Tohoku University (Monetary Economics, international finance).<br>
 Two master's degrees: Master of Management, Real Estate Evaluation (USA), and Master of Economics (Japan)
