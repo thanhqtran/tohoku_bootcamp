@@ -38,6 +38,12 @@ All courses are hosted **on-site** at the [Kawauchi Minami campus](https://goo.g
 - [Panel Data Econometrics with Stata](https://github.com/thanhqtran/tohoku_bootcamp/tree/main/spring2024/econometrics_stata)
 - [Time Series with R](https://github.com/thanhqtran/tohoku_bootcamp/tree/main/spring2024/timeseries_r)
 
+### [Summer Camp 2024]
+- [Mathematics]
+- [Qualitative]
+- [Econometrics]
+- [Computation]
+
 ## Instructors
 
 Ph.D. students at the Graduate School of Economics and Management, Tohoku University.
