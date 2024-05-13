@@ -15,23 +15,21 @@ The Bootcamp is a series of training courses designed to equip new students with
 All courses are hosted **on-site** at the [Kawauchi Minami campus](https://goo.gl/maps/CBEscMB3hzLt4Byo7) and are **free of charge**.
 
 
-## Camps
+## BootCamps
 
-### [Guide to LaTeX](https://github.com/thanhqtran/tohoku_bootcamp/tree/main/tex_guide)
-
-### [Spring Camp 2023](https://github.com/thanhqtran/tohoku_bootcamp/tree/main/spring2023)
+### [Spring Camp 2023](https://inseikaitohoku.org/2022/12/20/feb-mar-2023-spring-2023-computation-mathematics-camp-for-economists-dl-jan-31-2023/)
 
 - [Computation](https://github.com/thanhqtran/tohoku_bootcamp/tree/main/spring2023/computation)
 - [Mathematics I](https://github.com/thanhqtran/tohoku_bootcamp/tree/main/spring2023/math)
 - [Qualitative I](https://github.com/thanhqtran/tohoku_bootcamp/tree/main/spring2023/qualitative)
 
-### [Summer Camp 2023](https://github.com/thanhqtran/tohoku_bootcamp/tree/main/summer2023)
+### [Summer Camp 2023](https://inseikaitohoku.org/2023/04/08/aug-sep-2023-inseikai-tohoku-summer-2023-bootcamp-dl-july-31-2023/)
 
 - [Econometrics](https://github.com/thanhqtran/tohoku_bootcamp/tree/main/summer2023/econometrics)
 - [Mathematics II](https://github.com/thanhqtran/tohoku_bootcamp/tree/main/summer2023/math)
 - [Qualitative II](https://github.com/thanhqtran/tohoku_bootcamp/tree/main/summer2023/qualitative)
 
-### [Spring Camp 2024](https://github.com/thanhqtran/tohoku_bootcamp/tree/main/spring2024)
+### [Spring Camp 2024](https://inseikaitohoku.org/2024/01/17/spring-bootcamp-2024-opened-march-2024-registration-due-february-26-2024/)
 
 - [Mathematics](https://github.com/thanhqtran/tohoku_bootcamp/tree/main/spring2024/math)
 - [Qualitative](https://github.com/thanhqtran/tohoku_bootcamp/tree/main/spring2024/qualitative)
