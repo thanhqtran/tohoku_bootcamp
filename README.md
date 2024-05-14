@@ -6,13 +6,13 @@
 
 This is the official repository of INSEIKAI Tohoku BootCamp. 
 
-Every year, The Graduate Student Association at Tohoku University (hereby referred to as Inseikai) hosts two boot camps for new graduate students enrolled in either the Master's or the Ph.D. programs. 
+Every year, The Graduate Student Association at Tohoku University (hereby referred to as **Inseikai**) hosts two boot camps for new graduate students enrolled in either the Master's or the Ph.D. programs. 
 
-To match the enrollment timing, the Spring Camp is organized around February to March, and the Summer Camp is organized around August to September, each lasting from 6 to 9 weeks. 
+To match the enrollment timing, the Spring Camp is organized around February to March, and the Summer Camp is organized around August to September. Each lasts from 4 to 6 weeks. 
 
 The Bootcamp is a series of training courses designed to equip new students with the mathematical, econometric, and qualitative tools necessary for their coursework and research. 
 
-All courses are hosted **on-site** at the [Kawauchi Minami campus](https://goo.gl/maps/CBEscMB3hzLt4Byo7) and are **free of charge**.
+All courses are hosted **on-site** at the [Kawauchi Minami campus](https://goo.gl/maps/CBEscMB3hzLt4Byo7) and are **free of charge** for students of Tohoku University.
 
 
 ## BootCamps
