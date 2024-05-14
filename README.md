@@ -52,14 +52,14 @@ The Camp is organized by [Inseikai Tohoku](inseikaitohoku.org) and is grateful f
 
 [https://forms.gle/kLUdVMuyKm6Uf44W8](https://forms.gle/kLUdVMuyKm6Uf44W8)
 
-**Deadline:** February 26 (Monday) -- 17:00 JST
+**Deadline:** July 31 (Wednesday) -- 17:00 JST
 
 We recommend you use a Tohoku email account to register.
 
 
 ## Contributors
 
-<!-- readme: collaborators,contributors -start -->
+<!-- readme: collaborators, contributors -start -->
 <table>
 <tr>
     <td align="center">
