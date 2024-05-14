@@ -1,3 +1,8 @@
+# Lecture Notes
+
+- `springcamp_2024_tony.pdf` for optimization review
+- `springcamp_2024_tedd.pdf` for special topics in micro-founded macroeconomics.
+
 # Course Outline
 
 - 03/04: Review of Optimization
