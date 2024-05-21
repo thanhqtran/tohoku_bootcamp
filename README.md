@@ -12,8 +12,15 @@ To match the enrollment timing, the Spring Camp is organized around February to 
 
 The Bootcamp is a series of training courses designed to equip new students with the mathematical, econometric, and qualitative tools necessary for their coursework and research. 
 
-All courses are hosted **on-site** at the [Kawauchi Minami campus](https://goo.gl/maps/CBEscMB3hzLt4Byo7) and are **free of charge** for students of Tohoku University.
+All courses are hosted **on-site** at the [Kawauchi Minami campus](https://goo.gl/maps/CBEscMB3hzLt4Byo7) and are **free of charge** for Tohoku University students.
 
+## Application Link for the Upcoming Camp
+
+[https://forms.gle/kLUdVMuyKm6Uf44W8](https://forms.gle/kLUdVMuyKm6Uf44W8)
+
+**Deadline:** July 31, 2024 (Wednesday) -- 17:00 JST
+
+We recommend you use a Tohoku email account to register.
 
 ## BootCamps
 
@@ -47,14 +54,6 @@ All courses are hosted **on-site** at the [Kawauchi Minami campus](https://goo.g
 Ph.D. students at the Graduate School of Economics and Management, Tohoku University.
 
 The Camp is organized by [Inseikai Tohoku](inseikaitohoku.org) and is grateful for support from the [Research Center for Policy Design](https://www2.econ.tohoku.ac.jp/~PDesign/en.html) and the Graduate School of Economics and Management, Tohoku University.
-
-## Application Link for the Upcoming Camp
-
-[https://forms.gle/kLUdVMuyKm6Uf44W8](https://forms.gle/kLUdVMuyKm6Uf44W8)
-
-**Deadline:** July 31, 2024 (Wednesday) -- 17:00 JST
-
-We recommend you use a Tohoku email account to register.
 
 
 ## Contributors
