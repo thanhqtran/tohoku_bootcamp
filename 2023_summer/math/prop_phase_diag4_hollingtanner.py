@@ -1,5 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
+from scipy.integrate import odeint
 
 # Define the Holling-Tanner model
 def holling_tanner(Z, t):
