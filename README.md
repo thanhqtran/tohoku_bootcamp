@@ -24,36 +24,36 @@ We recommend you use a Tohoku email account to register.
 
 ## BootCamps
 
-### [Spring Camp 2023](https://inseikaitohoku.org/2022/12/20/feb-mar-2023-spring-2023-computation-mathematics-camp-for-economists-dl-jan-31-2023/)
+### [Spring Camp 2023](https://github.com/thanhqtran/tohoku_bootcamp/tree/main/2023_spring)
 
-- [Computation](https://github.com/thanhqtran/tohoku_bootcamp/tree/main/spring2023/computation)
-- [Mathematics I](https://github.com/thanhqtran/tohoku_bootcamp/tree/main/spring2023/math)
-- [Qualitative I](https://github.com/thanhqtran/tohoku_bootcamp/tree/main/spring2023/qualitative)
+- [Computation]()
+- [Mathematics I]()
+- [Qualitative I]()
 
-### [Summer Camp 2023](https://inseikaitohoku.org/2023/04/08/aug-sep-2023-inseikai-tohoku-summer-2023-bootcamp-dl-july-31-2023/)
+### [Summer Camp 2023](https://github.com/thanhqtran/tohoku_bootcamp/tree/main/2023_summer)
 
-- [Econometrics](https://github.com/thanhqtran/tohoku_bootcamp/tree/main/summer2023/econometrics)
-- [Mathematics II](https://github.com/thanhqtran/tohoku_bootcamp/tree/main/summer2023/math)
-- [Qualitative II](https://github.com/thanhqtran/tohoku_bootcamp/tree/main/summer2023/qualitative)
+- [Econometrics]()
+- [Mathematics II]()
+- [Qualitative II]()
 
-### [Spring Camp 2024](https://inseikaitohoku.org/2024/01/17/spring-bootcamp-2024-opened-march-2024-registration-due-february-26-2024/)
+### [Spring Camp 2024](https://github.com/thanhqtran/tohoku_bootcamp/tree/main/2024_spring)
 
-- [Mathematics](https://github.com/thanhqtran/tohoku_bootcamp/tree/main/spring2024/math)
-- [Qualitative](https://github.com/thanhqtran/tohoku_bootcamp/tree/main/spring2024/qualitative)
-- [Panel Data Econometrics with Stata](https://github.com/thanhqtran/tohoku_bootcamp/tree/main/spring2024/econometrics_stata)
-- [Time Series with R](https://github.com/thanhqtran/tohoku_bootcamp/tree/main/spring2024/timeseries_r)
+- [Mathematics]()
+- [Qualitative]()
+- [Panel Data Econometrics with Stata]()
+- [Time Series with R]()
 
-### [Summer Camp 2024]
-- [Mathematics]
-- [Qualitative]
-- [Econometrics]
-- [Computation]
+### [Summer Camp 2024](https://github.com/thanhqtran/tohoku_bootcamp/tree/main/2024_summer)
+- [Qualitative]()
+- [Econometrics]()
+- [Mathematics]()
+- [Computation]()
 
 ## Instructors
 
 Ph.D. students at the Graduate School of Economics and Management, Tohoku University.
 
-The Camp is organized by [Inseikai Tohoku](inseikaitohoku.org) and is grateful for support from the [Research Center for Policy Design](https://www2.econ.tohoku.ac.jp/~PDesign/en.html) and the Graduate School of Economics and Management, Tohoku University.
+The Camp is organized by [Inseikai Tohoku](inseikaitohoku.org) and is grateful for support from the [Research Center for Policy Design](https://www2.econ.tohoku.ac.jp/~PDesign/en.html) the Graduate School of Economics and Management, Tohoku University, and financial support from the Sunaga Foundation under the 須永基金地域連携支援事業 Project.
 
 
 ## Contributors
