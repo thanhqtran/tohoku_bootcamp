@@ -1,10 +1,19 @@
 # Summer Camp 2024
 
+Registration
+
+[https://forms.gle/kLUdVMuyKm6Uf44W8](https://forms.gle/kLUdVMuyKm6Uf44W8)
+
+Deadline: July 31, 2024 (Wednesday) – 17:00 JST
+
+We recommend you use a Tohoku email account to register.
+
+Students of relevant backgrounds at all levels (undergrad, grad, master, or PhD) are welcome to join the camps.
+
 ## Schedule of courses
 
 This year, we have the following 4 elective courses in order of occurrence.
-All classes are held on weekdays (Mon - Fri) only. 
-There is no class on the weekends.
+All classes are held on weekdays (Mon - Fri) only.  There is no class on the weekends.
 
 - **Qualitative Research**
 
