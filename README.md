@@ -26,28 +26,28 @@ We recommend you use a Tohoku email account to register.
 
 ### [Spring Camp 2023](https://github.com/thanhqtran/tohoku_bootcamp/tree/main/2023_spring)
 
-- [Computation]()
-- [Mathematics I]()
-- [Qualitative I]()
+- Computation
+- Mathematics I
+- Qualitative I
 
 ### [Summer Camp 2023](https://github.com/thanhqtran/tohoku_bootcamp/tree/main/2023_summer)
 
-- [Econometrics]()
-- [Mathematics II]()
-- [Qualitative II]()
+- Econometrics
+- Mathematics II
+- Qualitative II
 
 ### [Spring Camp 2024](https://github.com/thanhqtran/tohoku_bootcamp/tree/main/2024_spring)
 
-- [Mathematics]()
-- [Qualitative]()
-- [Panel Data Econometrics with Stata]()
-- [Time Series with R]()
+- Mathematics
+- Qualitative
+- Panel Data Econometrics with Stata
+- Time Series with R
 
 ### [Summer Camp 2024](https://github.com/thanhqtran/tohoku_bootcamp/tree/main/2024_summer)
-- [Qualitative]()
-- [Econometrics]()
-- [Mathematics]()
-- [Computation]()
+- Qualitative
+- Econometrics
+- Mathematics
+- Computation
 
 ## Instructors
 
