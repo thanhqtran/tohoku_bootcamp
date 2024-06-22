@@ -18,18 +18,40 @@ All classes are held on weekdays (Mon - Fri) only.  There is no class on the wee
 - **Qualitative Research**
 
   (August) 8/12 to 8/16. *Class starts at 10:30.*
+
+<details> 
+<summary>Who should take this course?</summary>
+This course is suitable for research concerning non-numerical data, which is widely used in management. You will study how to conduct proper interviews and collect and analyze qualitative data, such as text and interviews.
+</details>
+    
 - **Econometrics**
 
   (August) 8/19 to 8/23. *Class starts at 13:00.*
+
+<details> 
+<summary>Who should take this course?</summary>
+This course is suitable for those who want to conduct **empirical research**, which is widely used in health, environment, labor and microeconomics. You will learn the basic and advanced methods in STATA. In addition to covering the basics of linear regression, the course also focuses on causal inference methods such as IV, DiD, etc. 
+</details>
 
 - **Mathematics**
 
   (August) 8/26 to 8/30. *Class starts at 13:00.*
 
+<details> 
+<summary>Who should take this course?</summary>
+This course is suitable for those who want to conduct theoretical research in economics, which is widely used in micro and macro. You will learn convex optimization, dynamic programming, matrices, and the analysis of discrete dynamical systems. The course emphasizes WHEN you should use these methods and WHAT to analyze. It only requires basic knowledge of calculus, such as high-school differentiation and integration.  
+</details>
+
 - **Computation**
 
   (September) 9/2 to 9/6. *Class starts at 10:30.*
 
+<details> 
+<summary>Who should take this course?</summary>
+This course is suitable for those who want to perform numerical tests and simulations in theoretical research. You will learn the basics of numerical methods (such as convergence tests, finding the optimal value, and nonlinear solver) and their applications in economic modeling, such as basic OLG, RBC, and Large-scale OLG. The main languages are Python and Julia, which are free to use and easy to adapt. You will also learn the basic syntax and how to write codes in these languages.  
+  
+Spatial Econometrics concerns econometric analysis with geospatial data. In this course, you will learn how to draw maps with QGIS, and other practical analyses in R and STATA. 
+</details>
 
 ## Syllabus
 
