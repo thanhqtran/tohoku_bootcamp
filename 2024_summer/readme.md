@@ -106,8 +106,8 @@ Spatial Econometrics concerns econometric analysis with geospatial data. In this
   
   Instructor: Quang-Thanh Tran & Zhang Ye
   
-- 9/02: Simple OLG & Ramsey: simulations in Python/Julia
-- 9/03: AK60 OLG: Direct Computation, Value Function Iteration
+- 9/02: Simple OLG & Ramsey: Introduction to Julia/Python
+- 9/03: AK60 OLG: Simulation exercise in Julia/Python
 - 9/04: (morning) Coding Q&A
 - 9/04: (afternoon) The basics of Spatial Econometrics
 - 9/05: Spatial Econometrics with QGIS, R, and STATA.
