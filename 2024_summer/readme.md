@@ -19,6 +19,8 @@ All classes are held on weekdays (Mon - Fri) only.  There is no class on the wee
 
   (August) 8/12 to 8/16. *Class starts at 10:30.*
 
+  Seminar room 401
+
 <details> 
 <summary>Who should take this course?</summary>
 This course is suitable for research concerning non-numerical data, which is widely used in management. You will study how to conduct proper interviews and collect and analyze qualitative data, such as text and interviews.
@@ -27,6 +29,8 @@ This course is suitable for research concerning non-numerical data, which is wid
 - **Econometrics**
 
   (August) 8/19 to 8/23. *Class starts at 13:00.*
+
+  Seminar room 401
 
 <details> 
 <summary>Who should take this course?</summary>
@@ -37,6 +41,8 @@ This course is suitable for those who want to conduct **empirical research**, wh
 
   (August) 8/26 to 8/30. *Class starts at 13:00.*
 
+  Seminar room 21 (10F, R.1014)
+
 <details> 
 <summary>Who should take this course?</summary>
 This course is suitable for those who want to conduct theoretical research in economics, which is widely used in micro and macro. You will learn convex optimization, dynamic programming, matrices, and the analysis of discrete dynamical systems. The course emphasizes WHEN you should use these methods and WHAT to analyze. It only requires basic knowledge of calculus, such as high-school differentiation and integration.  
@@ -45,6 +51,8 @@ This course is suitable for those who want to conduct theoretical research in ec
 - **Computation**
 
   (September) 9/2 to 9/6. *Class starts at 10:30.*
+
+  Seminar room 401
 
 <details> 
 <summary>Who should take this course?</summary>
