@@ -19,7 +19,7 @@ All classes are held on weekdays (Mon - Fri) only.  There is no class on the wee
 
   (August) 8/12 to 8/16. *Class starts at 10:30.*
 
-  Seminar room 401
+  Seminar room 401 (4F, C-14)
 
 <details> 
 <summary>Who should take this course?</summary>
@@ -30,7 +30,7 @@ This course is suitable for research concerning non-numerical data, which is wid
 
   (August) 8/19 to 8/23. *Class starts at 13:00.*
 
-  Seminar room 401
+  Seminar room 401 (4F, C-14)
 
 <details> 
 <summary>Who should take this course?</summary>
@@ -41,7 +41,7 @@ This course is suitable for those who want to conduct **empirical research**, wh
 
   (August) 8/26 to 8/30. *Class starts at 13:00.*
 
-  Seminar room 21 (10F, R.1014)
+  Seminar room 21 - Room 1014 (10F, C-14)
 
 <details> 
 <summary>Who should take this course?</summary>
@@ -52,7 +52,7 @@ This course is suitable for those who want to conduct theoretical research in ec
 
   (September) 9/2 to 9/6. *Class starts at 10:30.*
 
-  Seminar room 401
+  Seminar room 401 (4F, C-14)
 
 <details> 
 <summary>Who should take this course?</summary>
