@@ -41,7 +41,7 @@ This course is suitable for those who want to conduct **empirical research**, wh
 
   (August) 8/26 to 8/30. *Class starts at 13:00.*
 
-  Seminar room 21 - Room 1014 (10F, C-14)
+  Seminar room 401 (4F, C-14)
 
 <details> 
 <summary>Who should take this course?</summary>
