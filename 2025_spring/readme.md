@@ -46,7 +46,7 @@ This course is suitable for research concerning non-numerical data, which is wid
 
 - **Computation**
 
-  Mar. 17 to Mar. 21.
+  Mar. 17 to Mar. 24.
 
   Class hours: 13:00 to 16:00.
 
