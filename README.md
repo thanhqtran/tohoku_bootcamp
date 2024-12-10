@@ -49,6 +49,11 @@ We recommend you use a Tohoku email account to register.
 - Mathematics
 - Computation
 
+### [Spring Camp 2025](https://github.com/thanhqtran/tohoku_bootcamp/tree/main/2025_spring)
+- Econometrics
+- Qualitative
+- Computation
+
 ## Instructors
 
 Ph.D. students at the Graduate School of Economics and Management, Tohoku University.
