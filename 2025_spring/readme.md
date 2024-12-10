@@ -4,7 +4,7 @@ Registration
 
 [https://forms.gle/kLUdVMuyKm6Uf44W8](https://forms.gle/kLUdVMuyKm6Uf44W8)
 
-Deadline: February 20, 2025 – 17:00 JST
+Deadline: February 17, 2025 – 17:00 JST
 
 We recommend you use a Tohoku email account to register.
 
