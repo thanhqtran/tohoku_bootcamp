@@ -59,6 +59,10 @@ Velasquez, A. (2019). Development Economics. University of Colorado Denver. Retr
 
 Brown, R. (2020). Econometric Methods for Empirical Research. University of Colorado Denver. Retrieved from https://clas.ucdenver.edu/ryan-brown/courses.
 
+Contact
+
+Xiao: wang.xiao.p3@dc.tohoku.ac.jp
+
 
 
 
