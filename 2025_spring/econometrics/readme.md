@@ -36,9 +36,9 @@ Topics
 
 2025/03/10 Regression Dcontinuity (Xiao)
 
-2025/03/11 Project I (DiD, FE)
+2025/03/11 Project I (Stata)
 
-2025/03/12 Project II (IV)
+2025/03/12 Project II (R)
 
 Text Book
 
