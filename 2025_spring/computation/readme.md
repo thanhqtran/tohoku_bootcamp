@@ -10,5 +10,6 @@ The goal is to acquire essential knowledge in economic modeling.
 - Mar 25: Modeling NK and its extension in Dynare
 
 ## Requirements
-- Install MATLAB (free for university student): [link](https://www.mathworks.com/academia/tah-portal/tohoku-university-31485743.html). During the installation, please choose the following toolboxes: Econometrics Toolbox, Statistics, Optimization Toolbox, Symbolic Math, Control System, Matlab SDK.
-- 
+- Install MATLAB (free for university student): [link](https://www.mathworks.com/academia/tah-portal/tohoku-university-31485743.html).
+- During the installation, please choose the following toolboxes: Econometrics Toolbox, Statistics, Optimization Toolbox, Symbolic Math, Control System, Matlab SDK.
+- Basic calculus is important (but we will review it if necessary).
