@@ -1,13 +1,14 @@
 # Computation
 
-The goal is to acquire essential knowledge in economic modeling.
+The goal is to acquire essential knowledge in up-to-date economic modeling.
 
 ## Schedule
 - Mar 19: Brief review of optimization
-- Mar 20: Modeling RBC with MATLAB and Dynare
-- Mar 21: Modeling 6-period OLG with Dynare
-- Mar 24: Modeling NK with Dynare
-- Mar 25: Modeling NK and its extension in Dynare
+- Mar 20: Modeling Real Business Cycle with MATLAB and Dynare
+- Mar 21: Modeling 6-period OverLapping Generations with Dynare
+- Mar 24: Modeling New Keynesian with Dynare
+- Mar 25: Coding session
+- Mar 26: Student Presentation
 
 *All sessions start from 13:00.*
 
