@@ -8,7 +8,8 @@ The goal is to acquire essential knowledge in economic modeling.
 - Mar 21: Modeling 6-period OLG with Dynare
 - Mar 24: Modeling NK with Dynare
 - Mar 25: Modeling NK and its extension in Dynare
-All sessions start from 13:00 
+
+*All sessions start from 13:00.*
 
 ## Requirements
 - Install MATLAB (free for university student): [link](https://www.mathworks.com/academia/tah-portal/tohoku-university-31485743.html).
