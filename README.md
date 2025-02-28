@@ -63,8 +63,6 @@ The Camp is organized by [Inseikai Tohoku](inseikaitohoku.org) and is grateful f
 
 ## Contributors & Collaborators
 
-## Contributors
-
 <!-- readme: collaborators,contributors -start -->
 <table>
 	<tbody>
