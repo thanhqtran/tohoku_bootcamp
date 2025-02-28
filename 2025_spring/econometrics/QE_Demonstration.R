@@ -20,7 +20,7 @@ library(tidyr)
 # Load dataset
 # data <- read.csv(file.choose())
 # try this to load directly from git
-dat_url = 'https://github.com/thanhqtran/tohoku_bootcamp/blob/main/2025_spring/econometrics/preGeneralTrade.csv'
+dat_url = 'https://raw.githubusercontent.com/thanhqtran/tohoku_bootcamp/refs/heads/main/2025_spring/econometrics/preGeneralTrade.csv'
 data <- read.csv(url(dat_url))
 
 
