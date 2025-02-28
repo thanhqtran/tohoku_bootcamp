@@ -12,7 +12,7 @@ To match the enrollment timing, the Spring Camp is organized around February to 
 
 The Bootcamp is a series of training courses designed to equip new students with the mathematical, econometric, and qualitative tools necessary for their coursework and research. 
 
-All courses are hosted **on-site** at the [Kawauchi Minami campus](https://goo.gl/maps/CBEscMB3hzLt4Byo7) and are **free of charge** for Tohoku University students.
+All courses are hosted **on-site** (and possibly online if needed) at the [Kawauchi Minami campus](https://goo.gl/maps/CBEscMB3hzLt4Byo7) and are **free of charge** for Tohoku University students.
 
 ## Application Link for the Upcoming Camp
 
@@ -61,73 +61,11 @@ Ph.D. students at the Graduate School of Economics and Management, Tohoku Univer
 The Camp is organized by [Inseikai Tohoku](inseikaitohoku.org) and is grateful for support from the [Research Center for Policy Design](https://www2.econ.tohoku.ac.jp/~PDesign/en.html) the Graduate School of Economics and Management, Tohoku University, and financial support from the Sunaga Foundation under the 須永基金地域連携支援事業 Project.
 
 
+## Contributors & Collaborators
+
 ## Contributors
 
-<!-- readme: contributors -start -->
-<table>
-	<tbody>
-		<tr>
-            <td align="center">
-                <a href="https://github.com/thanhqtran">
-                    <img src="https://avatars.githubusercontent.com/u/66583019?v=4" width="100;" alt="thanhqtran"/>
-                    <br />
-                    <sub><b>thanhqtran</b></sub>
-                </a>
-            </td>
-            <td align="center">
-                <a href="https://github.com/helensontheway0404">
-                    <img src="https://avatars.githubusercontent.com/u/141707243?v=4" width="100;" alt="helensontheway0404"/>
-                    <br />
-                    <sub><b>helensontheway0404</b></sub>
-                </a>
-            </td>
-            <td align="center">
-                <a href="https://github.com/TristaTIAN1120">
-                    <img src="https://avatars.githubusercontent.com/u/140711154?v=4" width="100;" alt="TristaTIAN1120"/>
-                    <br />
-                    <sub><b>TristaTIAN1120</b></sub>
-                </a>
-            </td>
-            <td align="center">
-                <a href="https://github.com/LemmonCoke">
-                    <img src="https://avatars.githubusercontent.com/u/189077680?v=4" width="100;" alt="LemmonCoke"/>
-                    <br />
-                    <sub><b>LemmonCoke</b></sub>
-                </a>
-            </td>
-            <td align="center">
-                <a href="https://github.com/wulizyk">
-                    <img src="https://avatars.githubusercontent.com/u/65752272?v=4" width="100;" alt="wulizyk"/>
-                    <br />
-                    <sub><b>wulizyk</b></sub>
-                </a>
-            </td>
-            <td align="center">
-                <a href="https://github.com/gtxy1979">
-                    <img src="https://avatars.githubusercontent.com/u/128568543?v=4" width="100;" alt="gtxy1979"/>
-                    <br />
-                    <sub><b>gtxy1979</b></sub>
-                </a>
-            </td>
-		</tr>
-		<tr>
-            <td align="center">
-                <a href="https://github.com/Dynamicalpotato">
-                    <img src="https://avatars.githubusercontent.com/u/130369924?v=4" width="100;" alt="Dynamicalpotato"/>
-                    <br />
-                    <sub><b>Dynamicalpotato</b></sub>
-                </a>
-            </td>
-            <td align="center">
-                <a href="https://github.com/FengYouxin">
-                    <img src="https://avatars.githubusercontent.com/u/130349225?v=4" width="100;" alt="FengYouxin"/>
-                    <br />
-                    <sub><b>FengYouxin</b></sub>
-                </a>
-            </td>
-		</tr>
-	<tbody>
-</table>
-<!-- readme: contributors -end -->
+<!-- readme: collaborators,contributors -start -->
+<!-- readme: collaborators,contributors -end -->
 
 [![contribution wakatime](https://wakatime.com/badge/user/cc163315-2340-4910-bf0e-56d030d0986e/project/5152c272-a4c9-4081-98ae-d99c715ecb9a.svg)](https://wakatime.com/badge/user/cc163315-2340-4910-bf0e-56d030d0986e/project/5152c272-a4c9-4081-98ae-d99c715ecb9a)
