@@ -150,5 +150,3 @@ The Camp is organized by [Inseikai Tohoku](inseikaitohoku.org) and is grateful f
 	<tbody>
 </table>
 <!-- readme: collaborators,contributors -end -->
-
-[![contribution wakatime](https://wakatime.com/badge/user/cc163315-2340-4910-bf0e-56d030d0986e/project/5152c272-a4c9-4081-98ae-d99c715ecb9a.svg)](https://wakatime.com/badge/user/cc163315-2340-4910-bf0e-56d030d0986e/project/5152c272-a4c9-4081-98ae-d99c715ecb9a)
