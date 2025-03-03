@@ -60,6 +60,8 @@ Ph.D. students at the Graduate School of Economics and Management, Tohoku Univer
 
 The Camp is organized by [Inseikai Tohoku](inseikaitohoku.org) and is grateful for support from the [Research Center for Policy Design](https://www2.econ.tohoku.ac.jp/~PDesign/en.html) the Graduate School of Economics and Management, Tohoku University, and financial support from the Sunaga Foundation under the 須永基金地域連携支援事業 Project.
 
+[Course evaluation form](https://github.com/thanhqtran/tohoku_bootcamp/blob/main/Evaluation_Sheet.pdf)
+
 
 ## Contributors & Collaborators
 
