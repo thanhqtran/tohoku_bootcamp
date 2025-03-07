@@ -30,9 +30,9 @@ Topics
 
 2025/03/05 Difference in Differences II: DiD with FE, Staggered DiD (Xiao)
 
-2025/03/06 Instrumental Variable I (Mengqi)
+2025/03/06 Instrumental Variable (Mengqi)
 
-2025/03/07 Instrumental Variable II (Mengqi)
+2025/03/07 Text Analysis (Mengqi)
 
 2025/03/10 Regression Dcontinuity (Xiao)
 
