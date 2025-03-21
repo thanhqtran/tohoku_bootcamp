@@ -1,10 +1,13 @@
-% step 1: run the model
-% step 2: run this file to plot
+% The code executes the 2 mod files and plot their respective steady state in 1 graph
 
 addpath addpath /Applications/Dynare/6.2-arm64/matlab
-cd '/Users/quang-thanhtran/Desktop/untitled folder'
+cd 'folder_path'
 
-% run the first model
+% =======================================
+% STEP 1: Evaluate the old steady state
+% =======================================
+
+% run the first model with policy repl=0.3
 dynare OLG_6periods_fix1.mod
 
 % Extract steady-state values
@@ -39,7 +42,9 @@ inc_vals = [c_vals(1) + k_vals(2);
             c_vals(5) + k_vals(6);
             c_vals(6)];
 
-% run the second model
+% =======================================
+% STEP 2: Evaluate the new steady state
+% =======================================
 dynare OLG_6periods_fix1new.mod
 
 % Extract steady-state values
@@ -73,6 +78,10 @@ inc_vals2 = [c_vals2(1) + k_vals2(2);
             c_vals2(4) + k_vals2(5);
             c_vals2(5) + k_vals2(6);
             c_vals2(6)];
+
+% ====================================================
+% STEP 3: Plotting the two states against one another
+% ====================================================
 
 ages = 1:6;
 
