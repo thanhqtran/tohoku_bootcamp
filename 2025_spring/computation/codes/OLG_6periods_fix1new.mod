@@ -1,9 +1,5 @@
-// ONG based on Example 10.4.1 in Heer (2024)
-// In the first 4 periods, they work elastically
-// In the last 2, they retire and receive pensions benefit b
-// There is no initial wealth: k1 = 0
-// Retirees do not work: n5 = n6 = 0
-// we fix the tax rate and let pension benefit adjust
+// Policy change
+// New mod file with repl=0.2
 
 var k2 k3 k4 k5 k6 c1 c2 c3 c4 c5 c6 n1 n2 n3 n4 C K N w r b;
 // k1 = n5 = n6 = 0
