@@ -17,7 +17,7 @@ eta = 2.0;        // consumption parameter
 gamma = 2.0;      // leisure parameter
 alpha = 0.30;     // capital share
 delta = 0.40;     // depreciation rate =(1 - 0.95^10)
-repl = 0.20;      // replacement rate  =b/((1-tau)*w*nbar)
+repl = 0.30;      // replacement rate  =b/((1-tau)*w*nbar)
 tau = repl/(2+repl);    // tax rate based on replacement rate
 
 // Model declaration
