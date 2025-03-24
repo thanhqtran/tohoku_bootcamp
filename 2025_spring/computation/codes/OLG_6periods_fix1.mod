@@ -1,4 +1,4 @@
-// ONG based on Example 10.4.1 in Heer (2024)
+// OLG based on Example 10.4.1 in Heer (2024)
 // In the first 4 periods, they work elastically
 // In the last 2, they retire and receive pensions benefit b
 // There is no initial wealth: k1 = 0
@@ -12,12 +12,12 @@ var k2 k3 k4 k5 k6 c1 c2 c3 c4 c5 c6 n1 n2 n3 n4 C K N w r b;
 parameters beta eta gamma alpha delta repl tau;
 
 // parameter values
-beta = 0.90;      // discount factor = .99^10
+beta = 0.99^10;      // discount factor = .99^10
 eta = 2.0;        // consumption parameter
 gamma = 2.0;      // leisure parameter
 alpha = 0.30;     // capital share
-delta = 0.40;     // depreciation rate =(1 - 0.95^10)
-repl = 0.30;      // replacement rate  =b/((1-tau)*w*nbar)
+delta = 1 - 0.95^10;     // depreciation rate =(1 - 0.95^10)
+repl = 0.30;      // replacement rate
 tau = repl/(2+repl);    // tax rate based on replacement rate
 
 // Model declaration
@@ -66,17 +66,18 @@ n1 = 0.38;
 n2 = 0.36;
 n3 = 0.34;
 n4 = 0.32;
-c1 = 0.06;
-c2 = 0.12;
-c3 = 0.15;
-c4 = 0.20;
-c5 = 0.16;
-c6 = 0.2;
-K = 0.0667;
-N = 0.229;
-r = 0.31;
-w = 0.48;
+r = 1-0.99^10;
+c1 = k2/(beta * (1+r));
+c2 = k3/(beta * (1+r));
+c3 = k4/(beta * (1+r));
+c4 = k5/(beta * (1+r));
+c5 = k6/(beta * (1+r));
+c6 = k6;
+N = 0.3;
+w = alpha * r / (1-alpha);
+K = 1;
 end;
 
-resid;
+
 steady(maxit=200000);
+resid;
