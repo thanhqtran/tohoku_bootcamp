@@ -48,11 +48,11 @@ X2 = Y / (1 - theta * beta);
 end;
 
 steady;
-check;
+check(qz_zero_threshold=1e-20);
 
 shocks;
 var e;
 stderr 0.01;
 end;
 
-stoch_simul(order=1,irf=200, nocorr);
+stoch_simul(order=1,irf=200, nocorr, qz_zero_threshold=1e-20);
