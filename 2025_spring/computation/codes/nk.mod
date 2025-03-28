@@ -49,6 +49,7 @@ end;
 
 steady;
 check(qz_zero_threshold=1e-20);
+model_diagnostics;
 
 shocks;
 var e;
